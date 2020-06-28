@@ -1,18 +1,27 @@
 
 // Зависимости:
-// sudo apt install libgtk-3-dev
-// sudo apt-get install mesa-common-dev
-// sudo apt install libglu*-mesa-dev freeglut3-dev
+// $sudo apt-get install libgtk-3-dev && sudo apt-get install mesa-common-dev && sudo apt install libglu*-mesa-dev freeglut3-dev
+// $sudo apt-get install libglu1-mesa-dev
+//
 // Сборка:
-// mkdir wx_build
-// cd wx_build
-// ../configure --with-opengl --with-gtk=3
-// make -j3                    # use 3 cores. Set to the number of cores your have. 'make' uses 1 core
-// sudo make install           # some platforms require to use 'su' instead of 'sudo'
-// sudo ldconfig               # not required in each system
-
+// $git clone git://github.com/wxWidgets/wxWidgets
+// $cd wxWidgets
+// $mkdir wx_build
+// $cd wx_build
+// $../configure --with-opengl --with-gtk=3
+// $make -j3                    # use 3 cores. Set to the number of cores your have. 'make' uses 1 core
+// $sudo make install           # some platforms require to use 'su' instead of 'sudo'
+// $sudo ldconfig               # not required in each system
+//
+// Либо можно установить из репозиториев:
+// apt-get install libwxbase3.1* \
+//                 libwxgtk3.1* \
+//                 wx3.1-headers \
+//                 wx-common* \
+//
 // wxWidgets "Hello World" Program
-// For compilers that support precompilation, includes "wx/wx.h".
+// For compilers that support precompilation, includes "wx/wx.h"
+
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
