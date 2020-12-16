@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Черновик</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="A4">
+            <div class="menu">
+                <ul>
+                    <li><a href="../index.html">На главную</a></li> 
+                </ul>      
+            </div>
+
+            <p class="section">
+                Виртуальные функции и деструктор
+            </p>
+
+            <p class="small">
+                (https://habr.com/ru/post/64280/)
+            </p>
+
+            <p class="subsection">
+                Виртуальные деструкторы
+            </p>
+
+            <p class="plain">
+                Если вы уже знаете и умеете использовать виртуальные функции, то просто обязаны знать, когда и зачем 
+                нужны виртуальные деструкторы. Иначе нижеследующий текст был написан именно для вас.<br>
+                <br>
+                Основное правило: если у вас в классе присутствует хотя бы одна виртуальная функция, деструктор 
+                также следует сделать виртуальным. При этом не следует забывать, что деструктор по умолчанию виртуальным 
+                не будует, поэтому следует объявить его явно. Если этого не сделать, у вас в программе почти наверняка 
+                будут утечки памяти (memory leaks). Чтобы понять почему, опять же много ума не надо. Рассмотрим несколько примеров.<br>
+                <br>
+                В первом случае создадим объект производного класса в стеке:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream>
+                
+                using std::cout;
+                using std::endl;
+                
+                class A {
+                public:
+                    A() { cout &lt;&lt; "A()" &lt;&lt; endl; }
+                    ~A() { cout &lt;&lt; "~A()" &lt;&lt; endl; }
+                };
+                
+                class B : public A {
+                public:
+                    B() { cout &lt;&lt; "B()" &lt;&lt; endl; }
+                    ~B() { cout &lt;&lt; "~B()" &lt;&lt; endl; }
+                };
+                
+                int main()
+                {
+                    B b;
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plain">
+                Всем ясно, что вывод программы будет следующим:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">A()
+                B()
+                ~B()
+                ~A()</code></pre>
+            
+            <p class="plain">
+                потому что сначала конструируется базовая часть класса, затем производная, а 
+                при разрушении наоборот — сначала вызывается деструктор производного класса, который по 
+                окончании своей работы вызывает по цепочке деструктор базового. Это правильно и так должно быть.<br>
+                <br>
+                Попробуем теперь создать тот же объект в динамической памяти, используя при этом указатель 
+                на объект базового класса (код классов не изменился, поэтому привожу только код функции main()):
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-cpp">int main()
+                {
+                    A * pA = new B;
+                    delete pA;
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plain">
+                На сей раз конструируется объект так, как и надо, а при разрушении происходит утечка памяти, потому 
+                как деструктор производного класса не вызывается:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">A()
+                B()
+                ~A()</code></pre>
+
+            <p class="plain">
+                Происходит это потому, что удаление производится через указатель на базовый класс и для вызова деструктора 
+                компилятор использует раннее связывание. Деструктор базового класса не может вызвать деструктор 
+                производного, потому что он о нем ничего не знает. В итоге часть памяти, выделенная под производный класс, 
+                безвозвратно теряется.<br>
+                <br>
+                Чтобы этого избежать, деструктор в базовом классе должен быть объявлен как виртуальный:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream&gt;
+                
+                using std::cout;
+                using std::endl;
+                
+                class A {
+                public:
+                    A() { cout &lt;&lt; "A()" &lt;&lt; endl; }
+                    virtual ~A() { cout &lt;&lt; "~A()" &lt;&lt; endl; }
+                };
+                
+                class B : public A {
+                public:
+                    B() { cout &lt;&lt; "B()" &lt;&lt; endl; }
+                    ~B() { cout &lt;&lt; "~B()" &lt;&lt; endl; }
+                };
+                
+                int main()
+                {
+                    A * pA = new B;
+                    delete pA;
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plain">
+                Теперь-то мы получим желаемый порядок вызовов:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">A()
+                B()
+                ~B()
+                ~A()</code></pre>
+
+            <p class="plain">
+                Происходит так потому, что отныне для вызова деструктора используется позднее связывание, 
+                то есть при разрушении объекта берется указатель на класс, затем из таблицы виртуальных 
+                функций определяется адрес нужного нам деструктора, а это деструктор производного класса, 
+                который после своей работы, как и полагается, вызывает деструктор базового. Итог: объект разрушен, 
+                память освобождена.
+            </p>
+
+            <p class="subsection">
+                Виртуальные функции в деструкторах
+            </p>
+
+            <p class="plain">
+                Давайте для начала рассмотрим ситуацию с вызовом виртуальных функций внутри класса. 
+                Предположим, что у нас есть Кот, который просит покушать мяуканьем, а затем приступает 
+                к процессу :) Так поступают многие коты, но не Чеширский! Чеширский, как известно, 
+                мало того что вечно улыбается, так еще и довольно разговорчив, поэтому мы научим его 
+                говорить, переопределив метод speak():
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream&gt;
+                
+                using std::cout;
+                using std::endl;
+                
+                class Cat
+                {
+                public:
+                    void askForFood() const
+                    {
+                        speak();
+                        eat();
+                    }
+                    virtual void speak() const { cout &lt;&lt; "Meow! "; }
+                    virtual void eat() const { cout &lt;&lt; "*champing*" &lt;&lt; endl; }
+                };
+                
+                class CheshireCat : public Cat
+                {
+                public:
+                    virtual void speak() const { cout &lt;&lt; "WTF?! Where\'s my milk? =) "; }
+                };
+                
+                int main()
+                {
+                    Cat * cats[] = { new Cat, new CheshireCat };
+                
+                    cout &lt;&lt; "Ordinary Cat: "; cats[0]-&gt;askForFood();
+                    cout &lt;&lt; "Cheshire Cat: "; cats[1]-&gt;askForFood();
+                
+                    delete cats[0]; delete cats[1];
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plain">
+                Вывод этой программы будет следующим:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">Ordinary Cat: Meow! *champing*
+                Cheshire Cat: WTF?! Where's my milk? =) *champing*</code></pre>
+
+            <p class="plain">
+                Рассмотрим код более подробно. Есть класс Cat с парой виртуальных методов, один из которых 
+                переопределен в производном CheshireCat. Но всё самое интересное происходит в методе askForFood() класса Cat.<br>
+                <br>
+                Как видно, метод всего лишь содержит вызовы двух других методов, однако конструкция speak() в 
+                данном контексте эквивалента this->speak(), то есть вызов происходит через указатель, а значит — 
+                будет использовано позднее связывание. Вот почему при вызове метода askForFood() через указатель 
+                на CheshireCat мы видим то, что и хотели: механизм виртуальных функций работает исправно даже 
+                несмотря на то, что вызов непосредственно виртуального метода происходит внутри другого метода класса.<br>
+                <br>
+                А теперь самое интересное: что будет, если попытаться воспользоваться этим в деструкторе? 
+                Модернизируем код так, чтобы при деструкции наши питомцы прощались, кто как умеет:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream&gt;
+                
+                using std::cout;
+                using std::endl;
+                
+                class Cat
+                {
+                public:
+                    virtual ~Cat() { sayGoodbye(); }
+                    void askForFood() const
+                    {
+                        speak();
+                        eat();
+                    }
+                    virtual void speak() const { cout &lt;&lt; "Meow! "; }
+                    virtual void eat() const { cout &lt;&lt; "*champing*" &lt;&lt; endl; }
+                    virtual void sayGoodbye() const { cout &lt;&lt; "Meow-meow!" &lt;&lt; endl; }
+                };
+
+                class CheshireCat : public Cat
+                {
+                public:
+                    virtual void speak() const { cout &lt;&lt; "WTF?! Where\'s my milk? =) "; }
+                    virtual void sayGoodbye() const { cout &lt;&lt; "Bye-bye! (:" &lt;&lt; endl; }
+                };
+
+                int main()
+                {
+                    Cat * cats[] = { new Cat, new CheshireCat };
+                
+                    cout &lt;&lt; "Ordinary Cat: "; cats[0]->askForFood();
+                    cout &lt;&lt; "Cheshire Cat: "; cats[1]->askForFood();
+                
+                    delete cats[0]; delete cats[1];
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plain">
+                Можно ожидать, что, как и в случае с вызовом метода speak(), будет выполнено позднее связывание, однако это не так:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">Ordinary Cat: Meow! *champing*
+                Cheshire Cat: WTF?! Where's my milk? =) *champing*
+                Meow-meow!
+                Meow-meow!</code></pre>
+
+            <p class="plain">
+                Почему? Да потому что при вызове виртуальных методов из деструктора компилятор использует не позднее, а раннее 
+                связывание. Если подумать, зачем он делает именно так, всё становится очевидным: нужно просто рассмотреть 
+                порядок конструирования и разрушения объектов. Все помнят, что конструирование объекта происходит, начиная 
+                с базового класса, а разрушение идет в строго обратном порядке. Таким образом, когда мы создаем объект типа 
+                CheshireCat, порядок вызовов конструкторов/деструкторов будет таким:       
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">Cat()
+                CheshireCat()
+                ~CheshireCat()
+                ~Cat()</code></pre>
+
+            <p class="plain">
+                Если же мы захотим внутри деструктора ~Cat() совершить виртуальный вызов метода sayGoodbye(), 
+                то фактически попытаемся обратиться к той части объекта, которая уже была разрушена.<br>
+                <br>
+                Мораль: <b>если в вашей голове витают помыслы выделить какой-то алгоритм «зачистки» в отдельный метод, 
+                переопределяемый в производных классах, а затем виртуально вызывать его в деструкторе, у вас ничего не выйдет.</b>
+            </p>
+
+            <!-- свойства в style смещают этот блок div вниз страницы -->
+            <div class="menu">
+                <ul>
+                    <li><a href="../index.html">На главную</a></li> 
+                </ul>      
+            </div>
+        </div>
+
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Алгоритм Беллмана-Форда</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        <div class="A4">
+            
+
+            <p class="section">
+                АЛГОРИТМ БЕЛЛМАНА-ФОРДА
+            </p>
+
+            <p class="small">
+                (https://habr.com/ru/company/otus/blog/484382/)
+            </p>
+
+            <p class="plain">
+                <strong>Задача:</strong> Дан граф и начальная вершина src в графе, необходимо найти кратчайшие пути 
+                от src до всех вершин в данном графе. В графе могут присутствовать ребра с отрицательными весами.<br>
+                <br>
+                Алгоритм Дейкстры является 
+                жадным алгоритмом, а его сложность равна O(VLogV) (с использованием кучи Фибоначчи). Однако Дейкстра 
+                не работает для графов с отрицательными весами ребер, тогда как Беллман-Форд — вполне. 
+                Алгоритм Беллмана-Форда даже проще, чем алгоритм Дейкстры, и хорошо подходит для распределенных систем. 
+                В то же время сложность его равна O(VE), что больше, чем показатель для алгоритма Дейкстры.<br>
+            </p>
+
+            <p class="subsection">
+                Алгоритм
+            </p>
+
+            <p class="plain">
+                Ниже приведены подробно расписанные шаги.<br>
+                <br>
+                Входные данные: Граф и начальная вершина src.<br>
+                <br>
+                Выходные данные: Кратчайшее расстояние до всех вершин от src. Если попадается цикл отрицательного 
+                веса, то самые короткие расстояния не вычисляются, выводится сообщение о наличии такого цикла.<br>
+                <br>
+                1) На этом шаге инициализируются расстояния от исходной вершины до всех остальных вершин, как 
+                бесконечные, а расстояние до самого src принимается равным 0. Создается массив dist[] размера |V| 
+                со всеми значениями равными бесконечности, за исключением элемента dist[src], где src — исходная вершина.<br>
+                <br>
+                2) Вторым шагом вычисляются самые короткие расстояния. Следующие шаги нужно выполнять |V|-1 раз, где |V| — число вершин 
+                в данном графе.<br>
+                <br>
+                &emsp;&emsp;Произведите следующее действие для каждого ребра u-v:<br>
+                &emsp;&emsp;Если dist[v] > dist[u] + вес ребра uv, то обновите dist[v]<br>
+                &emsp;&emsp;dist [v] = dist [u] + вес ребра uv<br>
+                <br>
+                3) На этом шаге сообщается, присутствует ли в графе цикл отрицательного веса. Для каждого ребра u-v необходимо 
+                выполнить следующее:<br>
+                <br>
+                &emsp;&emsp;Если dist[v] > dist[u] + вес ребра uv, то в графе присутствует цикл отрицательного веса.<br>
+                <br>
+                Идея шага 3 заключается в том, что шаг 2 гарантирует кратчайшее расстояние, если граф не содержит цикла 
+                отрицательного веса. Если мы снова переберем все ребра и получим более короткий путь для любой из вершин, 
+                это будет сигналом присутствия цикла отрицательного веса.<br>
+                <br>
+                Как это работает? Как и в других задачах динамического программирования, алгоритм вычисляет кратчайшие пути 
+                снизу вверх. Сначала он вычисляет самые короткие расстояния, то есть пути длиной не более, чем в одно ребро. 
+                Затем он вычисляет кратчайшие пути длиной не более двух ребер и так далее. После i-й итерации внешнего цикла 
+                вычисляются кратчайшие пути длиной не более i ребер. В любом простом пути может быть максимум |V|-1 ребер, 
+                поэтому внешний цикл выполняется именно |V|-1 раз. Идея заключается в том, что если мы вычислили кратчайший 
+                путь с не более чем i ребрами, то итерация по всем ребрам гарантирует получение кратчайшего пути с не более 
+                чем i + 1 ребрами (доказательство довольно простое, вы можете сослаться на эту лекцию или видеолекцию от MIT)
+            </p>
+
+            <p class="subsection">
+                Пример
+            </p>
+
+            <p class="plain">
+                Давайте разберемся в алгоритме на следующем примере графа.
+                Пусть начальная вершина равна 0. Примите все расстояния за бесконечные, кроме расстояния до 
+                самой src. Общее число вершин в графе равно 5, поэтому все ребра нужно пройти 4 раза. 
+
+                <p style="text-align: center"><img src="img/Bellman_Ford_Algorithm_1.png"></p>
+            </p>
+
+            <p class="plain">
+                Пусть ребра отрабатываются в следующем порядке: (B, E), (D, B), (B, D), (A, B), (A, C), (D, C), (B, C), (E, D). 
+                Мы получаем следующие расстояния, когда проход по ребрам был совершен первый раз. Первая строка 
+                показывает начальные расстояния, вторая строка показывает расстояния, когда ребра (B, E), (D, B), (B, D) и (A, B) 
+                обрабатываются. Третья строка показывает расстояние при обработке (A, C). Четвертая строка показывает, что 
+                происходит, когда обрабатываются (D, C), (B, C) и (E, D).
+
+                <p style="text-align: center"><img src="img/Bellman_Ford_Algorithm_2.png"></p>
+            </p>
+
+            <p class="plain">
+                Первая итерация гарантирует, что все самые короткие пути будут не длиннее пути в 1 ребро. Мы получаем следующие 
+                расстояния, когда будет совершен второй проход по всем ребрам (в последней строке показаны конечные значения).
+
+                <p style="text-align: center"><img src="img/Bellman_Ford_Algorithm_3.png"></p>
+            </p>
+
+            <p class="plain">
+                Вторая итерация гарантирует, что все кратчайшие пути будут иметь длину не более 2 ребер. Алгоритм проходит 
+                по всем ребрам еще 2 раза. Расстояния минимизируются после второй итерации, поэтому третья и четвертая
+                итерации не обновляют значения расстояний.<br>
+                <br>
+                Реализация:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">// A C++ program for Bellman-Ford's single source 
+    // shortest path algorithm. 
+    #include &lt;bits/stdc++.h&gt; 
+    using namespace std; 
+      
+    // The main function that finds shortest 
+    // distances from src to all other vertices 
+    // using Bellman-Ford algorithm. The function 
+    // also detects negative weight cycle 
+    // The row graph[i] represents i-th edge with 
+    // three values u, v and w. 
+    void BellmanFord(int graph[][3], int V, int E, 
+                     int src) 
+    { 
+        // Initialize distance of all vertices as 0. 
+        int dis[V]; 
+        for (int i = 0; i &lt; V; i++) 
+            dis[i] = INT_MAX; 
+      
+        // initialize distance of source as 0 
+        dis[src] = 0; 
+      
+        // Relax all edges |V| - 1 times. A simple 
+        // shortest path from src to any other 
+        // vertex can have at-most |V| - 1 edges 
+        for (int i = 0; i &lt; V - 1; i++) { 
+      
+            for (int j = 0; j &lt; E; j++) { 
+                if (dis[graph[j][0]] + graph[j][2] &lt; 
+                                   dis[graph[j][1]]) 
+                    dis[graph[j][1]] =  
+                      dis[graph[j][0]] + graph[j][2]; 
+            } 
+        } 
+      
+        // check for negative-weight cycles. 
+        // The above step guarantees shortest 
+        // distances if graph doesn't contain 
+        // negative weight cycle.  If we get a 
+        // shorter path, then there is a cycle. 
+        for (int i = 0; i &lt; E; i++) { 
+            int x = graph[i][0]; 
+            int y = graph[i][1]; 
+            int weight = graph[i][2]; 
+            if (dis[x] != INT_MAX && 
+                       dis[x] + weight &lt; dis[y]) 
+                cout &lt;&lt; "Graph contains negative"
+                        " weight cycle"
+                     &lt;&lt; endl; 
+        } 
+      
+        cout &lt;&lt; "Vertex Distance from Source" &lt;&lt; endl; 
+        for (int i = 0; i &lt; V; i++) 
+            cout &lt;&lt; i &lt;&lt; "\t\t" &lt;&lt; dis[i] &lt;&lt; endl; 
+    } 
+      
+    // Driver program to test above functions 
+    int main() 
+    { 
+        int V = 5; // Number of vertices in graph 
+        int E = 8; // Number of edges in graph 
+      
+        // Every edge has three values (u, v, w) where 
+        // the edge is from vertex u to v. And weight 
+        // of the edge is w. 
+        int graph[][3] = { { 0, 1, -1 }, { 0, 2, 4 }, 
+                           { 1, 2, 3 }, { 1, 3, 2 },  
+                           { 1, 4, 2 }, { 3, 2, 5 },  
+                           { 3, 1, 1 }, { 4, 3, -3 } }; 
+      
+        BellmanFord(graph, V, E, 0); 
+        return 0; 
+    }</code></pre>
+
+            <p class="plain">
+                Вывод:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">Vertex Distance from Source
+        0        0
+        1        -1
+        2        2
+        3        -2
+        4        1</code></pre>
+
+            <p class="plain">
+                <strong>Примечания:</strong><br>
+                <br>
+                &emsp;&emsp;1) Отрицательные веса встречаются в различных применениях графов. Например, вместо того чтобы увеличивать 
+                &emsp;&emsp;стоимость пути, мы можем получить выгоду, следуя по определенному пути.<br>
+                <br>
+                &emsp;&emsp;2) Алгоритм Беллмана-Форда работает лучше для распределенных систем (лучше, чем алгоритм Дейкстры). В отличие от 
+                &emsp;&emsp;Дейкстры, где нам нужно найти минимальное значение всех вершин, в Беллмане-Форде ребра рассматриваются по одному.<br>
+                <br>
+            
+            
+                <strong>Упражнения:</strong><br>
+                <br>
+                &emsp;&emsp;1) Стандартный алгоритм Беллмана-Форда сообщает кратчайшие пути только в том случае, если в нем нет циклов 
+                &emsp;&emsp;отрицательного веса. Измените его таким образом, чтобы он сообщал о кратчайших путях даже при наличии такого цикла.<br>
+                <br>
+                &emsp;&emsp;2) Можем ли мы использовать алгоритм Дейкстры для поиска кратчайших путей в графе с отрицательными весами? Есть такая 
+                &emsp;&emsp;идея: вычислить минимальное значение веса, прибавить положительное значение (равное модулю значения минимального веса) 
+                &emsp;&emsp;ко всем весам и запустить алгоритм Дейкстры для модифицированного графа. Сработает ли такой алгоритм?
+            </p>
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+        
+        </div>
+    </body>
+</html>

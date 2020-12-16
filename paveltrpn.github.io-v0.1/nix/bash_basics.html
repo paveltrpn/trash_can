@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>bash basics</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+        
+        <div class="A4">
+
+            <!-- 22.11.2020 -->
+            <p class="section">
+                BASH basics.
+            </p>
+
+            <p class="plain">
+                Конструкции языка, основы работы и простые примеры с bash.
+            </p>
+
+            <p class="plain">
+                
+            </p>
+
+            <pre>
+    <code class="language-shell">CD %DEVTOOLS%:
+    mkdir nodejs_global
+    mkdir npm-cache
+    mkdir npm
+    mkdir npm\node_modules
+    npm config set prefix "E:\Devtools\nodejs_global\npm"
+    npm config set cache "E:\Devtools\nodejs_global\npm-cache"
+    setx PATH "%PATH%;E:\Devtools\nodejs_global\npm"</code></pre>
+
+        </div>
+
+        <!-- свойства в style смещают этот блок div вниз страницы -->
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+
+    </body>
+</html>

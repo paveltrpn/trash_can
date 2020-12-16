@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>TypeScript basics</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+        
+        <div class="A4">
+
+            <!-- 22.11.2020 -->
+            <p class="section">
+                TypeScript basics.
+            </p>
+
+            <p class="small">
+                https://www.typescripttutorial.net/typescript-tutorial/typescript-array-type/
+            </p>
+
+            <p class="plain">
+                Конструкции языка, основы работы и простые примеры с TypeScript.
+            </p>
+
+            <p class="subsection">
+                Тип Array
+            </p>
+
+            <p class="plain">
+                Тип Array (массив) в typescript это упорядоченный список элементов одного типа. Что-бы объявить массив, содержащий элементы
+                определённого типа можно использовать следующее объявление:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript">let arrayName: type[];</code></pre>
+            
+            <p class="plain">
+                Например вот так определяется массив из строк:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript">let skills: string[];</code></pre>
+
+            <p class="plain">
+                Можно добавить один или несколько элементов-строк в массив:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript">skills[0] = "Problem Solving";
+    skills[1] = "Programming";</code></pre>
+
+            <p class="plain">
+                С использованием метода push():
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript">skills.push('Software Design');</code></pre>
+
+            <p class="plain">
+                Эта строка объявляет массив строк и присваивает ему значения:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript">let skills = ['Problem Sovling','Software Design','Programming'];
+    // Или вот так
+    let skills: string[];
+    skills = ['Problem Sovling','Software Design','Programming'];</code></pre>
+
+            <p class="plain">
+                Можно сделать "type inference" (вывод типа):
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript">let skill = skills[0];
+    console.log(typeof(skill));
+    // выведет - string</code></pre>
+
+            <p class="plain">
+                
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript"></code></pre>
+
+            <p class="plain">
+                
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-typescript"></code></pre>
+
+        </div>
+
+        <!-- свойства в style смещают этот блок div вниз страницы -->
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Некоторые комманды Linux</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->  
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        <div class="A4">
+
+            <p class="section">
+                Некоторые комманды Linux
+            </p>
+
+            <p class="plain">
+                Выключить компьютер:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo shundown -h now</code></pre>
+
+            <p class="plain">
+                Лист всех файлов в каталоге (включая скрытые) с размерами файлов в 
+                человекочитаемом формате:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ ls -a -l *</code></pre>
+
+            <p class="plain">
+                Поиск пакета в репозиториях:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo apt-cache search glut</code></pre>
+
+            <p class="plain">
+                Проверка версии пакета в репозиториях. Можно сделать с помощью apt-cache или apt-get.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo apt-cache show "name" | grep -i version 
+    или
+    $ sudo apt-cache policy "name"
+    с помощью ключа -s - симуляция установки
+    $ sudo apt-get -s install mc
+    </code></pre>            
+            
+
+            <p class="plain">
+                Просмотр всех установленных пакетов:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ dpkg --get-selections | grep -v deinstall</code></pre>
+
+            <p class="plain">
+                Можно также убрать всю лишнюю информацию и сохранить только имена пакетов:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ dpkg -l | grep ^ii | awk '{ print $2}'</code></pre>
+
+            <p class="plain">
+                Как удалить пакет Ubuntu в терминале:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo apt remove имя_пакета</code></pre>
+
+            <p class="plain">
+                Будет выполнено полное удаление пакета, включая конфигурационные файлы и зависимости, 
+                только рекомендованные программы останутся. Если вы хотите использовать apt-get чтобы удалить deb ubuntu, 
+                то порядок действий немного другой. Для обычного удаления пакета выполните:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo apt-get remove имя_пакета</code></pre>
+
+            <p class="plain">
+                Для удаления пакета вместе с его конфигурационными файлами, выполните:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo apt-get purge имя_пакета</code></pre>
+
+            <p class="plain">
+                А чтобы, также удалить зависимости, установленные вместе с пакетом, нужно после одной из предыдущих команд 
+                выполнить (будут удаленны не только явно указанные зависимости, но и программы установленные как рекомендованные):
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo apt autoremove</code></pre>
+
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+        
+    </body>
+</html>

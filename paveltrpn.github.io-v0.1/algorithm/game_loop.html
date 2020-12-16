@@ -1,0 +1,468 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Главный цикл и симуляция в реальном времени</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        <div class="A4">
+
+            <p class="section">
+                ГЛАВНЫЙ ЦИКЛ И СИМУЛЯЦИЯ В РЕАЛЬНОМ ВРЕМЕНИ
+            </p>
+
+            <p class="small">
+                <i>(Game Engine Architecture, Jason Gregory, 2-nd edition<br>
+                перевод главы 7 - "The Game Loop and Real-Time Simulation")</i>
+            </p>
+
+            <!--Games are real-time, dynamic, interactive computer simulations. As such,
+            time plays an incredibly important role in any electronic game. There are
+            many different kinds of time to deal with in a game engine—real time, game
+            time, the local timeline of an animation, the actual CPU cycles spent within
+            a particular function, and the list goes on. Every engine system might define
+            and manipulate time differently. We must have a solid understanding of all
+            the ways time can be used in a game. In this chapter, we’ll take a look at how
+            real-time, dynamic simulation software works and explore the common ways
+            in which time plays a role in such a simulation.-->
+
+            <p class="plain">
+                Игры - это динамические, интерактивные компъютерные симуляции реального времени. Из-за этого время 
+                играет очень важную роль в любой электронной игре. Есть несколько разных видов "времени", с которыми приходится
+                иметь дело в игровом движке - реальное время, игровое время, локальная линия времени при воспроизведении анимаций,
+                фактические циклы ЦП, проведенные в рамках определенной функции и этот список можно продолжать. каждый игровой движок
+                может определять и регулировать время разными способами. Мы должны иметь твёрдое понимание всех способов,
+                которыми "время" может быть использовано в игровом движке. В этой главе мы рассмотрим как работают приложения, работающие
+                с графикой в реальном времени и обсудим общие взгляды на роль времени в этих приложениях. 
+            </p>
+
+            <p class="subsection">
+                Цикл визуализации (рендеринга)
+            </p>
+
+            <!--In a graphical user interface (GUI), of the sort found on a Windows PC or a
+            Macintosh, the majority of the screen’s contents are static. Only a small part
+            of any one window is actively changing appearance at any given moment.
+            Because of this, graphical user interfaces have traditionally been drawn on-
+            screen via a technique known as rectangle invalidation, in which only the small
+            portions of the screen whose contents have actually changed are redrawn.
+            Older 2D video games used similar techniques to minimize the number of
+
+            pixels that needed to be drawn.-->
+            <p class="plain">
+                В пользовательском графическом окружении (GUI), таком, котырй мы можем видеть на Windows или Macintosh,
+                большая часть выводимого на экран изображения статична. Только малая часть каждого окна активно меняет
+                внешний вид в отдельно взятый момент. Поэтому графический интерфейс пользователя традиционно отрисовывается
+                на экране с помощью техники, называемой - инвалидация прямоугольника, в которой только маленькая часть экрана,
+                содержание которой изменяется, подвергается перерисовке. Старые 2D видеоигры использовали похожие подходы для
+                минимизации числа пикселей, которые необходимо перерисовывать.
+            </p>
+
+            <!-- Real-time 3D computer graphics are implemented in an entirely different
+            way. As the camera moves about in a 3D scene, the entire contents of the screen
+            or window change continually, so the concept of invalid rectangles no longer
+            applies. Instead, an illusion of motion and interactivity is produced in much
+            the same way that a movie produces it—by presenting the viewer with a series
+            of still images in rapid succession.
+            Obviously, producing a rapid succession of still images on-screen requires
+            a loop. In a real-time rendering application, this is sometimes known as the
+            render loop. At its simplest, a rendering loop is structured as follows:-->
+
+            <p class="plain">
+                Графика, обрабатываемая в реальном времени используют совсем другой подход. Пока виртуальная камера двигается 
+                через виртуальную сцену, всё содержимое этой сцены на экране постоянно меняется и поэтому подход инвалидных прямоугольников
+                больше неприменим. Вместо этого иллюзия движения и интерактивности получается способом, очень похожим на то, как это 
+                происходит в кинофильмах - путём вывода на экран для зрителя серии готовых изображений, которые быстро сменяют друг друга.<br>
+                <br>
+                Очевидно, этот процесс должен быть циклическим. В программах, работающих с графикой в реальном времени это называется
+                - цикл рендеринга. В простейшем случае он выглядит так:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">while (!quit)
+    {
+        // Update the camera transform based on interactive
+        // inputs or by following a predefined path.
+        updateCamera();
+        // Update positions, orientations and any other
+        // relevant visual state of any dynamic elements
+        // in the scene.
+        updateSceneElements();
+        // Render a still frame into an off-screen frame
+        // buffer known as the "back buffer".
+        renderScene();
+        // Swap the back buffer with the front buffer, making
+        // the most recently rendered image visible
+        // on-screen. (Or, in windowed mode, copy (blit) the
+        // back buffer's contents to the front buffer.
+        swapBuffers();
+    }</code></pre>
+            
+            <p class="subsection">
+                Игровой цикл
+            </p>
+
+            <!--A game is composed of many interacting subsystems, including device I/O,
+            rendering, animation, collision detection and resolution, optional rigid body
+            dynamics simulation, multiplayer networking, audio, and the list goes on.
+            Most game engine subsystems require periodic servicing while the game is
+            running. However, the rate at which these subsystems need to be serviced
+            varies from subsystem to subsystem. Animation typically needs to be up-
+            dated at a rate of 30 or 60 Hz, in synchronization with the rendering subsys-
+            tem. However, a dynamics (physics) simulation may actually require more
+            frequent updates (e.g., 120 Hz). Higher-level systems, like AI, might only
+            need to be serviced once or twice per second, and they needn’t necessarily be
+            synchronized with the rendering loop at all.
+            There are a number of ways to implement the periodic updating of our
+            game engine subsystems. We’ll explore some of the possible architectures in
+            a moment. But for the time being, let’s stick with the simplest way to update
+            our engine’s subsystems—using a single loop to update everything. Such a
+            loop is often called the game loop, because it is the master loop that services
+            every subsystem in the engine.-->
+
+            <p class="plain">
+                Компьютерная игра состоит из многих взаимодействующих подсистем, например системы визуализации, анимации, определения 
+                столкновений и их разрешения, взаимодействия с устройствами ввода-вывода, звуковой системой, сетью и т.д. Большенство
+                подсистем компьютерной игры требуют периодического обслуживания, пока сама игра работает. Однако периодичность обращения 
+                к каждой подсистеме может различаться. Анимация должна обновляться обычно с частотой в 30 Гц или 60 Гц, синхронно с 
+                визуализацией. Симуляция физики может требовать более частого обновления (вплоть до 120 Гц). Системы более высокого уровня,
+                такие как система искусственного интелекта, требуют обслуживания один-два раза в секунду, и необязательно связывать их с
+                циклом визуализации.<br>
+                <br>
+                Существует некоторое число способов реализовать периодическое обновление подсистем нашего графического (игрового) движка.
+                Далее мы разберём некоторые возможные архитектуры. Но в данный момент давайте рассмотрим простейший способ обновлять системы
+                нашего движка - использовать один цикл для обновления всех подсистем. Такой цикл часто называют - игровым циклом (главным циклом),
+                потому что это основной цикл, который обслуживает каждую подсистему в графическом движке.
+            </p>
+
+            <p class="subsection">
+                Простейший пример - игр Pong
+            </p>
+
+            <!--Pong is a well-known genre of table tennis video games that got its start in
+            1958, in the form of an analog computer game called Tennis for Two, created
+            by William A. Higinbotham at the Brookhaven National Laboratory and dis-
+            played on an oscilloscope. The genre is best known by its later incarnations on
+            digital computers—the Magnavox Oddysey game Table Tennis and the Atari
+            arcade game Pong.
+            In pong, a ball bounces back and forth between two movable vertical pad-
+            dles and two fixed horizontal walls. The human players control the positions
+            of the paddles via control wheels. (Modern re-implementations allow control
+            via a joystick, the keyboard or some other human interface device.) If the ball
+            passes by a paddle without striking it, the other team wins the point and the
+            ball is reset for a new round of play.
+            The following pseudocode demonstrates what the game loop of a pong
+            game might look like at its core: -->
+
+            <p class="plain">
+                Pong - это хорошо известный жанр игр, похожих на настольный теннис, который берёт своё начало в 1958 году, в виде аналоговой
+                компьютерной игры под названием "Tennis for Two", созданной William A. Higinbotham в Brookhaven National Laboratory, в качестве 
+                устройства вывода в ней использовался осцилоскоп. Жанр расширил свою популярность в своих последующих инкарнациях на цифровых компьютерных
+                системах - "Table Tennis" на Magnavox Oddysey и "Pong" на Atari.<br>
+                <br>
+                В игре Pong, шар отскакивает туда-сюда между двумя подвижными вертикальными площадками и двумя неподвижными горизонтальными стенами.
+                Игроки управляют положением площадок с помощью котроллера. (современные реализаци допускают управление с помощью джойстика
+                клавиатуры и т.д.) Если шар пролетает мимо площадки одного из игроков другому игроку отдаётся победа в раунде и начинается
+                следующий раунд.<br>
+                <br>
+                Этот псевдокод демонстрирует на что может быть похож игровой (главный) цикл игры Pong и её ядро:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">void main() // Pong
+    {
+        initGame();
+        
+        while (true) // game loop
+        {
+            readHumanInterfaceDevices();
+            if (quitButtonPressed())
+            {
+                break; // exit the game loop
+            }
+
+            movePaddles(
+            moveBall(
+            collideAndBounceBall();
+            
+            if (ballImpactedSide(LEFT_PLAYER))
+            {
+                incremenentScore(RIGHT_PLAYER);
+                resetBall();
+            }
+            else if (ballImpactedSide(RIGHT_PLAYER))
+            {
+                incrementScore(LEFT_PLAYER);
+                resetBall();
+            }
+            renderPlayfield();
+        }
+    }</code></pre>
+
+            <!--Clearly this example is somewhat contrived. The original pong games
+            were certainly not implemented by redrawing the entire screen at a rate of
+            30 frames per second. Back then, CPUs were so slow that they could barely
+            muster the power to draw two lines for the paddles and a box for the ball
+            in real time. Specialized 2D sprite hardware was often used to draw moving
+            objects on-screen. However, we’re only interested in the concepts here, not
+            the implementation details of the original Pong.
+            As you can see, when the game first runs, it calls initGame() to do
+            whatever set-up might be required by the graphics system, human I/O de-
+            vices, audio system, etc. Then the main game loop is entered. The state-
+            ment while (true) tells us that the loop will continue forever, unless inter-
+            rupted internally. The first thing we do inside the loop is to read the human
+            interface device(s). We check to see whether either human player pressed
+            the “quit” button—if so, we exit the game via a break statement. Next,
+            the positions of the paddles are adjusted slightly upward or downward in
+            movePaddles(), based on the current deflection of the control wheels, joy-
+            sticks or other I/O devices. The function moveBall() adds the ball’s current
+            velocity vector to its position in order to find its new position next frame.
+            In collideAndBounceBall(), this position is then checked for collisions
+            against both the fixed horizontal walls and the paddles. If collisions are de-
+            tected, the ball’s position is recalculated to account for any bounce. We also
+            note whether the ball impacted either the left or right edge of the screen. This
+            means that it missed one of the paddles, in which case we increment the other
+            player’s score and reset the ball for the next round. Finally, renderPlay-
+            field() draws the entire contents of the screen.-->
+
+            <p class="plain">
+                Ясно, что этот пример несколько надуманный. Оригинальные игры Pong, конечно же, не были реализованы 
+                путем перерисовки всего экрана со скоростью 30 кадров в секунду. Тогда процессоры были настолько медленными, что едва 
+                имели достаточно мощности, чтобы отрисовать две площадки и поле для мяча в реальном времени. Специализированные устройства
+                для отображения 2D спрайтов часто использовались для отрисовки на экране движущихся объектов. Однако нас интересуют только концепции, 
+                а не детали реализации оригинального Pong.<br>
+                <br>
+                Как вы можете видеть, когда игра запускается впервые, она вызывает initGame (), 
+                чтобы выполнить любые настройки, которые могут потребоваться графической системе, устройствам ввода-вывода человека, аудиосистеме и т.д. 
+                Затем начинается основной игровой цикл. Оператор while (true) говорит нам, что цикл будет продолжаться вечно до тех пор, пока он не будет 
+                прерван изнутри. Первое, что мы делаем внутри цикла, чтобы прочитать устройство человеческого интерфейса (ов). Мы проверяем, 
+                нажал ли кто-либо из игроков кнопку «выход» - если это так, мы выходим из игры с помощью оператора break. Затем, положения манипуляторов 
+                слегка корректируются вверх или вниз в movePaddles (), в зависимости от текущего отклонения колес управления, джойстиков или других 
+                устройств ввода-вывода. Функция moveBall () складывает вектор текущей скорости шара с ветором его положения, чтобы найти его новое положение 
+                в следующем кадре. В collideAndBounceBall () эта позиция затем проверяется на столкновения с неподвижными горизонтальными стенами и площадками. 
+                Если обнаружены столкновения, положение мяча пересчитывается, чтобы учесть любой отскок. Также отметим, повлиял ли мяч на левый или 
+                правый край экрана. Это означает, что он пропустил одну из площадок, и в этом случае мы увеличиваем счет другого игрока и сбрасываем 
+                мяч для следующего раунда. Наконец, renderPlayfield () рисует все содержимое экрана.
+            </p>
+
+            <p class="subsection">
+                Стили архитектуры главного цикла
+            </p>
+
+            <p class="plain">
+                Игровые циклы могут быть реализованы различными способами, но по своей сути они обычно сводятся к одному или нескольким простым циклам с 
+                различными украшениями. Мы рассмотрим некоторые из наиболее распространенных архитектур ниже.
+            </p>
+
+            <p class="subsection">
+                Windows Message Pumps
+            </p>
+
+            <p class="plain">
+                На платформе Windows игры должны обслуживать сообщения из операционной системы Windows в дополнение к обслуживанию различных подсистем 
+                в самом игровом движке. Поэтому игры для Windows содержат кусок кода, известный как насос сообщений. Основная идея состоит в 
+                том, чтобы обслуживать сообщения Windows каждый раз, когда они поступают, и обслуживать игровой движок, только когда сообщения 
+                Windows не ожидают. Насос сообщений обычно выглядит примерно так:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">while (true)
+    {
+        // Service any and all pending Windows messages.
+        MSG msg;
+        while (PeekMessage(&msg, NULL, 0, 0) > 0)
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+        // No more Windows messages to process -- run one
+        // iteration of our "real" game loop.
+        RunOneIterationOfGameLoop();
+    }</code></pre>
+
+            <p class="plain">
+                Одним из побочных эффектов реализации игрового цикла, подобного этому, является то, что сообщения Windows имеют приоритет над 
+                визуализацией и симуляцией игры. В результате игра будет временно зависать при изменении размера или перетаскивании окна 
+                игры на рабочем столе.
+            </p>
+
+            <p class="subsection">
+                Callback-Driven Frameworks
+            </p>
+
+            <p class="plain">
+                Большинство подсистем игрового движка и сторонние программные промежуточные программные пакеты структурированы как библиотеки. 
+                Библиотека - это набор функций и / или классов, которые могут быть вызваны любым удобным для программиста приложения способом. 
+                Библиотеки обеспечивают максимальную гибкость для программиста. Но библиотеки иногда трудно использовать, потому что 
+                программист должен понимать, как правильно использовать функции и классы, которые они предоставляют.<br>
+                <br>
+                Напротив, некоторые игровые движки и пакеты промежуточного программного обеспечения структурированы как фреймворки. Фреймворк - 
+                это частично сконструированное приложение - программист завершает приложение, предоставляя пользовательские реализации отсутствующих 
+                функций в рамках фреймворка (или переопределяя его поведение по умолчанию). Но он или она практически не контролируют общий поток 
+                управления в приложении, поскольку он контролируется фреймворком.<br>
+                <br>
+                В движке рендеринга на основе фреймворка или игровом движке основной геймплей был написан для нас, но в основном он пуст. 
+                Программист игры может написать функции обратного вызова, чтобы «заполнить» недостающие детали. Графический движок OGRE 
+                является примером библиотеки, которая была обернута в Фреймворк. На самом низком уровне OGRE предоставляет функции, 
+                которые могут вызываться непосредственно программистом игрового движка. Тем не менее, OGRE также предоставляет 
+                структуру, которая включает в себя знания о том, как эффективно использовать низкоуровневую библиотеку OGRE. 
+                Если программист решает использовать работу с кадрами OGRE, он или она наследует класс из Ogre::FrameListener 
+                и переопределяет две виртуальные функции: frameStart () и frameEnded (). Как вы можете догадаться, эти функции вызываются 
+                до и после того, как основная 3D-сцена отрисовывается OGRE соответственно. Реализация в OGRE своего внутреннего игрового 
+                цикла выглядит примерно так, как в следующем псевдокоде. (См. Ogre::Root::renderOneFrame () в OgreRoot.cpp для 
+                фактического исходного кода.)
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">while (true)
+    {
+        for (each frameListener)
+        {
+            frameListener.frameStarted();
+        }
+        renderCurrentScene();
+        for (each frameListener)
+        {
+            frameListener.frameEnded();
+        }
+        finalizeSceneAndSwapBuffers();
+    }</code></pre>
+
+            <p class="plain">
+                Реализация frameListener конкретной игры может выглядеть примерно так.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">class GameFrameListener : public Ogre::FrameListener
+    {
+    public:
+        virtual void frameStarted(const FrameEvent& event)
+        {
+            // Do things that must happen before the 3D scene
+            // is rendered (i.e., service all game engine
+            // subsystems).
+            pollJoypad(event);
+            updatePlayerControls(event);
+            updateDynamicsSimulation(event);
+            resolveCollisions(event);
+            updateCamera(event);
+            // etc.
+        }
+        virtual void frameEnded(const FrameEvent& event)
+        {
+            // Do things that must happen after the 3D scene
+            // has been rendered.
+            drawHud(event);
+            // etc.
+        }
+    };</code></pre>
+            
+            <p class="subsection">
+                Event-Based Updating
+            </p>
+
+            <!-- In games, an event is any interesting change in the state of the game or its en-
+                vironment. Some examples include: the human player pressing a button on
+                the joypad, an explosion going off, an enemy character spotting the player,
+                and the list goes on. Most game engines have an event system, which permits
+                various engine subsystems to register interest in particular kinds of events
+                and to respond to those events when they occur (see Section 15.7 for details).
+                A game’s event system is usually very similar to the event/messaging sys-
+                tem underlying virtually all graphical user interfaces (for example, Microsoft
+                Windows’ window messages, the event handling system in Java’s AWT or the
+                services provided by C#’s delegate and event keywords).
+                Some game engines leverage their event system in order to implement the
+                periodic servicing of some or all of their subsystems. For this to work, the
+                event system must permit events to be posted into the future—that is, to be
+                queued for later delivery. A game engine can then implement periodic updat-
+                ing by simply posting an event. In the event handler, the code can perform whatever 
+                periodic servicing is required. It can then post a new event 1/30 or
+                1/60 of a second into the future, thus continuing the periodic servicing for as
+                long as it is required.-->
+
+            <p class="plain">
+                В играх, <i>события</i> - это любые, сколько-нибудь интересные изменения в состоянии игры или её окружения.
+                Например: игрок нажимает кнопку на джойстике, происходит взрыв, вражеский персонаж обнаруживает игрока и т.д. 
+                Большинство игровых движков включают в себя систему событий, которая позволяет различным подсистемама игрового
+                движка регистрировать события и отвечать на них, когда что-то происходит. Систама событий событий конкретной игры
+                обычно очень похожа на таковую, лежащую в основе всех графических интерфейсов пользователя (например, оконные 
+                сообщения Microsoft Windows, система обработки событий в Java AWT или службы, предоставляемые делегатом C # и 
+                ключевыми словами события). <br>
+                <br>
+                Некоторые игровые движки устанавливают свои системы событий в некий порядок, чтобы реализовать переодическое 
+                обслуживание некоторых или всех своих подсистем. Что бы это работало, система событий должна выставлять конкретные события в
+                очередь для последующей обработки. Игровой движок, таким образом, может реализовать периодическое обновление просто добавляя
+                некоторое событие в очередь. Обработчик событий - код, который выполняет необходимое периодическое обслуживание. Движок
+                Может записывать новое событие каждую 1/30 или 1/60 секунды и продолжать периодическоую работу столько, сколько это
+                необходимо.
+            </p>
+
+            <p class="subsection">
+                Abstract Timelines (абстрактные временнЫе линии)
+            </p>
+
+            <!--In game programming, it can be extremely useful to think in terms of abstract
+            timelines. A timeline is a continuous, one-dimensional axis whose origin (t =
+            0) can lie at any arbitrary location relative to other timelines in the system. A
+            timeline can be implemented via a simple clock variable that stores absolute
+            time values in either integer or floating-point format.-->
+
+            <p class="plain">
+                В программировании игр очень полезно размышлять в категориях абстрактных временнЫх линий. ВременнАя линия - это бесконечная
+                в обе стороны ось, имеющая нулевую точку отсчёта (t = 0), которая может находиться в любом произвольном месте относительно
+                другиз временных линий в системе. Временная линия может быть реализована с помощью переменной, хранящей абсолютное время в 
+                любом формате - целочисленном или с плавающей запятой.
+            </p>
+
+            <p class="subsection">
+                Real Time
+            </p>
+
+            <p class="plain">
+                Мы можем называть реальной временной шкалой отрезки времени, измеренные непосредственно через регистр таймера высокого 
+                разрешения CPU (см. Раздел 7.5.3). Начало этой временной шкалы определено так, чтобы оно совпадало с моментом последнего 
+                включения или сброса CPU. Данная временная шкала измеряет время в единицах циклов CPU (или нескольких их кратных), 
+                хотя эти значения времени можно легко преобразовать в единицы секунд, умножив их на частоту таймера высокого разрешения 
+                на текущем CPU.
+            </p>
+
+            <p class="subsection">
+                Game Time
+            </p>
+            
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Как это отменить?! Git-команды для исправления своих ошибок</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+            
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        <div class="A4">
+
+            <p class="section">
+                Как это отменить?! Git-команды для исправления своих ошибок
+            </p>
+
+            <p class="small">
+                (https://tproger.ru/translations/problems-with-git/)
+            </p>
+
+            <p class="plain">
+                Если вы ошиблись в Git’е, разобраться, что происходит и как это исправить, — непростая задача. 
+                Документация Git — это кроличья нора, из которой вы вылезете только зная конкретное название команды, 
+                которая решит вашу проблему.<br>
+                <br>
+                Рассказываем о командах, которые помогут вам выбраться из проблемных ситуаций.
+            </p>
+
+            <p class="subsection">
+                Вот блин, я сделал что-то не то… У Git ведь есть машина времени?!
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">git reflog
+    # Тут вы увидите всё, что вы делали
+    # в Git во всех ветках.
+    # У каждого элемента есть индекс HEAD@{index}.
+    # Найдите тот, после которого всё сломалось.
+    git reset HEAD@{index}
+    # Машина времени к вашим услугам.</code></pre>
+
+            <p class="plain">
+                Так вы можете восстановить то, что случайно удалили, и откатить слияние, после которого всё сломалось. 
+                reflog используется очень часто — давайте поблагодарим того, кто предложил добавить его в Git.
+            </p>
+
+            <p class="subsection">
+                Я только что сделал коммит и заметил, что нужно кое-что поправить!
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Внесите изменения
+    git add . # или добавьте файлы по отдельности.
+    git commit --amend --no-edit
+    # Теперь последний коммит содержит ваши изменения.
+    # ВНИМАНИЕ! Никогда не изменяйте опубликованные коммиты.</code></pre>
+
+            <p class="plain">
+                Обычно эта команда нужна если вы что-то закоммитили, а потом заметили какую-то мелочь, например отсутствующий 
+                пробел после знака =. Конечно вы можете внести изменения новым коммитом, а потом объединить коммиты с помощью 
+                rebase -i, но это гораздо дольше.<br>
+                <br>
+                Внимание! Никогда не изменяйте коммиты в публичной ветке. Используйте эту команду только для коммитов в 
+                локальной ветке, иначе вам конец.
+            </p>
+
+            <p class="subsection">
+                Мне нужно изменить сообщение последнего коммита!
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">git commit --amend
+    # Открывает редактор сообщений коммита.</code></pre>
+
+            <p class="plain">
+                Тупые требования к оформлению сообщений…
+            </p>
+
+            <p class="subsection">
+                Я случайно закоммитил что-то в мастер, хотя должен был в новую ветку!
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Эта команда создаст новую ветку из текущего состояния мастера.
+    git branch some-new-branch-name
+    # А эта — удалит последний коммит из мастер-ветки.
+    git reset HEAD~ --hard
+    git checkout some-new-branch-name
+    # Теперь ваш коммит полностью независим :)</code></pre>
+
+            <p class="plain">
+                Команды не сработают, если вы уже закоммитили в публичную ветку. В таком случае 
+                может помочь git reset HEAD@{какое-то-количество-коммитов-назад} вместо HEAD~.
+            </p>
+
+            <p class="subsection">
+                Ну отлично. Я закоммитил не в ту ветку!
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Отменяет последний коммит, но оставляет изменения доступными.
+    git reset HEAD~ --soft
+    git stash
+    # Переключаемся на нужную ветку.
+    git checkout name-of-the-correct-branch
+    git stash pop
+    # Добавьте конкретные файл или не парьтесь и закиньте все сразу.
+    git add .
+    git commit -m «Тут будет ваше сообщение»
+    # Теперь ваши изменения в нужной ветке.</code></pre>
+
+            <p class="plain">
+                Многие в такой ситуации предлагают использовать cherry-pick, так что можете выбрать, что вам больше по душе.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">git checkout name-of-the-correct-branch
+    # Берём последний коммит из мастера.
+    git cherry-pick master
+    # Удаляем его из мастера.
+    git checkout master
+    git reset HEAD~ --hard</code></pre>
+
+            <p class="subsection">
+                Я пытаюсь запустить diff, но ничего не происходит
+            </p>
+
+            <p class="plain">
+                Если вы знаете, что изменения были внесены, но diff пуст, то возможно вы индексировали изменения (через add). 
+                Поэтому вам нужно использовать специальный флаг.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">git diff --staged</code></pre>
+
+            <p class="plain">
+                Конечно, «это не баг, а фича», но с первого взгляда это чертовски неоднозначно.
+            </p>
+
+            <p class="subsection">
+                Мне нужно каким-то образом отменить коммит, который был сделан 5 коммитов назад
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Найдите коммит, который нужно отменить.
+    git log
+    # Можно использовать стрелочки, чтобы прокручивать список вверх и вниз.
+    # Сохраните хэш нужного коммита.
+    git revert  [тот хэш]
+    # Git создаст новый коммит, отменяющий выбранный.
+    # Отредактируйте сообщение коммита или просто сохраните его.</code></pre>
+
+            <p class="plain">
+                Вам не обязательно откатываться назад и копипастить старые файлы, замещая ими новые. Если вы закоммитили баг, 
+                то коммит можно отменить с помощью revert.<br>
+                <br>
+                Помимо этого, откатить можно не целый коммит, а отдельный файл. Но следуя канону Git’а, это будут уже совсем 
+                другие команды…
+            </p>
+            
+            <p class="subsection">
+                Мне нужно отменить изменения в файле
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Найдите хэш коммита, до которого нужно откатиться.
+    git log
+    # Сохраните хэш нужного коммита.
+    git checkout [тот хэш] --path/to/file
+    # Теперь в индексе окажется старая версия файла.
+    git commit -m «О май гадбл, вы даже не использовали копипаст»</code></pre>
+
+            <p class="plain">
+                Именно поэтому checkout — лучший инструмент для отката изменений в файлах.
+            </p>
+            
+            <p class="subsection">
+                Давай по новой, Миша, всё х**ня
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">cd ..
+    sudo rm -r fucking-git-repo-dir
+    git clone https://some.github.url/fucking-git-repo-dir.git
+    cd fucking-git-repo-di</code></pre>
+
+            <p class="plain">
+                Если вам нужно полностью откатиться до исходной версии (т. е. отменить все изменения), то можете попробовать сделать так.
+            </p>
+
+            <p class="plain">
+                Будьте осторожны, эти команды разрушительны и необратимы.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Получить последнее состояние origin.
+    git fetch origin
+    git checkout master
+    git reset --hard origin/master
+    # Удалить неиндексированные файлы и папки.
+    git clean -d --force
+    # Повторить checkout/reset/clean для каждой испорченной ветки.</code></pre>
+                
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+        
+    </body>
+</html>

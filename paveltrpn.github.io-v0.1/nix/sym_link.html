@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Символические ссылки</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        <div class="A4">
+            
+            <p class="section">
+                Символические ссылки
+            </p>
+
+            <p class="small">
+                (https://codebeer.ru/simvolicheskie-ssylki-v-linux/)
+            </p>
+
+            <p class="plain">
+                <span class="select">Жесткая ссылка</span> – это запись, которая указывает на дескриптор <i>inode</i>. 
+                Жесткие ссылки можно создавать только для файлов и только в пределах одной 
+                файловой системы. Перемещение или изменении имени исходного файла, 
+                не оказывает влияния на работоспособность жесткой ссылки.
+            </p>
+
+            <p class="plain">
+                <span class="select">Символическая ссылка</span> — запись, которая указывает на имя файла или директории. 
+                Символические ссылки можно создавать для каталогов и объектов, которые расположены 
+                в разных файловых системах. Если переименовать или переместить файл в другую 
+                директорию, символическая ссылка потеряет работоспособность.
+            </p>
+
+            <p class="subsection">
+                Создание жесткой ссылки в Linux
+            </p>
+
+            <p class="plain">
+                Чтобы создать жесткую ссылку в Linux,используется команда <i>ln</i>:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash"># Синтаксис команды
+                ln -s &lt;цель&gt; &lt;ссылка&gt;
+                # Создать жесткую ссылку в Linux
+                ln /home/file /link</code></pre>
+
+            <p class="plain">
+                Если попытаться создать жесткую ссылку для каталога и файла за пределами 
+                одной файловой системы, то вы получите ошибку.
+            </p>
+
+            <p class="subsection">
+                Создание символической ссылки в Linux:
+            </p>
+    
+            <p class="plain">
+                Чтобы создать символическую ссылку в <i>Linux</i>, вместе с командой <i>ln</i>, 
+                необходимо использовать параметр <i>-s</i>:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash"># Синтаксис команды
+                ln -s &lt;цель&gt; &lt;ссылка&gt; 
+                # Создать символическую ссылку в Linux
+                ln -s /home/file /link 
+                ln -s /home/dir /home/link</code></pre>
+
+            <p class="plain">
+                При создании символических ссылок, имена файлов могут быть как абсолютными, 
+                так и относительными.
+            </p>
+            
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+        
+    </body>
+</html>

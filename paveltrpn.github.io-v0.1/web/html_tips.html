@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>HTML tips</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        <div class="A4">
+
+            <p class="subsection">
+                Основные теги HTML
+            </p>
+            
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/html">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;html&gt;
+                </span>
+                </a>
+
+                - тег является контейнером, который заключает в себе все содержимое веб-страницы, 
+                включая теги &lt;head&gt; и &lt;body&gt;. Открывающий и закрывающий теги &lt;html&gt; в документе необязательны, но хороший стиль диктует непременное их использование. 
+                Как правило, тег &lt;html&gt; идет в документе вторым, после определения типа документа (Document Type Definition, DTD), 
+                устанавливаемого через элемент &lt;!DOCTYPE&gt;. Закрывающий тег &lt;html&gt; должен всегда стоять в документе последним. 
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/html">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;head&gt;
+                </span>
+                </a>
+
+                - тег &lt;head&gt; предназначен для хранения других элементов, цель которых — помочь браузеру в работе с данными. Также внутри контейнера 
+                &lt;head&gt; находятся метатеги, которые используются для хранения информации предназначенной для браузеров и поисковых систем. Например, 
+                механизмы поисковых систем обращаются к метатегам для получения описания сайта, ключевых слов и других данных.<br>
+                <br>
+                Содержимое тега &lt;head&gt; не отображается напрямую на веб-странице, за исключением тега &lt;title&gt; устанавливающего заголовок окна веб-страницы.<br>
+                <br>
+                Внутри контейнера &lt;head&gt; допускается размещать следующие элементы: &lt;base&gt;, &lt;basefont&gt;, &lt;bgsound&gt;, &lt;link&gt;, &lt;meta&gt;,
+                 &lt;script&gt;, &lt;style&gt;, &lt;title&gt;.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/html">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;body&gt;
+                </span>
+                </a>
+
+                - элемент &lt;body&gt; предназначен для хранения содержания веб-страницы (контента), отображаемого в окне браузера. Информацию, 
+                которую следует выводить в документе, следует располагать именно внутри контейнера &lt;body&gt;. К такой информации относится
+                текст, изображения, теги, скрипты JavaScript и т.д.<br>
+                <br>
+                Тег &lt;body&gt; также применяется для определения цветов ссылок и текста на веб-странице. Подобная практика в HTML 4 осуждается и взамен для 
+                указания цветовой схемы рекомендуется использовать стили, применяя их к селектору BODY. Тем не менее, большинство атрибутов до сих пор 
+                поддерживается разными браузерами.<br>
+                <br>
+                Часто тег &lt;body&gt; используется для размещения обработчика событий, например, onload, которое выполняется после того, как документ завершил 
+                загрузку в текущее окно или фрейм.<br>
+                <br>
+                Открывающий и закрывающий теги &lt;body&gt; на веб-странице не являются обязательными, однако хорошим стилем считается их использование, чтобы 
+                определить начало и конец HTML-документа.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/html">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;title&gt;
+                </span>
+                </a>
+
+                - служебный тег, который содержит текстовый заголовок сайта или страницы. Именно благодаря этому 
+                тегу поисковые системы и пользователи узнают, какая информация находится на странице.<br>
+                <br>
+                Элемент &lt;title&gt; не является частью содержимого страницы – т.е. пользователи не видят его в основном контенте. Чаще всего 
+                с информацией из тега &lt;title&gt; пользователь сталкивается в браузере и поисковой выдаче
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/html">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;script&gt;
+                </span>
+                </a>
+
+                - тег &lt;script&gt; предназначен для описания скриптов, может содержать ссылку на программу или ее текст на определенном языке. 
+                Скрипты могут располагаться во внешнем файле и связываться с любым HTML-документом. Такой подход позволяет использовать одни 
+                и те же общие функции на многих веб-страницах и ускоряет их загрузку, т.к. внешний файл кэшируется при первой загрузке, и скрипт 
+                вызывается быстрее при последующих вызовах.<br>
+                <br>
+                &lt;script&gt; может располагаться в заголовке или теле HTML-документа в неограниченном количестве. В большинстве случаев местоположение 
+                скрипта никак не сказывается на работу программы. Однако скрипты, которые должны выполняться в первую очередь, обычно помещают в 
+                заголовок документа.<br>
+                <br>
+                Аттрибут src устанавливает ссылку на файл с исходным текстом скрипта - src="../scripts/js/main.js".
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/div">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;div&gt;
+                </span>
+                </a>
+                
+                - элемент &lt;div&gt; является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого. 
+                Как правило, вид блока управляется с помощью стилей. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю 
+                таблицу стилей, а для тега добавить атрибут class или id с именем селектора.<br>
+                <br>
+                Как и при использовании других блочных элементов, содержимое тега &lt;div&gt; всегда начинается с новой строки. 
+                После него также добавляется перенос строки.<br>
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/p">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;p&gt;
+                </span>
+                </a>
+
+                - определяет текстовый абзац. Тег &lt;p&gt; является блочным элементом, всегда начинается с новой строки, абзацы текста идущие друг 
+                за другом разделяются между собой отбивкой. Величиной отбивки можно управлять с помощью стилей. Если закрывающего тега нет, 
+                считается, что конец абзаца совпадает с началом следующего блочного элемента.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/span">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;span&gt;
+                </span>
+                </a>
+
+                - тег &lt;span&gt; предназначен для определения строчных элементов документа. В отличие от блочных элементов, таких 
+                как &lt;table&gt;, &lt;p&gt; или &lt;div&gt;, с помощью тега &lt;span&gt; можно выделить часть информации внутри других тегов и 
+                установить для нее свой стиль. Например, внутри абзаца (тега &lt;p&gt;) можно изменить цвет и размер первой буквы, 
+                если добавить начальный и конечный тег &lt;span&gt; и определить для него стиль текста. Чтобы не описывать каждый раз стиль внутри тега, 
+                можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут class или id с именем селектора.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/a">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;a&gt;
+                </span>
+                </a>
+
+                - тег &lt;a&gt; является одним из важных элементов HTML и предназначен для создания ссылок. В зависимости от присутствия атрибутов 
+                name или href тег &lt;a&gt; устанавливает ссылку или якорь. Якорем называется закладка внутри страницы, которую можно указать в качестве 
+                цели ссылки. При использовании ссылки, которая указывает на якорь, происходит переход к закладке внутри веб-страницы.<br>
+                <br>
+                Для создания ссылки необходимо сообщить браузеру, что является ссылкой, а также указать адрес документа, на который следует сделать 
+                ссылку. В качестве значения атрибута href используется адрес документа (URL, Universal Resource Locator, универсальный указатель 
+                ресурсов), на который происходит переход. Адрес ссылки может быть абсолютным и относительным. Абсолютные адреса работают везде и 
+                всюду независимо от имени сайта или веб-страницы, где прописана ссылка. Относительные ссылки, как следует из их названия, построены 
+                относительно текущего документа или корня сайта.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/br">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;br&gt;
+                </span>
+                </a>
+
+                - тег &lt;br&gt; устанавливает перевод строки в том месте, где этот тег находится. В отличие от тега абзаца &lt;p&gt;, 
+                использование тега &lt;br&gt; не добавляет пустой отступ перед строкой. Если текст, в котором используется перевод строки, 
+                обтекает плавающий элемент, то с помощью атрибута clear тега &lt;br&gt; можно сделать так, чтобы следующая строка начиналась ниже элемента.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/ul">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;ul&gt;
+                </span>
+                </a>
+
+                - тег &lt;ul&gt; устанавливает маркированный список. Каждый элемент списка должен начинаться с тега &lt;li&gt;. Если к тегу &lt;ul&gt; применяется 
+                таблица стилей, то элементы &lt;li&gt; наследуют эти свойства. 
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/li">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;li&gt;
+                </span>
+                </a>
+
+                - тег &lt;li&gt; определяет отдельный элемент списка. Внешний тег &lt;ul&gt; или &lt;ol&gt; устанавливает тип списка — маркированный или нумерованный.
+            </p>
+                 
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/ol">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;ol&gt;
+                </span>
+                </a>
+
+                - тег &lt;ol&gt; устанавливает нумерованный список. Каждый элемент списка должен начинаться с тега &lt;li&gt;. Если к тегу &lt;ol&gt; применяется таблица стилей, 
+                то элементы &lt;li&gt; наследуют эти свойства.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/html/nobr">
+                <span style="font-family: 'Roboto Mono', monospace;
+                             font-weight: bold;
+                             padding-left: 10px;
+                             padding-right: 10px;
+                             padding-top: 2px;
+                             padding-bottom: 2px;
+                             border: 2px solid black; ">&lt;nobr&gt;
+                </span>
+                </a>
+
+                Тег &lt;nobr&gt; уведомляет браузер отображать текст без переносов. Если этого тега в коде документа нет, а также имеются переводы строки, они 
+                игнорируются и текст выравнивается по левому краю окна браузера или родительского элемента. При этом браузер переводы строк расставляет 
+                автоматически, чтобы текст полностью поместился по ширине окна. Использование тега &lt;nobr&gt; заставляет отображать текст без переносов, 
+                одной строкой, что может привести к появлению горизонтальной полосы прокрутки. Пользователям придется прокручивать текст по горизонтали, 
+                чтобы увидеть его полностью, чего обычно делать никто не любит.
+            </p>
+
+            <p class="plain">
+                <a href="http://htmlbook.ru/blog/perenosy-slov">
+                    <span style="font-family: 'Roboto Mono', monospace;
+                                 font-weight: bold;
+                                 padding-left: 10px;
+                                 padding-right: 10px;
+                                 padding-top: 2px;
+                                 padding-bottom: 2px;
+                                 border: 2px solid black; ">nobr; shy; &lt;wbr&gt; и др.
+                    </span>
+                    </a>
+
+                 - Переносы слов.
+            </p>
+
+        </div>
+
+        <!-- свойства в style смещают этот блок div вниз страницы -->
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">На главную</a></li> 
+            </ul>      
+        </div>
+
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Использование умных указателей в C++</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism.js"></script>
+
+        <div class="container">
+
+        <div class="A4">
+            <div class="menu">
+                <ul>
+                    <li><a href="../index.html">На главную</a></li> 
+                </ul>      
+            </div>
+            
+            <p class="section">
+                ИСПОЛЬЗОВАНИЕ УМНЫХ УКАЗАТЕЛЕЙ С++
+            </p>
+
+            <p class="plain">
+                Благодаря наличию исключений, язык C++ позволяет разделить основную логику 
+                приложения и обработку ошибок, не мешая их в одну кучу. Что есть очень хорошо. 
+                Однако теперь по коду нельзя с уверенностью сказать, где может быть прервано 
+                его исполнение. Отсюда возникает опасность утечки ресурсов. Проблема эта решается 
+                при помощи деструкторов и идиомы RAII. Впрочем, придерживаться этой идиомы становится 
+                проблематично при использовании указателей. Особенно при использовании их не как членов 
+                класса, а просто как переменных в методах. На наше с вами счастье, в стандартной 
+                библиотеке языка есть умные указатели (smart pointers), придуманные именно для этого случая. 
+            </p>
+
+            <p class="plain">
+                Важно! В старых книжках и статьях можно встретить упоминание auto_ptr. 
+                Этот тип умных указателей появился в C++, когда в языке еще не было move semantics. 
+                Из-за этого использование auto_ptr порой может приводить к трудным в обнаружении ошибкам. 
+                В стандарте C++17 auto_ptr был удален. Другими словами, все, что вы должны знать об 
+                auto_ptr — это то, что его не должно быть в современном коде. Вместо него всегда используйте unique_ptr.
+            </p>
+
+            <p class="subsection">
+                unique_ptr
+            </p>
+ 
+            <p class="plain">
+                Шаблонный класс unique_ptr представляет собой уникальный указатель на объект. 
+                Указатель нельзя копировать, но можно передавать владение им с помощью std::move. При уничтожении 
+                указателя автоматически вызывается деструктор объекта, на который он указывает. 
+            </p>
+
+            <p class="plain">
+                Создается unique_ptr так:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">std::unique_ptr&lt;SomeClass&gt; unq(new SomeClass(/* ctor args */));</code></pre>
+            
+            <p class="plain">
+                … но обычно используют шаблон make_unique, так короче:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">auto unq = std::make_unique&lt;SomeClass&gt;(/* ctor args */);</code></pre>
+
+            <p class="plain">
+                Класс unique_ptr перегружает оператор ->, что позволяет обращаться к полям класса и 
+                вызывать его методы, словно мы работаем с обычным указателем:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">unq→sayHello();</code></pre>
+
+            <p class="plain">
+                Как уже отмечалось, unique_ptr запрещено копировать:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">// will not compile!
+                auto cpy = unq;</code></pre>
+
+            <p class="plain">
+                Однако владение им можно передать при помощи std::move, например: 
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">auto mov = std::move(unq);
+                // unq is invalid now!
+                mov→sayHello();</code></pre>
+
+            <p class="plain">
+                Плюс к этому, мы всегда можем получать из unique_ptr обычный указатель на объект:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">SomeClass* ptr = mov.get();
+                ptr→sayHello();</code></pre>
+
+            <p class="plain">
+                … хотя это и является code smell. Кроме того, ничто не мешает создавать ссылки (reference) на unique_ptr:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">auto& ref = mov;
+                ref→sayHello();</code></pre>
+
+            <p class="plain">
+                То есть, в этом случае мы как бы не отнимаем владение объектом, а ненадолго одалживаем его, 
+                обращаясь к нему через все тот же умный указатель. Интересно, что unique_ptr позволяет указать 
+                функцию, которую он будет вызывать вместо деструктора, так называемый custom deleter. Это позволяет 
+                использовать unique_ptr с ресурсами, возвращаемых из библиотек для языка C, и даже реализовать аналог defer из языка Go:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">/* g++ custom-deleter.cpp -o custom-deleter */
+                #include &lt;memory&gt;
+                #include &lt;functional&gt;
+                #include &lt;iostream&gt;
+                #include &lt;stdio.h&gt;
+                template&lt;typename T&gt;
+                using auto_cleanup = std::unique_ptr&lt;T,std::function&lt;void(T*)&gt;&gt;;
+                static char dummy[] = "";
+                #define _DEFER_CAT_(a,b) a##b
+                #define _DEFER_NAME_(a,b) _DEFER_CAT_(a,b)
+                #define defer(...) \
+                auto _DEFER_NAME_(_defer_,__LINE__) = \
+                auto_cleanup&lt;char&gt;(dummy, [&](char*) { __VA_ARGS__; });
+                int main() {
+                    auto_cleanup&lt;FILE&gt; f(
+                        fopen("test.txt", "w"),
+                        [](FILE* f) { fclose(f); }
+                    );
+                    defer( std::cout &lt;&lt; "Bye #1" &lt;&lt; std::endl );
+                    defer( std::cout &lt;&lt; "Bye #2" &lt;&lt; std::endl );
+                    fwrite("Hello!\n", 7, 1, f.get());
+                }</code></pre>
+
+            <p class="plain">
+                Заметьте, что в макросе defer нам пришлось передать в unique_ptr фиктивный указатель. Если бы мы передали nullptr, 
+                custom deleter не был бы вызван. Важно! Если в умном указателе вы держите указать на массив объектов, 
+                то обязаны указать custom deleter, вызывающий для этого массива delete[] вместо delete. Если этого не 
+                сделать, будет освобожден только первый объект из массива, остальные же утекут.
+                shared_ptr и weak_ptr.
+            </p>
+
+            <p class="subsection">
+                shared_ptr
+            </p>
+
+            <p class="plain">
+                Класс shared_ptr является указатем на объект, которым владеет сразу несколько объектов. Указатель 
+                можно как перемещать, так и копировать. Число существующих указателей отслеживается при помощи счетчика ссылок. 
+                Когда счетчик ссылок обнуляется, вызывается деструктор объекта. Сам по себе shared_ptr является thread-safe, 
+                но он не делает магическим образом thread-safe объект, на который ссылается. То есть, если доступ к объекту может 
+                осуществляться из нескольких потоков, вы должны не забыть предусмотреть в нем мьютексы или что-то такое.<br>
+                <br>
+                Для создания shared_ptr обычно используется шаблон make_shared:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">auto ptr = std::make_shared&lt;SomeClass&gt;(/* ctor args */);</code></pre>
+
+            <p class="plain">
+                    В остальном работа с ним мало отличается от работы с unique_ptr, за тем исключением, что shared_ptr можно 
+                    смело копировать. <br>
+                    <br>
+                    Интересные грабли при использовании shared_ptr заключается в том, что с его помощью
+                    можно создать циклические ссылки. Например, есть два объекта. Первый ссылается при помощи shared_ptr 
+                    на второй, а второй — на первый. Даже если ни на один из объектов нет других ссылок, счетчики ссылок никогда 
+                    не обнулятся, и объекты никогда не будут уничтожены.
+            </p>
+
+            <p class="subsection">
+                weak_ptr
+            </p>
+
+            <p class="plain">
+                Эта проблема обходится при помощи weak_ptr, так называемого слабого указателя. Класс weak_ptr 
+                похож на shared_ptr, но не участвует в подсчете ссылок. Также у weak_ptr есть метод lock(), 
+                возвращающий временный shared_ptr на объект. Пример использования:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-c++">#include &lt;memory&gt;
+                #include &lt;iostream&gt;
+                
+                class SomeClass {
+                public:
+                    void sayHello() {
+                        std::cout &lt;&lt; "Hello!" &lt;&lt; std::endl;
+                    }
+                    ~SomeClass() {
+                        std::cout &lt;&lt; "~SomeClass" &lt;&lt; std::endl;
+                    }
+                };
+                int main() {
+                    std::weak_ptr&lt;SomeClass&gt; wptr;
+                
+                    {
+                        auto ptr = std::make_shared&lt;SomeClass&gt;();
+                        wptr = ptr;
+                
+                        if(auto tptr = wptr.lock()) {
+                            tptr-&gt;sayHello();
+                        } else {
+                            std::cout &lt;&lt; "lock() failed" &lt;&lt; std::endl;
+                        }
+                    }
+                    if(auto tptr = wptr.lock()) {
+                        tptr-&gt;sayHello();
+                    } else {
+                        std::cout &lt;&lt; "lock() failed" &lt;&lt; std::endl;
+                    }
+                }</code></pre>
+
+            <p class="plain">
+                Программа выведет:
+            </p>
+
+            <pre class="code">
+                Hello!
+                ~SomeClass
+                lock() failed
+            </pre>
+
+            <p class="plain">
+                Можно думать о weak_ptr как об указателе, позволяющим получить временное владение объектом. 
+                Само собой разумеется, если все постоянные указатели на объект перестанут существовать, и 
+                останутся только временные, полученные при помощи метода lock() класса weak_ptr, объект 
+                продолжит свое существование. Он будет уничтожен только тогда, когда на объект не останется 
+                вообще никаких указателей.
+            </p>
+
+            <p class="subsection">
+                Умные указатели и наследование
+            </p>
+
+            <p class="plain">
+                Вопрос, о котором часто забывают — это кастование умных указателей вверх и вниз по иерархии классов. 
+                Для shared_ptr в стандартной библиотеке есть шаблоны static_pointer_cast, dynamic_pointer_cast и др. 
+                Для unique_ptr таких же шаблонов почему-то не занесли.<br>
+                <br>
+                Пример кода:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-cpp">#include &lt;memory&gt;
+                #include &lt;iostream&gt;
+                
+                template&lt;typename Derived, typename Base, typename Del&gt;
+                std::unique_ptr&lt;Derived, Del&gt; 
+                static_unique_ptr_cast( std::unique_ptr&lt;Base, Del&gt;&& p )
+                {
+                    auto d = static_cast&lt;Derived *&gt;(p.release());
+                    return std::unique_ptr&lt;Derived, Del&gt;(d,
+                        std::move(p.get_deleter()));
+                }
+                template&lt;typename Derived, typename Base, typename Del&gt;
+                std::unique_ptr&lt;Derived, Del&gt; 
+                dynamic_unique_ptr_cast( std::unique_ptr&lt;Base, Del&gt;&& p )
+                {
+                    if(Derived *result = dynamic_cast&lt;Derived *&gt;(p.get())) {
+                        p.release();
+                        return std::unique_ptr&lt;Derived, Del&gt;(result,
+                            std::move(p.get_deleter()));
+                    }
+                    return std::unique_ptr&lt;Derived, Del&gt;(nullptr, p.get_deleter());
+                }
+                class Base {
+                public:
+                    Base(int num): num(num) {};
+                
+                    virtual void sayHello() {
+                        std::cout &lt;&lt; "I'm Base #" &lt;&lt; num &lt;&lt; std::endl;
+                    }
+                    virtual ~Base() { 
+                        std::cout &lt;&lt; "~Base #" &lt;&lt; num &lt;&lt; std::endl;
+                    }
+                protected:
+                    int num;
+                };
+                class Derived: public Base {
+                public:
+                    Derived(int num): Base(num) {}
+                
+                    virtual void sayHello() {
+                        std::cout &lt;&lt; "I'm Derived #" &lt;&lt; num &lt;&lt; std::endl;
+                    }
+                    virtual ~Derived() { 
+                        std::cout &lt;&lt; "~Derived #" &lt;&lt; num &lt;&lt; std::endl;
+                    }
+                };
+                void testUnique() {
+                    std::cout &lt;&lt; "=== testUnique begin ===" &lt;&lt; std::endl;
+                
+                    auto derived = std::make_unique&lt;Derived&gt;(1);
+                    derived-&gt;sayHello();
+                
+                    std::unique_ptr&lt;Base&gt; base = std::move(derived);
+                    base-&gt;sayHello();
+                
+                    auto derived2 = static_unique_ptr_cast&lt;Derived&gt;(std::move(base));
+                    derived2-&gt;sayHello();
+                
+                    std::unique_ptr&lt;Base&gt; base2 = std::make_unique&lt;Derived&gt;(2);
+                    base2-&gt;sayHello();
+                
+                    std::cout &lt;&lt; "=== testUnique end ===" &lt;&lt; std::endl;
+                }
+                void testShared() {
+                    std::cout &lt;&lt; "=== testShared begin ===" &lt;&lt; std::endl;
+                
+                    auto derived = std::make_shared&lt;Derived&gt;(1);
+                    derived-&gt;sayHello();
+                
+                    auto base = std::static_pointer_cast&lt;Base&gt;(derived);
+                    base-&gt;sayHello();
+                
+                    auto derived2 = std::static_pointer_cast&lt;Derived&gt;(base);
+                    derived2-&gt;sayHello();
+                
+                    std::shared_ptr&lt;Base&gt; base2 = std::make_shared&lt;Derived&gt;(2);
+                    base2-&gt;sayHello();
+                
+                    std::cout &lt;&lt; "=== testShared end ===" &lt;&lt; std::endl;
+                }
+                int main() {
+                    testUnique();
+                    testShared();
+                }</code></pre>
+
+            <p class="plain">
+                Как видите, все оказалось не так уж и сложно.
+            </p>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="../index.html">На главную</a></li> 
+                </ul>      
+            </div>
+        </div>
+
+        </div>
+        
+    </body>
+</html>
