@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Сборка GCC 10</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                СБОРКА GCC 10
+            </p>
+
+            <p class="small">
+                (https://solarianprogrammer.com/2016/10/07/building-gcc-ubuntu-linux/)
+            </p>
+
+            <p class="subsection">
+                Сборка и установка
+            </p>
+
+            <p class="plane">
+                Это - коротка статья о компиляции GCC 10.1 из исходных кодов под Ubuntu 20.04 x64. По умолчанию
+                Ubuntu 20.04 имеет GCC версии 9.3, которя не плоха, однако версия 10 имеет законченную поддержку
+                стандартов C++11, C++14, C++17 и частичную поддержку стандарта C++20. GCC 10 поддерживает C11 и C++14
+                по умолчанию, больше нет необходимости использовать ключи -std=c11 или -std=c++14.<br>
+                <br>
+                Для начала, давайте убедимся, что у нас установлены все обновления:
+            </p>
+
+            <pre>
+                <code class="language-shell">sudo apt update
+                sudo apt upgrade</code></pre>
+
+            <p class="plane">
+                Теперь, установим тулчейн GCC и несколко дополнительных утилит вместе с ним:
+            </p>
+
+            <pre>
+                <code class="language-shell">sudo apt install build-essential wget m4 flex bison</code></pre>
+
+            <p class="plane">
+                Далее, загрузим исходный код GCC 10 и пререквизиты (prerequisites) с сайта http://gcc.gnu.org/mirrors.html:
+            </p>
+
+            <pre>
+                <code class="language-shell">cd ~
+                wget https://ftpmirror.gnu.org/gcc/gcc-10.1.0/gcc-10.1.0.tar.xz
+                tar xf gcc-10.1.0.tar.xz
+                cd gcc-10.1.0
+                contrib/download_prerequisites</code></pre>
+
+            <p class="plane">
+                Теперь мы може сконфигурировать и собрать исходный код. Чтобы сохранить систему чистой, будем
+                использовать папку /usr/local/gcc-10.1.0 для установки и добавим суффикс -10.1 к компиляторам
+                GCC из данного пакета. Обычно, мы не хотим смешивать установленный по умолчанию GCC с новой 
+                версией, потому что другие пакеты могут зависеть от него. 
+            </p>
+
+            <pre>
+                <code class="language-shell">cd ~
+                mkdir build && cd build
+                ../gcc-10.1.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu 
+                --prefix=/usr/local/gcc-10.1.0 --enable-checking=release --enable-languages=c,c++,fortran 
+                --disable-multilib --program-suffix=-10.1</code></pre>
+
+            <p class="plane">
+                Теперь можно выполнять сборку GCC, лучше обычно дважды задать количство ядер процессора
+                на компьютере, что бы ускорить сборку. У меня четыре ядра, так что я буду использовать 8
+                параллельных потоков для сборки GCC.
+            </p>
+
+            <pre>
+                <code class="language-shell">make -j 8</code></pre>
+
+            <p class="plane">
+                В зависимости от производительности компьютера, сборка может занять от 30 минут до
+                нескольких часов.
+            </p>
+
+            <p class="plane">
+                Когда предидущий ээтап будет закончен можну выполнить установку GCC:
+            </p>
+
+            <pre>
+                <code class="language-shell">sudo make install-strip</code></pre>
+
+            <p class="plane">
+                Если вы хотите установить компиляторы перманентно в системную директорию, добавьте
+                эти строки в конец файла .bashrc.
+            </p>
+
+            <pre>
+                <code class="language-shell">export export PATH=/usr/local/gcc-10.1.0/bin:$PATH
+                export LD_LIBRARY_PATH=/usr/local/gcc-10.1.0/lib64:$LD_LIBRARY_PATH</code></pre>
+
+            <p class="plane">
+                Не сожете найти .bashrc? Нет проблем, можете открыть его из терминала:
+            </p>
+
+            <pre>
+                <code class="language-shell">cd ~
+                xed .bashrc</code></pre>
+
+            <p class="plane">
+                Вставьте в конец файла .bashrc строчки, упомянутые выше, сохраните файл и закройте редактор.
+                Теперь, нужно скащать Bash перезагрузить .bashrc (это произойдёт автоматически, после перезагрузки компьютера):
+            </p>
+
+            <pre>
+                <code class="language-shell">.bashrc</code></pre>
+
+            <p class="subsection">
+                Запуск
+            </p>
+
+            <p class="plane">
+                Теперь пришло время проверить наш новый компилятор. Откройте свой любимый текстовый редактор
+                и скопируйте следующий кусок кода (я предполагаю вы сохраните его как test_lambda.cpp):
+            </p>
+
+            <pre>
+                <code class="language-cpp">// C++14 generalized lambda (could use "auto" for the type of a parameter)
+                #include &lt;iostream&gt;
+                
+                int main() {
+                    std::cout &lt;&lt; [](auto a, auto b) { return a + b; } (5, 6) &lt;&lt; std::endl;
+                    std::cout &lt;&lt; [](auto a, auto b) { return a + b; } (5.23, 6.45) &lt;&lt; std::endl;
+                    return 0;
+                }</code></pre>
+
+            <p class="plane">
+                Этот код использует обобщённые лямбда выражения (мы можем использовать auto для типа параметров),
+                впервые это было введено в стандарте C++14. Эту программу можно скомпилировать так:
+            </p>
+
+            <pre>
+                <code class="language-cpp">g++-10.1 -Wall -pedantic test_lambda.cpp -o test_lambda
+                ./test_lambda
+                11
+                11.68</code></pre>
+            
+
+            <p class="plane">
+                Как говорилось в начале статьи, GCC 10.1 имеет полную поддержку стандарта C++17.
+                Давайте протестируем пример использования модификации, привнесённой с C++17 - static_assert:
+            </p>
+
+            <pre>
+                <code class="language-cpp">#include &lt;type_traits&gt;
+                #include &lt;iostream&gt;
+                
+                struct A {
+                	int foo;
+                };
+                
+                struct B {
+                	int foo = 0;
+                };
+                   
+                template &lt;typename T&gt;
+                void print(const T& a){
+                   	static_assert(std::is_pod&lt;T&gt;&lt;typename&gt;::value);
+                   	std::cout &lt;&lt; a.foo &lt;&lt; '\n';
+                }
+                   
+                int main() {
+                   	A x{1};
+                   	B y{2};
+                   	B z;
+                   
+                   	print&lt;A&gt;(x);
+                   	print&lt;B&gt;(y);
+                   	print&lt;B&gt;(z);
+                   
+                   	return 0;
+                }</code></pre>
+            
+            <p class="plane">
+                Вы можете скомпилировать код, приведённый выше, если запустите компилятор с опцией -std=c++17
+                и получите ошибку компилятора, спровоцированную кодом, в 14-ой и 20-ой строках.
+            </p>
+
+            <pre>
+                <code class="language-shell">g++-10.1 -std=c++17 -Wall -pedantic test_assert.cpp -o test_assert
+                test_assert.cpp: In instantiation of ‘void print(const T&) [with T = B]’:
+                test_assert.cpp:24:13:   required from here
+                test_assert.cpp:14:33: error: static assertion failed
+                   14 |   static_assert(std::is_pod<T>::value);
+                      |                                 ^~~~~</code></pre>
+
+            <p class="plane">
+                Если Вы программируете на FORTRAN, то можете использовать некоторые возможности FORTRAN 2008,
+                такие как конкурентность (concurrent), с использованием gfortran-10.1:
+            </p>
+
+            <pre>
+                <code class="language-fortran">integer,parameter::mm=100000
+                real::a(mm), b(mm)
+                real::fact=0.5
+                
+                ! initialize the arrays
+                ! ...
+                
+                do concurrent (i = 1 : mm)
+                 a(i) = a(i) + b(i)
+                enddo
+                
+                end</code></pre>
+
+            <p class="plane">
+                Код выше может быть скомпилироован так (рассчитываю, что вы назвали файл test_concurrent_do.f90s):
+            </p>
+
+            <pre>
+                <code class="language-fortran">gfortran-10.1 test_concurrent_do.f90 -o test_concurrent_do
+                ./test_concurrent_do</code></pre>
+            <br>
+        </div>
+    </body>
+</html>

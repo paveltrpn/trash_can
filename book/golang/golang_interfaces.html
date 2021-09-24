@@ -1,0 +1,603 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Интерфейсы Golang</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                ИНТЕРФЕЙСЫ GOLANG
+            </p>
+
+            <p class="small">
+                (https://habr.com/ru/company/mailru/blog/463063/)
+            </p>
+
+            <p class="subsection">
+                Что такое интерфейс?
+            </p>
+
+            <p class="plane">
+                Интерфейсный тип в Go — это своего рода определение. Он определяет и описывает конкретные методы, 
+                которые должны быть у какого-то другого типа.<br>
+                <br>
+                Одним из интерфейсных типов из стандартной библиотеки является интерфейс fmt.Stringer:
+            </p>
+
+            <pre>
+                <code class="language-go">type Stringer interface { 
+                    String() string 
+                }</code></pre>
+ 
+            <p class="plane">
+                Мы говорим, что что-то удовлетворяет этому интерфейсу (или реализует этот интерфейс), если у этого «что-то» 
+                есть метод с конкретным сигнатурным строковым значением String(). Например, тип Book удовлетворяет 
+                интерфейсу, потому что у него есть строковый метод String():
+            </p>
+
+            <pre>
+                <code class="language-go">type Book struct { 
+	            	Title string Author string 
+	            } 
+            
+	            func (b Book) String() string {
+	            	return fmt.Sprintf("Book: %s - %s", b.Title, b.Author) 
+	            }</code></pre>
+
+            <p class="plane">
+                Неважно, каким типом является Book или что он делает. Важно лишь, что у него есть метод под названием String(), 
+                который возвращает строковое значение.<br>
+                <br>
+                А вот другой пример. Тип Count тоже удовлетворяет интерфейсу fmt.Stringer, потому что у него есть метод с 
+                тем же сигнатурным строковым значением String().<br>
+                <br>
+                Допустим, у нас есть функция:
+            </p>
+
+            <pre>
+                <code class="language-go">func WriteLog(s fmt.Stringer) { 
+                    log.Println(s.String()) 
+                }</code></pre>
+
+            <p class="plane">
+                Поскольку WriteLog() использует в объявлении параметра интерфейсный тип fmt.Stringer, мы можем передавать любой объект, 
+                удовлетворяющий интерфейсу fmt.Stringer. Например, можем передать типы Book и Count, которые создали ранее в методе WriteLog(), 
+                и код будет нормально работать.<br>
+                <br>
+                Кроме того, поскольку передаваемый объект удовлетворяет интерфейсу fmt.Stringer, мы знаем, что у него есть 
+                строковый метод String(), который может быть безопасно вызван функцией WriteLog().<br>
+                <br>
+                Давайте соберём всё сказанное в один пример, демонстрирующий мощь интерфейсов.
+            </p>
+
+            <pre>
+                <code class="language-go">package main import ( "fmt" "strconv" "log" ) 
+                // Объявляем тип Book, который удовлетворяет интерфейсу fmt.Stringer. 
+                type Book struct { 
+                    Title string Author string 
+                } 
+            
+                func (b Book) String() string { 
+                    return fmt.Sprintf("Book: %s - %s", b.Title, b.Author) 
+                } 
+            
+                // Объявляем тип Count, который удовлетворяет интерфейсу fmt.Stringer. 
+                type Count int func (c Count) String() string { 
+                    return strconv.Itoa(int(c)) 
+                } 
+            
+                // Объявляем функцию WriteLog(), которая берёт любой объект, 
+                // удовлетворяющий интерфейсу fmt.Stringer в виде параметра. 
+            
+                func WriteLog(s fmt.Stringer) {
+                    log.Println(s.String()) 
+                } 
+            
+                func main() { 
+                    // Инициализируем объект Book и передаём в WriteLog(). 
+                    book := Book{"Alice in Wonderland", "Lewis Carrol"} 
+                    WriteLog(book) 
+                    // Инициализируем объект Count и передаём в WriteLog(). 
+                    count := Count(3) WriteLog(count) 
+                }</code></pre>
+
+            <p class="plane">
+                Это круто. В основной функции мы создали разные типы Book и Count, но передали их одной функции WriteLog(). 
+                А та вызвала соответствующие функции String() и записала результаты в журнал.<br>
+                <br>
+                Если выполните код, то получите подобный результат:
+            </p>
+
+            <pre class="code">
+                2009/11/10 23:00:00 Book: Alice in Wonderland - Lewis Carrol 
+                2009/11/10 23:00:00 3</pre>
+
+            <p class="plane">
+                Не будем на этом подробно останавливаться. Главное, что нужно запомнить: используя интерфейсный тип 
+                в объявлении функции WriteLog(), мы сделали функцию безразличной (или гибкой) к типу принимаемого 
+                объекта. Важно лишь то, какие у него методы.
+            </p>
+
+            <p class="subsection">
+                Чем полезны интерфейсы?
+            </p>
+
+            <p class="plane">
+                Есть целый ряд причин, по которым вы можете начать использовать интерфейсы в Go. И по моему опыту, самые важные из них такие:
+            </p>
+
+            <pre class="plane">
+                1. Интерфейсы помогают уменьшить дублирование, то есть количество шаблонного кода. 
+                2. Они облегчают использование в модульных тестах заглушек вместо реальных объектов. 
+                3. Будучи архитектурным инструментом, интерфейсы помогают отвязывать части вашей кодовой базы.</pre>
+
+            <p class="plane">
+                Рассмотрим подробнее эти способы использования интерфейсов.
+            </p>
+
+            <p class="subsection">
+                Уменьшение количесва шаблонного кода
+            </p>
+
+            <p class="plane">
+                Пусть у нас есть структура Customer, содержащая какие-то данные о клиенте. В одной части кода мы хотим записывать
+                эту информацию в bytes.Buffer, а в другой части хотим записывать данные о клиенте в os.File на диске. 
+                Но, в обоих случаях, мы хотим сначала сериализовать структуру Сustomer в JSON.<br>
+                <br>
+                При таком сценарии мы можем с помощью интерфейсов Go уменьшить количество шаблонного кода.<br>
+                <br>
+                В Go есть интерфейсный тип io.Writer:
+            </p>
+
+            <pre>
+                <code class="language-go">type Writer interface {
+	                Write(p []byte) (n int, err error)
+	            }</code></pre>
+
+            <p class="plane">
+                И мы можем воспользоваться тем, что bytes.Buffer и тип os.File удовлетворяют этому интерфейсу, 
+                поскольку имеют, соответственно, методы bytes.Buffer.Write() и os.File.Write().<br>
+                <br>
+                Простая реализация:
+            </p>
+
+            <pre>
+                <code class="language-go">package main
+                import (
+                    "encoding/json"
+                    "io"
+                    "log"
+                    "os"
+                )
+            
+                // Создаём тип Customer.
+                type Customer struct {
+                    Name string
+                    Age  int
+                }
+                // Реализуем метод WriteJSON, который берёт io.Writer в виде параметра.
+                // Он отправляет структуру Сustomer в JSON, и если всё отрабатывает 
+                // успешно, то вызывается соответствующий метод Write() из io.Writer.
+                func (c *Customer) WriteJSON(w io.Writer) error {
+                    js, err := json.Marshal(c)
+                    if err != nil {
+                        return err
+                    }
+                    _, err = w.Write(js)
+                    return err
+                }
+                func main() {
+                       // Инициализируем структуру Customer.
+                       c := &Customer{Name: "Alice", Age: 21}
+            
+                       // Затем с помощью Buffer можем вызвать метод WriteJSON
+                       var buf bytes.Buffer
+                       err := c.WriteJSON(buf)
+                       if err != nil {
+                           log.Fatal(err)
+                       }
+            
+                       // или воспользоваться файлом.
+                       f, err := os.Create("/tmp/customer")
+                       if err != nil {
+                           log.Fatal(err)
+                       }
+                       defer f.Close()
+            
+            
+                       err = c.WriteJSON(f)
+                       if err != nil {
+                           log.Fatal(err)
+                      }
+                }</code></pre>
+
+            <p class="plane">
+                Конечно, это лишь выдуманный пример (мы можем по-разному структурировать код, чтобы добиться того же результата). 
+                Но он хорошо иллюстрирует преимущества использования интерфейсов: мы можем один раз создать метод Customer.WriteJSON()
+                и вызывать его каждый раз, когда нужно записать во что-то, удовлетворяющее интерфейсу io.Writer.<br>
+                <br>
+                Но если вы новичок в Go, у вас возникнет пара вопросов: «Как узнать, что интерфейс io.Writer 
+                вообще существует? И как заранее узнать, что ему удовлетворяют bytes.Buffer и os.File?»<br>
+                <br>
+                Боюсь, простого решения тут нет. Вам просто нужно набраться опыта, познакомиться с интерфейсами и разными 
+                типами из стандартной библиотеки. В этом поможет чтение документации по этой библиотеке и просмотр чужого кода. 
+                А для быстрого ознакомления я добавил в конец статьи самые полезные типы интерфейсные типы.<br>
+                <br>
+                Но даже если вы не используете интерфейсы из стандартной библиотеки, ничто не мешает вам создать и 
+                использовать собственные интерфейсные типы. Об этом мы поговорим ниже.
+            </p>
+
+            <p class="subsection">
+                Модульное тестирование и заглушки
+            </p>
+
+            <p class="plane">
+                Чтобы понять, как интерфейсы помогают в модульном тестировании, давайте рассмотрим пример посложнее.<br>
+                <br>
+                Допустим, у вас есть магазин, и вы храните в PostgreSQL информацию о продажах и количестве клиентов.
+                Вы хотите написать код, вычисляющий долю продаж (удельное количество продаж на одного клиента) за последние<br> 
+                сутки, округлённую до двух знаков после запятой.<br>
+                <br>
+                Минимальная реализация будет выглядеть так:
+            </p>
+
+            <pre>
+                <code class="language-go">// Файл: main.go
+	            package main
+	            import (
+	                "fmt"
+	                "log"
+	                "time"
+	                "database/sql"
+	                _ "github.com/lib/pq"
+	            )
+	            type ShopDB struct {
+	                *sql.DB
+	            }
+            
+	            func (sdb *ShopDB) CountCustomers(since time.Time) (int, error) {
+	            	var count int
+	            	err := sdb.QueryRow("SELECT count(*) FROM customers WHERE timestamp &gt;l $1", since).Scan(&count)
+	            		return count, err
+	            	}
+                
+	            func (sdb *ShopDB) CountSales(since time.Time) (int, error) {
+	            	var count int
+	            	err := sdb.QueryRow("SELECT count(*) FROM sales WHERE timestamp &gt;l $1", since).Scan(&count)
+	            	return count, err
+	            }
+            
+	            func main() {
+	            	db, err := sql.Open("postgres", "postgres://user:pass@localhost/db")
+	            	if err != nil {
+	            	log.Fatal(err)
+	            	}
+	            	defer db.Close()
+                
+	            	shopDB := &ShopDB{db}
+	            	sr, err := calculateSalesRate(shopDB)
+	            	if err != nil {
+	            	log.Fatal(err)
+	            	}
+	            	fmt.Printf(sr)
+	            }
+            
+	            func calculateSalesRate(sdb *ShopDB) (string, error) {
+ 	            	since := time.Now().Sub(24 * time.Hour)
+                
+ 	            	sales, err := sdb.CountSales(since)
+ 	            	if err != nil {
+ 	            		return "", err
+ 	            	}
+                 
+	            	customers, err := sdb.CountCustomers(since)
+	            	if err != nil {
+	            		return "", err
+	            	}
+                
+	            	rate := float64(sales) / float64(customers)
+	            	return fmt.Sprintf("%.2f", rate), nil
+	            }</code></pre>
+
+            <p class="plane">
+                Теперь мы хотим создать модульный тест для функции calculateSalesRate(), чтобы проверить корректность вычислений.<br>
+                <br>
+                Сейчас это проблематично. Нам понадобится настроить тестовый экземпляр PostgreSQL, а также создать и 
+                удалить скрипты для наполнения базы фальшивыми данными. Придётся проделать много работы, если мы действительно 
+                хотим протестировать наши вычисления.<br>
+                <br>
+                И на помощь приходят интерфейсы!<br>
+                <br>
+                Мы создадим собственный интерфейсный тип, описывающий методы CountSales() и CountCustomers(), 
+                на которые опирается функция calculateSalesRate(). Затем обновим сигнатуру calculateSalesRate(), 
+                чтобы использовать этот интерфейсный тип в качестве параметра вместо прописанного типа *ShopDB.<br>
+                <br>
+                Вот так:
+            </p>
+
+            <pre>
+                <code class="language-go">// Файл: main.go
+                    package main
+                
+                    import (
+                        "fmt"
+                        "log"
+                        "time"
+                        "database/sql"
+                        _ "github.com/lib/pq"
+                    )
+                
+                    // Создаём свой интерфейс ShopModel. Он прекрасно подходит для
+                    // интерфейса с описанием нескольких методов, и он должен описывать
+                    // входные параметры-типы, а также типы возвращаемых значений.
+                    type ShopModel interface {
+                        CountCustomers(time.Time) (int, error)
+                        CountSales(time.Time) (int, error)
+                    }
+                
+                    // Тип ShopDB удовлетворяет новому интерфейсу ShopModel, потому что
+                    // у него есть два необходимых метода -- CountCustomers() и CountSales().
+                    type ShopDB struct {
+                        *sql.DB
+                    }
+                
+                    func (sdb *ShopDB) CountCustomers(since time.Time) (int, error) {
+                        var count int
+                        err := sdb.QueryRow("SELECT count(*) FROM customers WHERE timestamp &gt; $1", since).Scan(&count)
+                        return count, err
+                    }
+                
+                    func (sdb *ShopDB) CountSales(since time.Time) (int, error) {
+                        var count int
+                        err := sdb.QueryRow("SELECT count(*) FROM sales WHERE timestamp &gt; $1", since).Scan(&count)
+                        return count, err
+                    }
+                
+                    func main() {
+                        db, err := sql.Open("postgres", "postgres://user:pass@localhost/db")
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        defer db.Close()
+                
+                        shopDB := &ShopDB{db}
+                
+                        sr := calculateSalesRate(shopDB)
+                        fmt.Printf(sr)
+                    }
+                
+                    // Заменим это для использования интерфейсного типа ShopModel в виде параметра
+                    // вместо прописанного типа *ShopDB.
+                    func calculateSalesRate(sm ShopModel) string {
+                        since := time.Now().Sub(24 * time.Hour)
+                
+                        sales, err := sm.CountSales(since)
+                        if err != nil {
+                            return "", err
+                        }
+                
+                        customers, err := sm.CountCustomers(since)
+                        if err != nil {
+                            return "", err
+                        }
+                
+                        rate := float64(sales) / float64(customers)
+                        return fmt.Sprintf("%.2f", rate), nil
+                    }</code></pre>
+
+            <p class="plane">
+                После того как мы это сделали, нам будет просто создать заглушку, которая удовлетворяет интерфейсу ShopModel. 
+                Затем можно использовать её в ходе модульного тестирования корректной работы математической логики в 
+                функции calculateSalesRate().<br>
+                <br>
+                Вот так:
+            </p>
+
+            <pre>
+                <code class="language-go">// Файлы: main_test.go
+                package main
+                import (
+                    "testing"
+                )
+            
+                type MockShopDB struct{}
+            
+                func (m *MockShopDB) CountCustomers() (int, error) {
+                    return 1000, nil
+                }
+            
+                func (m *MockShopDB) CountSales() (int, error) {
+                    return 333, nil
+                }
+            
+                func TestCalculateSalesRate(t *testing.T) {
+                    // Инициализируем заглушку.
+                     m := &MockShopDB{}
+                     // Передаём заглушку в функцию calculateSalesRate().
+                    sr := calculateSalesRate(m)
+            
+                    //Проверяем, соответствует ли возвращаемое значение ожиданиям на основе
+                    // фальшивых входных данных.
+                    exp := "0.33"
+                    if sr != exp {
+                    t.Fatalf("got %v; expected %v", sr, exp)
+                }</code></pre>
+
+            <p class="plane">
+                Теперь запускаем тест и всё прекрасно работает.
+            </p>
+
+            <p class="subsection">
+                Архитектура приложения
+            </p>
+
+            <p class="plane">
+                В предыдущем примере мы видели, как можно использовать интерфейсы для отвязки определённых частей кода от 
+                использования конкретных типов. Например, функции calculateSalesRate() совершенно не важно, что вы ей передадите, 
+                лишь бы оно удовлетворяло интерфейсу ShopModel.<br>
+                <br>
+                Вы можете расширить эту идею и создавать в крупных проектах целые «отвязанные» уровни.
+                Допустим, вы создаёте веб-приложение, взаимодействующее с базой данных. Если сделаете интерфейс, 
+                описывающий определённые методы для взаимодействия с БД, то сможете ссылаться на него вместо конкретного типа 
+                через HTTP-обработчики. Поскольку HTTP-обработчики ссылаются только на интерфейс, это поможет отвязать друг от 
+                друга HTTP-уровень и уровень взаимодействия с базой данных. Будет проще работать с уровнями независимо, и в 
+                будущем вы сможете заменять какие-то уровни, не влияя на работу остальных.<br>
+                <br>
+                Я написал об этом паттерне в одном из предыдущих постов, там больше подробностей и приведены практические примеры.
+            </p>
+
+            <p class="subsection">
+                Что такое пустой интерфейс?
+            </p>
+
+            <p class="plane">
+                Если вы уже какое-то время программируете на Go, то наверняка сталкивались с пустым интерфейсным типом interface{}. 
+                Попробую объяснить, что это такое. В начале этой статьи я написал:
+            </p>
+
+            <pre class="plane"><i>
+                    Интерфейсный тип в Go — это своего рода определение. Он определяет и описывает 	
+                    конкретные методы, которые должны быть у какого-то другого типа.</i></pre>
+
+            <p class="plane">
+                Пустой интерфейсный тип не описывает методы. У него нет правил. И поэтому любой объект удовлетворяет пустому интерфейсу.<br>
+                <br>
+                По сути, пустой интерфейсный тип interface{} — своего рода джокер. Если вы встретили его в объявлении (переменной, 
+                параметра функции или поля структуры), то можете использовать объект любого типа.<br>
+                <br>
+                Рассмотрим код:
+            </p>
+
+            <pre>
+                <code class="language-go">package main
+                
+	            import "fmt"
+	            func main() {
+	            	person := make(map[string]interface{}, 0)
+                
+	            	person["name"] = "Alice"
+	            	person["age"] = 21
+	            	person["height"] = 167.64
+                
+	            	fmt.Printf("%+v", person)
+	            }</code></pre>
+
+            <p class="plane">
+                Здесь мы инициализируем map'у person, которая для ключей использует строковый тип, а для значений — пустой 
+                интерфейсный тип interface{}. Мы присвоили три разных типа в качестве значений map'ы (строковое, целочисленное и 
+                float32), и никаких проблем. Поскольку пустому интерфейсу удовлетворяют объекты любого типа, код работает замечательно.<br>
+                <br>
+                Можете запустить этот код здесь, вы увидите подобный результат:
+            </p>
+
+            <pre class="code">
+                map[age:21 height:167.64 name:Alice]</pre>
+
+            <p class="plane">
+                Когда речь заходит об извлечении и использовании значений из map’ы, важно помнить вот о чём. Допустим, 
+                вы хотите получить значение age и увеличить его на 1. Если вы напишете подобный код, то он не скомпилируется:
+            </p>
+
+            <pre>
+                <code class="language-go">package main
+                
+	            import "log"
+	            func main() {
+	            	person := make(map[string]interface{}, 0)
+                
+	            	person["name"] = "Alice"
+	            	person["age"] = 21
+	            	person["height"] = 167.64
+                
+	            	person["age"] = person["age"] + 1
+                
+	            	fmt.Printf("%+v", person)
+	            }</code></pre>
+
+            <p class="plane">
+                Вы получите сообщение об ошибке:
+            </p>
+
+            <pre class="code">
+                invalid operation: person["age"] + 1 (mismatched types interface {} and int)</pre>
+
+            <p class="plane">
+                Причина в том, что значение, хранящееся в map, принимает тип interface{} и теряет свой исходный, базовый тип int. 
+                И поскольку значение больше не целочисленное, мы не можем прибавить к нему 1.<br>
+                <br>
+                Чтобы это обойти, вам нужно сделать значение снова целочисленным, и только потом его использовать:
+            </p>
+
+            <pre>
+                <code class="language-go">package main
+                
+	            import "log"
+	            func main() {
+	            	person := make(map[string]interface{}, 0)
+                
+	            	person["name"] = "Alice"
+	            	person["age"] = 21
+	            	person["height"] = 167.64
+                
+	            	age, ok := person["age"].(int)
+	            	if !ok {
+	            		log.Fatal("could not assert value to int")
+	            	return
+	            	}
+                
+	            	person["age"] = age + 1
+                
+	            	log.Printf("%+v", person)
+	            }</code></pre>
+
+            <p class="plane">
+                Если вы запустите это, все будет работать как полагается:
+            </p>
+
+            <pre class="code">
+                2009/11/10 23:00:00 map[age:22 height:167.64 name:Alice]</pre>
+
+            <p class="plane">
+                Так когда же следует использовать пустой интерфейсный тип?<br>
+                <br>
+                Пожалуй, не слишком часто. Если вы к этому пришли, то остановитесь и подумайте, правильно ли сейчас 
+                использовать interface{}. В качестве общего совета могу сказать, что будет понятнее, безопаснее и производительнее 
+                использовать конкретные типы, то есть не пустые интерфейсные типы. В приведённом выше примере лучше было 
+                определить структуру Person с соответствующим образом типизированными полями:
+            </p>
+
+            <pre>
+                <code class="language-go">type Person struct {
+                    Name   string
+                    Age    int
+                    Height float32
+                }</code></pre>
+
+            <p class="plane">
+                С другой стороны, пустой интерфейс полезен в случаях, когда вам нужно обращаться и работать с непредсказуемыми 
+                или пользовательскими типами. Такие интерфейсы по определённым причинам используются в разных местах стандартной 
+                библиотеки, например, в функциях gob.Encode, fmt.Print и template.Execute.
+            </p>
+            <br>
+        </div>
+    </body>
+</html>

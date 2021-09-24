@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Простой Makefile</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                ПРОСТОЙ MAKEFILE
+            </p>
+
+            <p class="small">
+                (https://habr.com/ru/post/155201/)
+            </p>
+
+            <p class="plane">
+                Компилировать проект ручками — занятие весьма утомительное, особенно когда исходных файлов становится 
+                больше одного, и для каждого из них надо каждый раз набивать команды компиляции и линковки. Но не все 
+                так плохо. Сейчас мы будем учиться создавать и использовать Мейкфайлы. Makefile — это набор инструкций 
+                для программы make, которая помогает собирать программный проект буквально в одно касание.<br>
+                <br>
+                Для практики понадобится создать микроскопический проект а-ля Hello World из четырех файлов 
+                в одном каталоге:
+            </p>
+
+            <pre>
+                <code class="language-cpp">/* main.cpp */
+                #include &lt;iostream&gt;
+                #include "functions.h"
+                
+                using namespace std;
+                
+                int main(){
+                    print_hello();
+                    cout &lt;&lt; endl;
+                    cout &lt;&lt; "The factorial of 5 is " &lt;&lt; factorial(5) &lt;&lt; endl;
+                    return 0;
+                }
+
+                /* hello.cpp */
+
+                #include &lt;iostream&gt;
+                #include "functions.h"
+                
+                using namespace std;
+                
+                void print_hello(){
+                   cout &lt;&lt; "Hello World!";
+                }
+
+                /* factorial.cpp */
+
+                #include "functions.h"
+                int factorial(int n){
+                    if(n!=1){
+                	    return(n * factorial(n-1));
+                    }
+                    else return 1;
+                }
+
+                /* functions.h */
+
+                void print_hello();
+                int factorial(int n);</code></pre>
+
+            <p class="subsection">
+                Программа make
+            </p>
+
+            <p class="plane">
+                Если запустить
+            </p>
+
+            <pre>
+                <code class="language-shell">make</code></pre>
+
+            <p class="plane">
+                то программа попытается найти файл с именем по умолчание Makefile в текущем каталоге и выполнить 
+                инструкции из него. Если в текущем каталоге есть несколько мейкфайлов, то можно указать на нужный вот 
+                таким образом:
+            </p>
+
+            <pre>
+                <code class="language-shell">make -f MyMakefile</code></pre>
+
+            <p class="plane">
+                Есть еще множество других параметров, нам пока не нужных. О них можно узнать в ман-странице.
+            </p>
+
+            <p class="subsection">
+                Процесс сборки
+            </p>
+
+            <p class="plane">
+                Компилятор берет файлы с исходным кодом и получает из них объектные файлы. Затем линковщик берет объектные 
+                файлы и получает из них исполняемый файл. Сборка = компиляция + линковка.
+            </p>
+
+            <p class="subsection">
+                Компиляция руками
+            </p>
+
+            <p class="plane">
+                Самый простой способ собрать программу:
+            </p>
+
+            <pre>
+                <code class="language-bash">g++ main.cpp hello.cpp factorial.cpp -o hello</code></pre>
+
+            <p class="plane">
+                Каждый раз набирать такое неудобно, поэтому будем автоматизировать.
+            </p>
+
+            <p class="subsection">
+                Самый простой Мейкфайл
+            </p>
+
+            <p class="plane">
+                В нем должны быть такие части:
+            </p>
+
+            <pre>
+                <code class="language-makefile">цель: зависимости
+                    [tab] команда</code></pre>
+
+            <p class="plane">
+                Для нашего примера мейкфайл будет выглядеть так:
+            </p>
+
+            <pre>
+                <code class="language-makefile">all:
+                        g++ main.cpp hello.cpp factorial.cpp -o hello</code></pre>
+
+            <p class="plane">
+                Обратите внимание, что строка с командой должна начинаться с табуляции! Сохраните это под именем Makefile-1 в 
+                каталоге с проектом и запустите сборку командой make -f Makefile-1
+                В первом примере цель называется all. Это цель по умолчанию для мейкфайла, 
+                которая будет выполняться, если никакая другая цель не указана явно. Также у 
+                этой цели в этом примере нет никаких зависимостей, так что make сразу приступает к 
+                выполнению нужной команды. А команда в свою очередь запускает компилятор.
+            </p>
+
+            <p class="subsection">
+                Использование зависимостей
+            </p>
+
+            <p class="plane">
+                Использовать несколько целей в одном мейкфайле полезно для больших проектов. Это связано с тем, что при 
+                изменении одного файла не понадобится пересобирать весь проект, а можно будет обойтись пересборкой только 
+                измененной части. Пример:
+            </p>
+
+            <pre>
+                <code class="language-makefile">all: hello
+
+                hello: main.o factorial.o hello.o
+                    g++ main.o factorial.o hello.o -o hello
+                
+                main.o: main.cpp
+                    g++ -c main.cpp
+                
+                factorial.o: factorial.cpp
+                    g++ -c factorial.cpp
+                
+                hello.o: hello.cpp
+                    g++ -c hello.cpp
+                
+                clean:
+                    rm -rf *.o hello</code></pre>
+            
+            <p class="plane">
+                Это надо сохранить под именем Makefile-2 все в том же каталоге<br>
+                <br>
+                Теперь у цели all есть только зависимость, но нет команды. В этом случае make при вызове последовательно 
+                выполнит все указанные в файле зависимости этой цели. Еще добавилась новая цель clean. Она традиционно 
+                используется для быстрой очистки всех результатов сборки проекта. Очистка запускается так: 
+                make -f Makefile-2 clean
+            </p>
+
+            <p class="subsection">
+                Использование переменных и комментариев
+            </p>
+
+            <p class="plane">
+                Переменные широко используются в мейкфайлах. Например, это удобный способ учесть возможность того, 
+                что проект будут собирать другим компилятором или с другими опциями.
+            </p>
+
+            <pre>
+                <code class="language-makefile"># Это комментарий, который говорит, что переменная CC указывает компилятор, используемый для сборки
+                CC=g++
+                #Это еще один комментарий. Он поясняет, что в переменной CFLAGS лежат флаги, которые передаются компилятору
+                CFLAGS=-c -Wall
+                
+                all: hello
+                
+                hello: main.o factorial.o hello.o
+                    $(CC) main.o factorial.o hello.o -o hello
+                
+                main.o: main.cpp
+                    $(CC) $(CFLAGS) main.cpp
+                
+                factorial.o: factorial.cpp
+                    $(CC) $(CFLAGS) factorial.cpp
+                
+                hello.o: hello.cpp
+                    $(CC) $(CFLAGS) hello.cpp
+                
+                clean:
+                    rm -rf *.o hello</code></pre>
+
+            <p class="plane">
+                Это Makefile-3<br>
+                <br>
+                Переменные — очень удобная штука. Для их использования надо просто присвоить им значение до момента их 
+                использования. После этого можно подставлять их значение в нужное место вот таким способом: $(VAR)
+            </p>
+
+            <p class="subsection">
+                Что делать дальше
+            </p>
+
+            <p class="plane">
+                После этого краткого инструктажа уже можно пробовать создавать простые мейкфайлы самостоятельно. Дальше 
+                надо читать серьезные учебники и руководства. Как финальный аккорд можно попробовать самостоятельно разобрать 
+                и осознать такой универсальный мейкфайл, который можно в два касания адаптировать под практически любой проект:
+            </p>
+
+            <pre>
+                <code class="language-makefile">CC=g++
+                CFLAGS=-c -Wall
+                LDFLAGS=
+                SOURCES=main.cpp hello.cpp factorial.cpp
+                OBJECTS=$(SOURCES:.cpp=.o)
+                EXECUTABLE=hello
+                
+                all: $(SOURCES) $(EXECUTABLE)
+                    
+                $(EXECUTABLE): $(OBJECTS) 
+                    $(CC) $(LDFLAGS) $(OBJECTS) -o $@
+                
+                .cpp.o:
+                    $(CC) $(CFLAGS) $&lt; -o $@</code></pre>
+            <br>
+        </div>
+    </body>
+</html>

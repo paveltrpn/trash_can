@@ -1,0 +1,564 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Черновик</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                ЧЕРНОВИК
+            </p>
+
+            <p class="section">
+                Как обновить Node.js до последней версии?
+            </p>
+
+            <p class="small">
+                (https://devacademy.ru/recipe/kak-obnovit-node-js-do-poslednei-versii)
+            </p>
+
+            <p class="plane">
+                1. Нужно очистить NPM кеш:
+            </p>
+
+            <pre>
+                <code class="language-bash">sudo npm cache clean -f</code></pre>
+ 
+            <p class="plane">
+                2. Установить интерактивный менеджер n
+            </p>
+
+            <pre>
+                <code class="language-bash">sudo npm install -g n</code></pre>
+
+            <p class="plane">
+                Эта библиотека позволяет управлять версиями node.js<br>
+                <br>
+                3. Теперь можно установить последнюю версию node.js:  
+            </p>
+
+            <pre>
+                <code class="language-bash">sudo n stable</code></pre>
+
+            <br>
+
+            <p class="section">
+                После установки VWWare player
+            </p>
+
+            <p class="plane">
+                To enable advanced X features (e.g., guest resolution fit, drag and drop, and<br> 
+                file and text copy/paste), you will need to do one (or more) of the following:<br>
+                1. Manually start /usr/bin/vmware-user<br>
+                2. Log out and log back into your desktop session<br>
+                3. Restart your X session.<br>
+            </p>
+
+            <p class="section">
+                Задание функции в JavaScript
+            </p>
+
+            <p class="subsection">
+                Функции вида "function declaration statement"
+            </p>
+
+            <p class="plane">
+                Объявление функции (function definition, или function declaration, или function statement) состоит<br>
+                из ключевого слова function и следующих частей:<br>
+                <br>
+                &bull;&emsp;Имя функции.<br>
+                &bull;&emsp;Список параметров (принимаемых функцией) заключенных в круглые скобки () и разделенных запятыми.<br>
+                &bull;&emsp;Инструкции, которые будут выполненны после вызова функции, заключают в фигурные скобки { }.<br>
+                <br>
+                Например, следующий код объявляет простую функцию с именем square:
+            </p>
+
+            <pre>
+                <code class="language-javascript">function square(number) {
+                    return number * number;
+                }</code></pre>
+            
+            <p class="plane">
+                Функция square принимает один параметр, названный number. Состоит из одной инструкции, которая
+                означает вернуть параметр этой функции (это number) умноженный на самого себя. Инструкция return 
+                указывает на значение, которые будет возвращено функцией.
+            </p>
+
+            <pre>
+                <code class="language-javascript">return number * number;</code></pre>
+
+            <p class="plane">
+                Примитивные параметры (например, число) передаются функции значением; значение передаётся в 
+                функцию, но если функция меняет значение параметра, это изменение не отразится глобально или 
+                после вызова функции.<br>
+                <br>
+                Если Вы передадите объект как параметр (не примитив, например, массив или определяемые пользователем объекты), 
+                и функция изменит свойство переданного в неё объекта, это изменение будет видно и вне функции, как показано 
+                в следующим примере:<br>
+            </p>
+
+            <pre>
+                <code class="language-javascript">function myFunc(theObject) {
+                    theObject.make = 'Toyota';
+                }
+                
+                var mycar = {make: 'Honda', model: 'Accord', year: 1998};
+                var x, y;
+                
+                x = mycar.make; // x получает значение "Honda"
+                
+                myFunc(mycar);
+                y = mycar.make; // y получает значение "Toyota"
+                                // (свойство было изменено функцией)</code></pre>
+
+            <p class="subsection">
+                Функции вида "function definition expression"
+            </p>
+
+            <p class="plane">
+                Функция вида "function declaration statement" по синтаксису является инструкцией (statement), 
+                ещё функция может быть вида "function definition  expression". Такая функция может быть 
+                анонимной (она не имеет имени). Например, функция square может быть вызвана так:
+            </p>
+
+            <pre>
+                <code class="language-javascript">var square = function(number) { return number * number; };
+                    var x = square(4); // x получает значение 16</code></pre>
+
+            <p class="plane">
+                Однако, имя может быть и присвоено для вызова самой себя внутри самой функции и для 
+                отладчика (debugger) для  идентифицирования функции в стек-треках (stack traces; "trace" — "след" / "отпечаток").
+            </p>
+
+            <pre>
+                <code class="language-javascript">var factorial = function fac(n) { return n &lt; 2 ? 1 : n * fac(n - 1); };
+                console.log(factorial(3));</code></pre>
+            
+            <p class="plane">
+                Функции вида "function definition expression" удобны, когда функция передается аргументом 
+                другой функции. Следующий пример показывает функцию map, которая должна получить функцию 
+                первым аргументом и массив вторым.
+            </p>
+
+            <pre>
+                <code class="language-javascript">function map(f, a) {
+                    var result = [], // Create a new Array
+                        i;
+                    for (i = 0; i != a.length; i++)
+                      result[i] = f(a[i]);
+                    return result;
+                }</code></pre>
+
+            <p class="plane">
+                В следующим коде наша функция принимает функцию, которая является function definition 
+                expression, и выполняет его для каждого элемента принятого массива вторым аргументом.
+            </p>
+
+            <pre>
+                <code class="language-javascript">function map(f, a) {
+                    var result = []; // Create a new Array
+                    var i; // Declare variable
+                    for (i = 0; i != a.length; i++)
+                      result[i] = f(a[i]);
+                        return result;
+                }
+                var f = function(x) {
+                   return x * x * x; 
+                }
+                var numbers = [0, 1, 2, 5, 10];
+                var cube = map(f,numbers);
+                console.log(cube);</code></pre>
+
+            <p class="plane">
+                Функция возвращает: [0, 1, 8, 125, 1000].<br>
+                <br>
+                В JavaScript функция может быть объявлена с условием. Например, следующая функция будет 
+                присвоена переменной myFunc только, если num равно 0: 
+            </p>
+
+            <pre>
+                <code class="language-javascript">var myFunc;
+                if (num === 0) {
+                    myFunc = function(theObject) {
+                    theObject.make = 'Toyota';
+                    }
+                }</code></pre>
+
+            <p class="plane">
+                В дополнение к объявлениям функций, описанных здесь, Вы также можете использовать 
+                конструктор Function для создания функций из строки во время выполнения (runtime), подобно eval().
+            </p>
+
+            <p class="subsection">
+                Замыкания
+            </p>
+
+            <p class="small">
+                (https://habr.com/ru/post/240349/)
+            </p>
+
+            <p class="plane">
+                Возможность использовать вызовы функций как переменные вкупе с тем фактом, что локальные
+                переменные каждый раз при вызове функции создаются заново, приводит нас к интересному вопросу.
+                Что происходит с локальными переменными, когда функция перестаёт работать?<br>
+                <br>
+                Следующий пример иллюстрирует этот вопрос. В нём объявляется функция wrapValue, 
+                которая создаёт локальную переменную. Затем она возвращает функцию, которая читает эту 
+                локальную переменную и возвращает её значение.<br>
+            </p>
+
+            <pre>
+                <code class="language-javascript">function wrapValue(n) {
+                    var localVariable = n;
+                    return function() { return localVariable; };
+                }
+                
+                var wrap1 = wrapValue(1);
+                var wrap2 = wrapValue(2);
+                console.log(wrap1());
+                // → 1
+                console.log(wrap2());
+                // → 2</code></pre>
+
+            <p class="plane">
+                Это допустимо и работает так, как должно – доступ к переменной остаётся. Более того, в одно и 
+                то же время могут существовать несколько экземпляров одной и той же переменной, что ещё раз 
+                подтверждает тот факт, что с каждым вызовом функции локальные переменные пересоздаются.<br>
+                <br>
+                Эта возможность работать со ссылкой на какой-то экземпляр локальной переменной называется 
+                замыканием. Функция, замыкающая локальные переменные, называется замыкающей. Она не только 
+                освобождает вас от забот, связанных с временем жизни переменных, но и позволяет творчески использовать функции.<br>
+                <br>
+                С небольшим изменением мы превращаем наш пример в функцию, умножающую числа на любое заданное число.
+            </p>
+
+            <pre>
+                <code class="language-javascript">function multiplier(factor) {
+                    return function(number) {
+                        return number * factor;
+                    };
+                }
+                
+                var twice = multiplier(2);
+                console.log(twice(5));
+                // → 10</code></pre>
+
+            <p class="plane">
+                Отдельная переменная вроде localVariable из примера с wrapValue уже не нужна. Так как параметр – 
+                сам по себе локальная переменная.<br>
+                <br>
+                Потребуется практика, чтобы начать мыслить подобным образом. Хороший вариант мысленной модели – 
+                представлять, что функция замораживает код в своём теле и обёртывает его в упаковку. Когда вы 
+                видите return function(...) {...}, представляйте, что это пульт управления куском кода, 
+                замороженным для употребления позже.<br>
+                <br>
+                В нашем примере multiplier возвращает замороженный кусок кода, который мы сохраняем в 
+                переменной twice. Последняя строка вызывает функцию, заключённую в переменной, в связи с 
+                чем активируется сохранённый код (return number * factor;). У него всё ещё есть доступ к переменной 
+                factor, которая определялась при вызове multiplier, к тому же у него есть доступ к аргументу, переданному 
+                во время разморозки (5) в качестве числового параметра.
+            </p>
+
+            <p class="section">
+                Виртуальные функции и деструктор
+            </p>
+
+            <p class="small">
+                (https://habr.com/ru/post/64280/)
+            </p>
+
+            <p class="subsection">
+                Виртуальные деструкторы
+            </p>
+
+            <p class="plane">
+                Если вы уже знаете и умеете использовать виртуальные функции, то просто обязаны знать, когда и зачем 
+                нужны виртуальные деструкторы. Иначе нижеследующий текст был написан именно для вас.<br>
+                <br>
+                Основное правило: если у вас в классе присутствует хотя бы одна виртуальная функция, деструктор 
+                также следует сделать виртуальным. При этом не следует забывать, что деструктор по умолчанию виртуальным 
+                не будует, поэтому следует объявить его явно. Если этого не сделать, у вас в программе почти наверняка 
+                будут утечки памяти (memory leaks). Чтобы понять почему, опять же много ума не надо. Рассмотрим несколько примеров.<br>
+                <br>
+                В первом случае создадим объект производного класса в стеке:
+            </p>
+
+            <pre>
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream>
+                
+                using std::cout;
+                using std::endl;
+                
+                class A {
+                public:
+                    A() { cout &lt;&lt; "A()" &lt;&lt; endl; }
+                    ~A() { cout &lt;&lt; "~A()" &lt;&lt; endl; }
+                };
+                
+                class B : public A {
+                public:
+                    B() { cout &lt;&lt; "B()" &lt;&lt; endl; }
+                    ~B() { cout &lt;&lt; "~B()" &lt;&lt; endl; }
+                };
+                
+                int main()
+                {
+                    B b;
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plane">
+                Всем ясно, что вывод программы будет следующим:
+            </p>
+
+            <pre>
+                <code class="language-bash">A()
+                B()
+                ~B()
+                ~A()</code></pre>
+            
+            <p class="plane">
+                потому что сначала конструируется базовая часть класса, затем производная, а 
+                при разрушении наоборот — сначала вызывается деструктор производного класса, который по 
+                окончании своей работы вызывает по цепочке деструктор базового. Это правильно и так должно быть.<br>
+                <br>
+                Попробуем теперь создать тот же объект в динамической памяти, используя при этом указатель 
+                на объект базового класса (код классов не изменился, поэтому привожу только код функции main()):
+            </p>
+
+            <pre>
+                <code class="language-cpp">int main()
+                {
+                    A * pA = new B;
+                    delete pA;
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plane">
+                На сей раз конструируется объект так, как и надо, а при разрушении происходит утечка памяти, потому 
+                как деструктор производного класса не вызывается:
+            </p>
+
+            <pre>
+                <code class="language-bash">A()
+                B()
+                ~A()</code></pre>
+
+            <p class="plane">
+                Происходит это потому, что удаление производится через указатель на базовый класс и для вызова деструктора 
+                компилятор использует раннее связывание. Деструктор базового класса не может вызвать деструктор 
+                производного, потому что он о нем ничего не знает. В итоге часть памяти, выделенная под производный класс, 
+                безвозвратно теряется.<br>
+                <br>
+                Чтобы этого избежать, деструктор в базовом классе должен быть объявлен как виртуальный:
+            </p>
+
+            <pre>
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream&gt;
+                
+                using std::cout;
+                using std::endl;
+                
+                class A {
+                public:
+                    A() { cout &lt;&lt; "A()" &lt;&lt; endl; }
+                    virtual ~A() { cout &lt;&lt; "~A()" &lt;&lt; endl; }
+                };
+                
+                class B : public A {
+                public:
+                    B() { cout &lt;&lt; "B()" &lt;&lt; endl; }
+                    ~B() { cout &lt;&lt; "~B()" &lt;&lt; endl; }
+                };
+                
+                int main()
+                {
+                    A * pA = new B;
+                    delete pA;
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plane">
+                Теперь-то мы получим желаемый порядок вызовов:
+            </p>
+
+            <pre>
+                <code class="language-bash">A()
+                B()
+                ~B()
+                ~A()</code></pre>
+
+            <p class="plane">
+                Происходит так потому, что отныне для вызова деструктора используется позднее связывание, 
+                то есть при разрушении объекта берется указатель на класс, затем из таблицы виртуальных 
+                функций определяется адрес нужного нам деструктора, а это деструктор производного класса, 
+                который после своей работы, как и полагается, вызывает деструктор базового. Итог: объект разрушен, 
+                память освобождена.
+            </p>
+
+            <p class="subsection">
+                Виртуальные функции в деструкторах
+            </p>
+
+            <p class="plane">
+                Давайте для начала рассмотрим ситуацию с вызовом виртуальных функций внутри класса. 
+                Предположим, что у нас есть Кот, который просит покушать мяуканьем, а затем приступает 
+                к процессу :) Так поступают многие коты, но не Чеширский! Чеширский, как известно, 
+                мало того что вечно улыбается, так еще и довольно разговорчив, поэтому мы научим его 
+                говорить, переопределив метод speak():
+            </p>
+
+            <pre>
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream&gt;
+                
+                using std::cout;
+                using std::endl;
+                
+                class Cat
+                {
+                public:
+                    void askForFood() const
+                    {
+                        speak();
+                        eat();
+                    }
+                    virtual void speak() const { cout &lt;&lt; "Meow! "; }
+                    virtual void eat() const { cout &lt;&lt; "*champing*" &lt;&lt; endl; }
+                };
+                
+                class CheshireCat : public Cat
+                {
+                public:
+                    virtual void speak() const { cout &lt;&lt; "WTF?! Where\'s my milk? =) "; }
+                };
+                
+                int main()
+                {
+                    Cat * cats[] = { new Cat, new CheshireCat };
+                
+                    cout &lt;&lt; "Ordinary Cat: "; cats[0]-&gt;askForFood();
+                    cout &lt;&lt; "Cheshire Cat: "; cats[1]-&gt;askForFood();
+                
+                    delete cats[0]; delete cats[1];
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plane">
+                Вывод этой программы будет следующим:
+            </p>
+
+            <pre>
+                <code class="language-bash">Ordinary Cat: Meow! *champing*
+                Cheshire Cat: WTF?! Where's my milk? =) *champing*</code></pre>
+
+            <p class="plane">
+                Рассмотрим код более подробно. Есть класс Cat с парой виртуальных методов, один из которых 
+                переопределен в производном CheshireCat. Но всё самое интересное происходит в методе askForFood() класса Cat.<br>
+                <br>
+                Как видно, метод всего лишь содержит вызовы двух других методов, однако конструкция speak() в 
+                данном контексте эквивалента this->speak(), то есть вызов происходит через указатель, а значит — 
+                будет использовано позднее связывание. Вот почему при вызове метода askForFood() через указатель 
+                на CheshireCat мы видим то, что и хотели: механизм виртуальных функций работает исправно даже 
+                несмотря на то, что вызов непосредственно виртуального метода происходит внутри другого метода класса.<br>
+                <br>
+                А теперь самое интересное: что будет, если попытаться воспользоваться этим в деструкторе? 
+                Модернизируем код так, чтобы при деструкции наши питомцы прощались, кто как умеет:
+            </p>
+
+            <pre>
+                <code class="language-cpp">#include &lt;cstdlib&gt;
+                #include &lt;iostream&gt;
+                
+                using std::cout;
+                using std::endl;
+                
+                class Cat
+                {
+                public:
+                    virtual ~Cat() { sayGoodbye(); }
+                    void askForFood() const
+                    {
+                        speak();
+                        eat();
+                    }
+                    virtual void speak() const { cout &lt;&lt; "Meow! "; }
+                    virtual void eat() const { cout &lt;&lt; "*champing*" &lt;&lt; endl; }
+                    virtual void sayGoodbye() const { cout &lt;&lt; "Meow-meow!" &lt;&lt; endl; }
+                };
+
+                class CheshireCat : public Cat
+                {
+                public:
+                    virtual void speak() const { cout &lt;&lt; "WTF?! Where\'s my milk? =) "; }
+                    virtual void sayGoodbye() const { cout &lt;&lt; "Bye-bye! (:" &lt;&lt; endl; }
+                };
+
+                int main()
+                {
+                    Cat * cats[] = { new Cat, new CheshireCat };
+                
+                    cout &lt;&lt; "Ordinary Cat: "; cats[0]->askForFood();
+                    cout &lt;&lt; "Cheshire Cat: "; cats[1]->askForFood();
+                
+                    delete cats[0]; delete cats[1];
+                    return EXIT_SUCCESS;
+                }</code></pre>
+
+            <p class="plane">
+                Можно ожидать, что, как и в случае с вызовом метода speak(), будет выполнено позднее связывание, однако это не так:
+            </p>
+
+            <pre>
+                <code class="language-bash">Ordinary Cat: Meow! *champing*
+                Cheshire Cat: WTF?! Where's my milk? =) *champing*
+                Meow-meow!
+                Meow-meow!</code></pre>
+
+            <p class="plane">
+                Почему? Да потому что при вызове виртуальных методов из деструктора компилятор использует не позднее, а раннее 
+                связывание. Если подумать, зачем он делает именно так, всё становится очевидным: нужно просто рассмотреть 
+                порядок конструирования и разрушения объектов. Все помнят, что конструирование объекта происходит, начиная 
+                с базового класса, а разрушение идет в строго обратном порядке. Таким образом, когда мы создаем объект типа 
+                CheshireCat, порядок вызовов конструкторов/деструкторов будет таким:       
+            </p>
+
+            <pre>
+                <code class="language-bash">Cat()
+                CheshireCat()
+                ~CheshireCat()
+                ~Cat()</code></pre>
+
+            <p class="plane">
+                Если же мы захотим внутри деструктора ~Cat() совершить виртуальный вызов метода sayGoodbye(), 
+                то фактически попытаемся обратиться к той части объекта, которая уже была разрушена.<br>
+                <br>
+                Мораль: <b>если в вашей голове витают помыслы выделить какой-то алгоритм «зачистки» в отдельный метод, 
+                переопределяемый в производных классах, а затем виртуально вызывать его в деструкторе, у вас ничего не выйдет.</b>
+            </p>
+
+            <br>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
+ <office:meta><meta:creation-date>2019-07-26T15:50:24.410393666</meta:creation-date><dc:date>2019-09-30T20:34:52.685902261</dc:date><meta:editing-duration>PT2H56M9S</meta:editing-duration><meta:editing-cycles>163</meta:editing-cycles><meta:generator>LibreOffice/6.0.7.3$Linux_X86_64 LibreOffice_project/00m0$Build-3</meta:generator><meta:document-statistic meta:table-count="0" meta:image-count="0" meta:object-count="0" meta:page-count="5" meta:paragraph-count="76" meta:word-count="1352" meta:character-count="9034" meta:non-whitespace-character-count="7704"/></office:meta>
+ <office:settings>
+  <config:config-item-set config:name="ooo:view-settings">
+   <config:config-item config:name="ViewAreaTop" config:type="long">86194</config:config-item>
+   <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaWidth" config:type="long">45678</config:config-item>
+   <config:config-item config:name="ViewAreaHeight" config:type="long">20736</config:config-item>
+   <config:config-item config:name="ShowRedlineChanges" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="InBrowseMode" config:type="boolean">false</config:config-item>
+   <config:config-item-map-indexed config:name="Views">
+    <config:config-item-map-entry>
+     <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">28922</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">98847</config:config-item>
+     <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">86194</config:config-item>
+     <config:config-item config:name="VisibleRight" config:type="long">45676</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">106929</config:config-item>
+     <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
+     <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
+     <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="ZoomFactor" config:type="short">110</config:config-item>
+     <config:config-item config:name="IsSelectedFrame" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
+    </config:config-item-map-entry>
+   </config:config-item-map-indexed>
+  </config:config-item-set>
+  <config:config-item-set config:name="ooo:configuration-settings">
+   <config:config-item config:name="PrintPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintFaxName" config:type="string"/>
+   <config:config-item config:name="PrintSingleJobs" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintProspectRTL" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintProspect" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintReversed" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintTextPlaceholder" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintTables" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="DoNotJustifyLinesWithManualBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AlignTabStopPosition" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintLeftPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IgnoreFirstLineIndentInNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterSetup" config:type="base64Binary"/>
+   <config:config-item config:name="CollapseEmptyCellPara" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="RedlineProtectionKey" config:type="base64Binary"/>
+   <config:config-item config:name="UseOldPrinterMetrics" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseOldNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddExternalLeading" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="TreatSingleColumnBreakAsPageBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UpdateFromTemplate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IsLabelDocument" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RsidRoot" config:type="int">1168865</config:config-item>
+   <config:config-item config:name="ConsiderTextWrapOnObjPos" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TableRowKeep" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabsRelativeToIndent" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SaveVersionOnClose" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseFormerTextWrapping" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ChartAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaTableSpacingAtStart" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AllowPrintJobCancel" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaTableSpacing" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintDrawings" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaSpacingToTableCells" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseFormerLineSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="OutlineLevelYieldsNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="LinkUpdateMode" config:type="short">1</config:config-item>
+   <config:config-item config:name="DoNotResetParaAttrsForNumFont" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ApplyUserData" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="StylesNoDefault" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbeddedDatabaseName" config:type="string"/>
+   <config:config-item config:name="FloattableNomargins" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="BackgroundParaOverDrawings" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterName" config:type="string"/>
+   <config:config-item config:name="UseFormerObjectPositioning" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabOverMargin" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SaveGlobalDocumentLinks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseDataSource" config:type="string"/>
+   <config:config-item config:name="IsKernAsianPunctuation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CharacterCompressionType" config:type="short">0</config:config-item>
+   <config:config-item config:name="SmallCapsPercentage66" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommand" config:type="string"/>
+   <config:config-item config:name="CurrentDatabaseCommandType" config:type="int">0</config:config-item>
+   <config:config-item config:name="FieldAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IgnoreTabsAndBlanksForLineCalculation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="LoadReadonly" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DoNotCaptureDrawObjsOnPage" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ClipAsCharacterAnchoredWriterFlyFrames" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintBlackFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DisableOffPagePositioning" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SurroundTextWrapSmall" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">2291096</config:config-item>
+   <config:config-item config:name="MathBaselineAlignment" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterIndependentLayout" config:type="string">high-resolution</config:config-item>
+   <config:config-item config:name="TabOverflow" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintGraphics" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PropLineSpacingShrinksFirstLine" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UnbreakableNumberings" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ClippedPictures" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedSystemFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ApplyParagraphMarkFormatToNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SubtractFlysAnchoredAtFlys" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddVerticalFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintEmptyPages" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintControls" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintHiddenText" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintAnnotationMode" config:type="short">0</config:config-item>
+   <config:config-item config:name="PrintPageBackground" config:type="boolean">true</config:config-item>
+  </config:config-item-set>
+ </office:settings>
+ <office:scripts>
+  <office:script script:language="ooo:Basic">
+   <ooo:libraries xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ooo:library-embedded ooo:name="Standard"/>
+   </ooo:libraries>
+  </office:script>
+ </office:scripts>
+ <office:font-face-decls>
+  <style:font-face style:name="Consolas" svg:font-family="Consolas, Monaco, &apos;Andale Mono&apos;, &apos;Ubuntu Mono&apos;, monospace"/>
+  <style:font-face style:name="Menlo" svg:font-family="Menlo, Monaco, &apos;Courier New&apos;, monospace"/>
+  <style:font-face style:name="apple-system" svg:font-family="apple-system, BlinkMacSystemFont, Arial, sans-serif"/>
+  <style:font-face style:name="Noto Sans Devanagari1" svg:font-family="&apos;Noto Sans Devanagari&apos;" style:font-family-generic="swiss"/>
+  <style:font-face style:name="AR PL SungtiL GB1" svg:font-family="&apos;AR PL SungtiL GB&apos;" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="DejaVu Sans Mono1" svg:font-family="&apos;DejaVu Sans Mono&apos;" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="DejaVu Sans Mono" svg:font-family="&apos;DejaVu Sans Mono&apos;" style:font-adornments="Book" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="Liberation Mono1" svg:font-family="&apos;Liberation Mono&apos;" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="Liberation Mono" svg:font-family="&apos;Liberation Mono&apos;" style:font-adornments="Обычный" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="Liberation Serif" svg:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Serif2" svg:font-family="&apos;Liberation Serif&apos;" style:font-adornments="Bold" style:font-family-generic="roman" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Serif1" svg:font-family="&apos;Liberation Serif&apos;" style:font-adornments="Regular" style:font-family-generic="roman" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="AR PL SungtiL GB" svg:font-family="&apos;AR PL SungtiL GB&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Lohit Devanagari" svg:font-family="&apos;Lohit Devanagari&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans CJK SC Regular" svg:font-family="&apos;Noto Sans CJK SC Regular&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans Devanagari" svg:font-family="&apos;Noto Sans Devanagari&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+ </office:font-face-decls>
+ <office:styles>
+  <style:default-style style:family="graphic">
+   <style:graphic-properties svg:stroke-color="#3465a4" draw:fill-color="#729fcf" fo:wrap-option="no-wrap" draw:shadow-offset-x="0.3cm" draw:shadow-offset-y="0.3cm" draw:start-line-spacing-horizontal="0.283cm" draw:start-line-spacing-vertical="0.283cm" draw:end-line-spacing-horizontal="0.283cm" draw:end-line-spacing-vertical="0.283cm" style:flow-with-text="false"/>
+   <style:paragraph-properties style:text-autospace="ideograph-alpha" style:line-break="strict" style:font-independent-line-spacing="false">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties style:use-window-font-color="true" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="ru" fo:country="RU" style:letter-kerning="true" style:font-name-asian="AR PL SungtiL GB" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Noto Sans Devanagari" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN"/>
+  </style:default-style>
+  <style:default-style style:family="paragraph">
+   <style:paragraph-properties fo:orphans="2" fo:widows="2" fo:hyphenation-ladder-count="no-limit" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:tab-stop-distance="1.251cm" style:writing-mode="page"/>
+   <style:text-properties style:use-window-font-color="true" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="ru" fo:country="RU" style:letter-kerning="true" style:font-name-asian="AR PL SungtiL GB" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Noto Sans Devanagari" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2"/>
+  </style:default-style>
+  <style:default-style style:family="table">
+   <style:table-properties table:border-model="collapsing"/>
+  </style:default-style>
+  <style:default-style style:family="table-row">
+   <style:table-row-properties fo:keep-together="auto"/>
+  </style:default-style>
+  <style:style style:name="Standard" style:family="paragraph" style:class="text"/>
+  <style:style style:name="Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Text_20_body" style:class="text">
+   <style:paragraph-properties fo:margin-top="0.423cm" fo:margin-bottom="0.212cm" loext:contextual-spacing="false" fo:keep-with-next="always"/>
+   <style:text-properties style:font-name="Liberation Sans" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="14pt" style:font-name-asian="AR PL SungtiL GB" style:font-family-asian="&apos;AR PL SungtiL GB&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="14pt" style:font-name-complex="Noto Sans Devanagari" style:font-family-complex="&apos;Noto Sans Devanagari&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="Text_20_body" style:display-name="Text body" style:family="paragraph" style:parent-style-name="Standard" style:class="text">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Liberation Serif1" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Regular" style:font-family-generic="roman" style:font-pitch="variable" style:font-size-asian="10.5pt"/>
+  </style:style>
+  <style:style style:name="List" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="list">
+   <style:text-properties style:font-size-asian="12pt" style:font-name-complex="Noto Sans Devanagari1" style:font-family-complex="&apos;Noto Sans Devanagari&apos;" style:font-family-generic-complex="swiss"/>
+  </style:style>
+  <style:style style:name="Caption" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
+   <style:paragraph-properties fo:margin-top="0.212cm" fo:margin-bottom="0.212cm" loext:contextual-spacing="false" text:number-lines="false" text:line-number="0"/>
+   <style:text-properties fo:font-size="12pt" fo:font-style="italic" style:font-size-asian="12pt" style:font-style-asian="italic" style:font-name-complex="Noto Sans Devanagari1" style:font-family-complex="&apos;Noto Sans Devanagari&apos;" style:font-family-generic-complex="swiss" style:font-size-complex="12pt" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="Index" style:family="paragraph" style:parent-style-name="Standard" style:class="index">
+   <style:paragraph-properties text:number-lines="false" text:line-number="0"/>
+   <style:text-properties style:font-size-asian="12pt" style:font-name-complex="Noto Sans Devanagari1" style:font-family-complex="&apos;Noto Sans Devanagari&apos;" style:font-family-generic-complex="swiss"/>
+  </style:style>
+  <style:style style:name="Сode" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="DejaVu Sans Mono" fo:font-family="&apos;DejaVu Sans Mono&apos;" style:font-style-name="Book" style:font-family-generic="modern" style:font-pitch="fixed" fo:font-size="12pt" fo:font-weight="normal" officeooo:rsid="00138824" style:font-size-asian="10.5pt" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="Code" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Обычный" style:font-family-generic="modern" style:font-pitch="fixed" fo:font-size="10pt" style:font-size-asian="12pt" style:font-size-complex="12pt"/>
+  </style:style>
+  <style:style style:name="Section" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties fo:font-size="14pt" fo:font-weight="bold" style:font-size-asian="10.5pt"/>
+  </style:style>
+  <style:style style:name="Subsection" style:family="paragraph" style:parent-style-name="Section">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties style:font-name="Liberation Serif2" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Bold" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:font-style="italic" fo:font-weight="bold" style:font-size-asian="10.5pt"/>
+  </style:style>
+  <style:style style:name="Title" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="chapter">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties fo:font-size="28pt" fo:font-weight="bold" style:font-size-asian="28pt" style:font-weight-asian="bold" style:font-size-complex="28pt" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Heading_20_3" style:display-name="Heading 3" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="3" style:list-style-name="" style:class="text">
+   <style:paragraph-properties fo:margin-top="0.247cm" fo:margin-bottom="0.212cm" loext:contextual-spacing="false"/>
+   <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="14pt" fo:font-weight="bold" style:font-name-asian="AR PL SungtiL GB" style:font-family-asian="&apos;AR PL SungtiL GB&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="14pt" style:font-weight-asian="bold" style:font-name-complex="Noto Sans Devanagari" style:font-family-complex="&apos;Noto Sans Devanagari&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="14pt" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Preformatted_20_Text" style:display-name="Preformatted Text" style:family="paragraph" style:parent-style-name="Standard" style:class="html">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
+   <style:text-properties style:font-name="Liberation Mono1" fo:font-family="&apos;Liberation Mono&apos;" style:font-family-generic="modern" style:font-pitch="fixed" fo:font-size="10pt" style:font-name-asian="AR PL SungtiL GB1" style:font-family-asian="&apos;AR PL SungtiL GB&apos;" style:font-family-generic-asian="modern" style:font-pitch-asian="fixed" style:font-size-asian="10pt" style:font-name-complex="Liberation Mono1" style:font-family-complex="&apos;Liberation Mono&apos;" style:font-family-generic-complex="modern" style:font-pitch-complex="fixed" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="Footer" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
+   <style:paragraph-properties text:number-lines="false" text:line-number="0">
+    <style:tab-stops>
+     <style:tab-stop style:position="8.5cm" style:type="center"/>
+     <style:tab-stop style:position="17cm" style:type="right"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="Heading_20_4" style:display-name="Heading 4" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="4" style:list-style-name="" style:class="text">
+   <style:paragraph-properties fo:margin-top="0.212cm" fo:margin-bottom="0.212cm" loext:contextual-spacing="false"/>
+   <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:font-weight="bold" style:font-name-asian="Noto Sans CJK SC Regular" style:font-family-asian="&apos;Noto Sans CJK SC Regular&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="12pt" style:font-weight-asian="bold" style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="12pt" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Internet_20_link" style:display-name="Internet link" style:family="text">
+   <style:text-properties fo:color="#000080" fo:language="zxx" fo:country="none" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" style:language-asian="zxx" style:country-asian="none" style:language-complex="zxx" style:country-complex="none"/>
+  </style:style>
+  <style:style style:name="Source_20_Text" style:display-name="Source Text" style:family="text">
+   <style:text-properties style:font-name="Liberation Mono1" fo:font-family="&apos;Liberation Mono&apos;" style:font-family-generic="modern" style:font-pitch="fixed" style:font-name-asian="AR PL SungtiL GB1" style:font-family-asian="&apos;AR PL SungtiL GB&apos;" style:font-family-generic-asian="modern" style:font-pitch-asian="fixed" style:font-name-complex="Liberation Mono1" style:font-family-complex="&apos;Liberation Mono&apos;" style:font-family-generic-complex="modern" style:font-pitch-complex="fixed"/>
+  </style:style>
+  <style:style style:name="Emphasis" style:family="text">
+   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="Numbering_20_Symbols" style:display-name="Numbering Symbols" style:family="text"/>
+  <style:style style:name="Strong_20_Emphasis" style:display-name="Strong Emphasis" style:family="text">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <text:outline-style style:name="Outline">
+   <text:outline-level-style text:level="1" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="2" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="3" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="4" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="5" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="6" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="7" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="8" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="9" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="10" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+  </text:outline-style>
+  <text:notes-configuration text:note-class="footnote" style:num-format="1" text:start-value="0" text:footnotes-position="page" text:start-numbering-at="document"/>
+  <text:notes-configuration text:note-class="endnote" style:num-format="i" text:start-value="0"/>
+  <text:linenumbering-configuration text:number-lines="false" text:offset="0.499cm" style:num-format="1" text:number-position="left" text:increment="5"/>
+ </office:styles>
+ <office:automatic-styles>
+  <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Footer">
+   <style:text-properties fo:font-size="10pt" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="P2" style:family="paragraph" style:parent-style-name="Footer">
+   <style:text-properties fo:font-size="10pt" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="P3" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Liberation Serif" fo:font-size="14pt" fo:font-weight="bold" officeooo:rsid="0011d5e1" style:font-size-asian="12.25pt" style:font-weight-asian="bold" style:font-size-complex="14pt" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:rsid="00138824" officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="0014c989"/>
+  </style:style>
+  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties fo:font-style="italic" officeooo:rsid="001ff444" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#4078f2" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties fo:font-style="normal" style:font-style-asian="normal" style:font-style-complex="normal"/>
+  </style:style>
+  <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties style:font-name="DejaVu Sans Mono1"/>
+  </style:style>
+  <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:rsid="001c6ae0" officeooo:paragraph-rsid="001c6ae0"/>
+  </style:style>
+  <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:rsid="001f39e5" officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P18" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P19" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties fo:font-size="10pt" officeooo:paragraph-rsid="001e163d" style:font-size-asian="8.75pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="P20" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P21" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties style:font-name="Liberation Serif"/>
+  </style:style>
+  <style:style style:name="P22" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:rsid="001ff444" officeooo:paragraph-rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="P23" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="P24" style:family="paragraph" style:parent-style-name="Code">
+   <style:paragraph-properties fo:line-height="100%"/>
+  </style:style>
+  <style:style style:name="P25" style:family="paragraph" style:parent-style-name="Code">
+   <style:paragraph-properties fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="P26" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties style:font-name="DejaVu Sans Mono1"/>
+  </style:style>
+  <style:style style:name="P27" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:paragraph-rsid="001b70b4"/>
+  </style:style>
+  <style:style style:name="P28" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:rsid="001c6ae0" officeooo:paragraph-rsid="001c6ae0"/>
+  </style:style>
+  <style:style style:name="P29" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P30" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:paragraph-rsid="001f27bb"/>
+  </style:style>
+  <style:style style:name="P31" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="P32" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties fo:font-weight="bold" officeooo:paragraph-rsid="00138824" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P33" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:rsid="00138824" officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P34" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:paragraph-rsid="00150416"/>
+  </style:style>
+  <style:style style:name="P35" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:paragraph-rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="P36" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:rsid="0016c7c6" officeooo:paragraph-rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="P37" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:rsid="00199079" officeooo:paragraph-rsid="00199079"/>
+  </style:style>
+  <style:style style:name="P38" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:rsid="001b70b4" officeooo:paragraph-rsid="001b70b4"/>
+  </style:style>
+  <style:style style:name="P39" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:rsid="001c6ae0" officeooo:paragraph-rsid="001c6ae0"/>
+  </style:style>
+  <style:style style:name="P40" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P41" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties fo:font-size="14pt" officeooo:paragraph-rsid="00138824" style:font-size-asian="14pt" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="P42" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties fo:font-size="14pt" officeooo:rsid="001c6ae0" officeooo:paragraph-rsid="001c6ae0" style:font-size-asian="14pt" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="P43" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties fo:font-size="14pt" officeooo:rsid="001d5300" officeooo:paragraph-rsid="001e163d" style:font-size-asian="14pt" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="P44" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties fo:font-size="14pt" officeooo:rsid="001ff444" officeooo:paragraph-rsid="001ff444" style:font-size-asian="14pt" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="P45" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:rsid="00199079" officeooo:paragraph-rsid="00199079"/>
+  </style:style>
+  <style:style style:name="P46" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:rsid="001c6ae0" officeooo:paragraph-rsid="001c6ae0"/>
+  </style:style>
+  <style:style style:name="P47" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:rsid="001f39e5" officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P48" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P49" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:paragraph-rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="P50" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:rsid="001d5300" officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P51" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties officeooo:rsid="001ff444" officeooo:paragraph-rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="P52" style:family="paragraph" style:parent-style-name="Code">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="P53" style:family="paragraph" style:parent-style-name="Code">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="start" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P54" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties fo:font-weight="bold" officeooo:paragraph-rsid="00138824" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P55" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties officeooo:rsid="00138824" officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P56" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="P57" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties officeooo:paragraph-rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="P58" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties officeooo:rsid="0014c989" officeooo:paragraph-rsid="0014c989"/>
+  </style:style>
+  <style:style style:name="P59" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
+  </style:style>
+  <style:style style:name="P60" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="P61" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P62" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P63" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P64" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties officeooo:rsid="00138824" officeooo:paragraph-rsid="00138824"/>
+  </style:style>
+  <style:style style:name="P65" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%"/>
+   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P66" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties fo:font-style="italic" officeooo:paragraph-rsid="00138824" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P67" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
+   <style:text-properties officeooo:paragraph-rsid="0014c989"/>
+  </style:style>
+  <style:style style:name="P68" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties fo:font-size="14pt" fo:font-weight="bold" style:font-size-asian="14pt" style:font-weight-asian="bold" style:font-size-complex="14pt" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P69" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P70" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties officeooo:paragraph-rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="P71" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties officeooo:paragraph-rsid="0014c989"/>
+  </style:style>
+  <style:style style:name="P72" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties fo:font-size="9pt" officeooo:rsid="0016c7c6" officeooo:paragraph-rsid="0016c7c6" style:font-size-asian="7.84999990463257pt" style:font-size-complex="9pt"/>
+  </style:style>
+  <style:style style:name="P73" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties fo:font-size="9pt" officeooo:rsid="0016c7c6" officeooo:paragraph-rsid="0016c7c6" style:font-size-asian="7.84999990463257pt" style:font-size-complex="9pt"/>
+  </style:style>
+  <style:style style:name="P74" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="P75" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="P76" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <loext:graphic-properties draw:fill="none"/>
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="0cm" style:auto-text-indent="false" fo:background-color="transparent"/>
+   <style:text-properties officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P77" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <loext:graphic-properties draw:fill="none"/>
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="0cm" style:auto-text-indent="false" fo:background-color="transparent"/>
+   <style:text-properties fo:font-style="italic" officeooo:paragraph-rsid="001e163d" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P78" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="P79" style:family="paragraph" style:parent-style-name="Code">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="P80" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <loext:graphic-properties draw:fill="none"/>
+   <style:paragraph-properties fo:margin-left="1.3cm" fo:margin-right="1.199cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="0cm" style:auto-text-indent="false" fo:background-color="transparent"/>
+   <style:text-properties fo:font-style="italic" officeooo:paragraph-rsid="001e163d" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P81" style:family="paragraph" style:parent-style-name="Text_20_body" style:master-page-name="">
+   <loext:graphic-properties draw:fill="none"/>
+   <style:paragraph-properties fo:margin-left="1.3cm" fo:margin-right="1.199cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto" fo:background-color="transparent"/>
+   <style:text-properties fo:font-style="italic" officeooo:paragraph-rsid="001e163d" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="P82" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0.499cm" loext:contextual-spacing="false"/>
+  </style:style>
+  <style:style style:name="P83" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L1">
+   <style:text-properties officeooo:paragraph-rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="P84" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:rsid="001ff444" officeooo:paragraph-rsid="0022f598"/>
+  </style:style>
+  <style:style style:name="P85" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="0022f598"/>
+  </style:style>
+  <style:style style:name="P86" style:family="paragraph" style:parent-style-name="Section">
+   <style:text-properties fo:font-size="14pt" officeooo:rsid="001ff444" officeooo:paragraph-rsid="0022f598" style:font-size-asian="14pt" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="P87" style:family="paragraph" style:parent-style-name="Subsection">
+   <style:text-properties officeooo:paragraph-rsid="0022f598"/>
+  </style:style>
+  <style:style style:name="P88" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:paragraph-rsid="0022f598"/>
+  </style:style>
+  <style:style style:name="P89" style:family="paragraph" style:parent-style-name="Code">
+   <style:text-properties officeooo:paragraph-rsid="001f27bb"/>
+  </style:style>
+  <style:style style:name="T1" style:family="text">
+   <style:text-properties officeooo:rsid="00138824"/>
+  </style:style>
+  <style:style style:name="T2" style:family="text">
+   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T3" style:family="text">
+   <style:text-properties fo:font-style="italic" officeooo:rsid="00138824" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T4" style:family="text">
+   <style:text-properties fo:font-style="italic" officeooo:rsid="0014c989" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T5" style:family="text">
+   <style:text-properties fo:font-style="italic" officeooo:rsid="001b70b4" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T6" style:family="text">
+   <style:text-properties fo:font-style="italic" officeooo:rsid="001ff444" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T7" style:family="text">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T8" style:family="text">
+   <style:text-properties fo:font-weight="bold" officeooo:rsid="001f27bb" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T9" style:family="text">
+   <style:text-properties fo:font-weight="bold" officeooo:rsid="001e163d" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T10" style:family="text">
+   <style:text-properties fo:font-weight="bold" officeooo:rsid="001ff444" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T11" style:family="text">
+   <style:text-properties fo:font-weight="normal" style:font-weight-asian="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="T12" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#222222" style:font-name="apple-system" fo:font-size="12pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T13" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#222222" style:font-name="apple-system" fo:font-size="12pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T14" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#222222" style:font-name="apple-system" fo:font-size="12pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" loext:padding="0cm" loext:border="none"/>
+  </style:style>
+  <style:style style:name="T15" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#222222" fo:letter-spacing="normal" fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T16" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#222222" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T17" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#222222" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" loext:padding="0cm" loext:border="none"/>
+  </style:style>
+  <style:style style:name="T18" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#992298" style:text-line-through-style="none" style:text-line-through-type="none" style:font-name="apple-system" fo:font-size="12pt" fo:letter-spacing="normal" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" style:text-blinking="false" fo:background-color="#ffffff" loext:char-shading-value="0"/>
+  </style:style>
+  <style:style style:name="T19" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#992298" style:text-line-through-style="none" style:text-line-through-type="none" style:font-name="apple-system" fo:font-size="12pt" fo:letter-spacing="normal" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" style:text-blinking="false" fo:background-color="#ffffff" loext:char-shading-value="0" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T20" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#a626a4" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T21" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#a626a4" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" fo:background-color="#fbfdff" loext:char-shading-value="0" loext:padding-left="0.529cm" loext:padding-right="0.529cm" loext:padding-top="0.45cm" loext:padding-bottom="0.529cm" loext:border="0.06pt solid #e5e8ec"/>
+  </style:style>
+  <style:style style:name="T22" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#383a42" fo:letter-spacing="normal"/>
+  </style:style>
+  <style:style style:name="T23" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#383a42" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T24" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#383a42" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" fo:background-color="#fbfdff" loext:char-shading-value="0" loext:padding-left="0.529cm" loext:padding-right="0.529cm" loext:padding-top="0.45cm" loext:padding-bottom="0.529cm" loext:border="0.06pt solid #e5e8ec"/>
+  </style:style>
+  <style:style style:name="T25" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#383a42" style:font-name="Liberation Serif" fo:letter-spacing="normal"/>
+  </style:style>
+  <style:style style:name="T26" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#50a14f" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T27" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#50a14f" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" fo:background-color="#fbfdff" loext:char-shading-value="0" loext:padding-left="0.529cm" loext:padding-right="0.529cm" loext:padding-top="0.45cm" loext:padding-bottom="0.529cm" loext:border="0.06pt solid #e5e8ec"/>
+  </style:style>
+  <style:style style:name="T28" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#4078f2" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T29" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#4078f2" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" fo:background-color="#fbfdff" loext:char-shading-value="0" loext:padding-left="0.529cm" loext:padding-right="0.529cm" loext:padding-top="0.45cm" loext:padding-bottom="0.529cm" loext:border="0.06pt solid #e5e8ec"/>
+  </style:style>
+  <style:style style:name="T30" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#4078f2" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T31" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#c18401" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T32" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#333333" style:font-name="apple-system" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T33" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:color="#0077aa" style:font-name="Consolas" fo:font-size="12pt" fo:letter-spacing="normal" fo:font-style="normal" fo:font-weight="bold" loext:padding="0cm" loext:border="none"/>
+  </style:style>
+  <style:style style:name="T34" style:family="text">
+   <style:text-properties officeooo:rsid="0014c989"/>
+  </style:style>
+  <style:style style:name="T35" style:family="text">
+   <style:text-properties fo:color="#a626a4" style:font-name="Menlo" fo:font-size="10.5pt"/>
+  </style:style>
+  <style:style style:name="T36" style:family="text">
+   <style:text-properties fo:color="#383a42"/>
+  </style:style>
+  <style:style style:name="T37" style:family="text">
+   <style:text-properties fo:color="#383a42" style:font-name="Menlo" fo:font-size="10.5pt"/>
+  </style:style>
+  <style:style style:name="T38" style:family="text">
+   <style:text-properties fo:color="#4078f2" style:font-name="Menlo" fo:font-size="10.5pt"/>
+  </style:style>
+  <style:style style:name="T39" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif"/>
+  </style:style>
+  <style:style style:name="T40" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T41" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-style="italic" officeooo:rsid="00161096" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T42" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-style="italic" officeooo:rsid="001f27bb" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T43" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" officeooo:rsid="00161096"/>
+  </style:style>
+  <style:style style:name="T44" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" officeooo:rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="T45" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-style="normal" style:font-style-asian="normal" style:font-style-complex="normal"/>
+  </style:style>
+  <style:style style:name="T46" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T47" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" officeooo:rsid="001f27bb"/>
+  </style:style>
+  <style:style style:name="T48" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" officeooo:rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="T49" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-size="9pt" style:font-size-asian="7.84999990463257pt" style:font-size-complex="9pt"/>
+  </style:style>
+  <style:style style:name="T50" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-size="9pt" officeooo:rsid="001ff444" style:font-size-asian="7.84999990463257pt" style:font-size-complex="9pt"/>
+  </style:style>
+  <style:style style:name="T51" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-size="10pt" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="T52" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-size="10pt" officeooo:rsid="001ff444" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="T53" style:family="text">
+   <style:text-properties style:font-name="DejaVu Sans Mono1"/>
+  </style:style>
+  <style:style style:name="T54" style:family="text">
+   <style:text-properties style:font-name="DejaVu Sans Mono1" fo:font-size="10pt" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="T55" style:family="text">
+   <style:text-properties officeooo:rsid="00150416"/>
+  </style:style>
+  <style:style style:name="T56" style:family="text">
+   <style:text-properties officeooo:rsid="00161096"/>
+  </style:style>
+  <style:style style:name="T57" style:family="text">
+   <style:text-properties fo:color="#a0a1a7" style:font-name="Menlo" fo:font-size="10.5pt" fo:letter-spacing="normal" fo:font-style="italic" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="T58" style:family="text">
+   <style:text-properties fo:font-size="10pt" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="T59" style:family="text">
+   <style:text-properties fo:font-size="10pt" style:font-size-asian="8.75pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="T60" style:family="text">
+   <style:text-properties fo:font-size="10pt" officeooo:rsid="001d5300" style:font-size-asian="8.75pt" style:font-size-complex="10pt"/>
+  </style:style>
+  <style:style style:name="T61" style:family="text">
+   <style:text-properties officeooo:rsid="0016c7c6"/>
+  </style:style>
+  <style:style style:name="T62" style:family="text">
+   <style:text-properties style:font-name="Liberation Sans" fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="T63" style:family="text">
+   <style:text-properties fo:font-style="normal" style:font-style-asian="normal" style:font-style-complex="normal"/>
+  </style:style>
+  <style:style style:name="T64" style:family="text">
+   <style:text-properties officeooo:rsid="001b70b4"/>
+  </style:style>
+  <style:style style:name="T65" style:family="text">
+   <style:text-properties officeooo:rsid="001da811"/>
+  </style:style>
+  <style:style style:name="T66" style:family="text">
+   <style:text-properties officeooo:rsid="001d5300"/>
+  </style:style>
+  <style:style style:name="T67" style:family="text">
+   <style:text-properties officeooo:rsid="001e163d"/>
+  </style:style>
+  <style:style style:name="T68" style:family="text">
+   <style:text-properties officeooo:rsid="001f27bb"/>
+  </style:style>
+  <style:style style:name="T69" style:family="text">
+   <style:text-properties officeooo:rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="T70" style:family="text">
+   <style:text-properties fo:font-size="9pt" style:font-size-asian="7.84999990463257pt" style:font-size-complex="9pt"/>
+  </style:style>
+  <style:style style:name="T71" style:family="text">
+   <style:text-properties fo:font-size="9pt" officeooo:rsid="001ff444" style:font-size-asian="7.84999990463257pt" style:font-size-complex="9pt"/>
+  </style:style>
+  <style:style style:name="T72" style:family="text">
+   <style:text-properties fo:font-size="14pt" style:font-size-asian="14pt" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="T73" style:family="text">
+   <style:text-properties fo:color="#ce181e" officeooo:rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="T74" style:family="text">
+   <style:text-properties fo:color="#000000" officeooo:rsid="001ff444"/>
+  </style:style>
+  <style:style style:name="T75" style:family="text">
+   <style:text-properties fo:color="#000000" fo:font-weight="bold" officeooo:rsid="001ff444" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T76" style:family="text">
+   <style:text-properties officeooo:rsid="00214251"/>
+  </style:style>
+  <style:style style:name="T77" style:family="text">
+   <style:text-properties officeooo:rsid="0022f598"/>
+  </style:style>
+  <style:style style:name="T78" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif"/>
+  </style:style>
+  <style:style style:name="T79" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" officeooo:rsid="0022f598"/>
+  </style:style>
+  <style:style style:name="T80" style:family="text">
+   <style:text-properties style:font-name="Liberation Serif" fo:font-style="italic" officeooo:rsid="0022f598" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <text:list-style style:name="L1">
+   <text:list-level-style-number text:level="1" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="0.794cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="2" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="1.995cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="3" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="3.242cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="4" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="4.489cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="5" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="5.736cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="6" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="6.983cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="7" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="8.23cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="8" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="9.478cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="9" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="10.725cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="10" text:style-name="Numbering_20_Symbols" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:space-before="11.972cm" text:min-label-width="0.499cm"/>
+   </text:list-level-style-number>
+  </text:list-style>
+  <style:page-layout style:name="pm1">
+   <style:page-layout-properties fo:page-width="21.001cm" fo:page-height="29.7cm" style:num-format="1" style:print-orientation="portrait" fo:margin-top="1.499cm" fo:margin-bottom="1.499cm" fo:margin-left="2cm" fo:margin-right="1.499cm" style:writing-mode="lr-tb" style:layout-grid-color="#c0c0c0" style:layout-grid-lines="20" style:layout-grid-base-height="0.706cm" style:layout-grid-ruby-height="0.353cm" style:layout-grid-mode="none" style:layout-grid-ruby-below="false" style:layout-grid-print="false" style:layout-grid-display="false" style:footnote-max-height="0cm">
+    <style:footnote-sep style:width="0.018cm" style:distance-before-sep="0.101cm" style:distance-after-sep="0.101cm" style:line-style="solid" style:adjustment="left" style:rel-width="25%" style:color="#000000"/>
+   </style:page-layout-properties>
+   <style:header-style/>
+   <style:footer-style>
+    <style:header-footer-properties fo:min-height="0cm" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0.499cm"/>
+   </style:footer-style>
+  </style:page-layout>
+ </office:automatic-styles>
+ <office:master-styles>
+  <style:master-page style:name="Standard" style:page-layout-name="pm1">
+   <style:footer>
+    <text:p text:style-name="P1"><text:page-number text:select-page="current">5</text:page-number></text:p>
+   </style:footer>
+  </style:master-page>
+ </office:master-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+   <office:forms form:automatic-focus="false" form:apply-design-mode="false"/>
+   <text:sequence-decls>
+    <text:sequence-decl text:display-outline-level="0" text:name="Illustration"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Table"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
+   </text:sequence-decls>
+   <text:p text:style-name="P43">NIX</text:p>
+   <text:p text:style-name="P48">Разница между bin, sbin, usr/bin, usr/sbin</text:p>
+   <text:p text:style-name="P18"><text:span text:style-name="T60">(</text:span><text:span text:style-name="T59">https://habr.com/ru/post/143614/</text:span><text:span text:style-name="T60">)</text:span></text:p>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P20">30 ноября 2010 года Дэвид Коллиер (David Collier) писал:</text:p>
+   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P81">Я заметил, что в busybox ссылки разложены по этим четырём директориям.<text:line-break/>Есть ли какое-то простое правило, чтобы определить, в какой директории какая из ссылок должна лежать… К примеру, kill лежит в /bin, а killall — в /usr/bin… Я не вижу никакой логики в таком разделении. </text:p>
+   <text:p text:style-name="P80"/>
+   <text:p text:style-name="P20">Вы, наверное, знаете, что Кен Томпсон и Дэннис Ритчи создали <text:span text:style-name="T2">Unix</text:span> на <text:span text:style-name="T2">PDP-7</text:span> в 1969-ом. Так вот, примерно в 1971 они проапгрейдились до <text:span text:style-name="T2">PDP-11</text:span> с парой дисков <text:span text:style-name="T2">RK0</text:span>5 (по 1,5 мегабайта каждый).<text:line-break/><text:line-break/>Когда операционная система разрослась и перестала помещаться на первом диске (на котором была расположена корневая ФС), они перенесли часть на второй, где располагались домашние директории (поэтому точка монтирования называлась <text:span text:style-name="T2">/usr</text:span> — от слова <text:span text:style-name="T2">user</text:span>). Они продублировали там все необходимые директории ОС <text:span text:style-name="T2">(/bin, /sbin, /lib, /tmp ...)</text:span> и складывали файлы на новый диск, потому что на старом кончилось место. Потом у них появился третий диск, они примонтировали его в директории /home и перенесли туда домашние директории пользователей, чтобы ОС могла занять всё оставшееся место на двух дисках, а это были целых три мегабайта (огого!). </text:p>
+   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P20">Разумеется, им пришлось ввести правило, что «когда операционная система загружается, она должна быть в состоянии примонтировать второй диск в директорию /usr, поэтому не надо класть программы типа mount на второй диск в<text:span text:style-name="T2"> /usr</text:span>, а то получим проблему курицы и яйца». Вот так просто. И это относилось к <text:span text:style-name="T2">Unix V6</text:span> 35 лет назад.</text:p>
+   <text:p text:style-name="P20"><text:line-break/>Разделение /bin и /usr/bin (и всех подобных директорий) — это последствие тех событий, деталь реализации из 70-х, которая до сих пор, в течение десятилетий, копировалась бюрократами. Они никогда не задавали вопрос почему, они просто делали так. Это разделение перестало иметь смысл ещё до того, как Linux был создан, по нескольким причинам:</text:p>
+   <text:p text:style-name="P77"/>
+   <text:p text:style-name="P20"><text:tab/>1. При загрузке используется <text:span text:style-name="T2">initrd</text:span> или <text:span text:style-name="T2">initramfs</text:span>, который берёт на себя проблемы типа <text:span text:style-name="T2">«этот файл нам нужен раньше чем тот»</text:span>. Таким образом, у нас уже есть временная файловая система, которая используется для загрузки всего остального.</text:p>
+   <text:list xml:id="list2107287914" text:style-name="L1">
+    <text:list-header>
+     <text:p text:style-name="P83"/>
+    </text:list-header>
+   </text:list>
+   <text:p text:style-name="P20"><text:span text:style-name="T66"><text:tab/>2. </text:span>Разделяемые библиотеки (которые были добавлены в <text:span text:style-name="T2">Unix</text:span> ребятами из <text:span text:style-name="T2">Berkley</text:span>) не позволяют вам независимо менять содержимое <text:span text:style-name="T2">/lib</text:span> и <text:span text:style-name="T2">/usr/lib</text:span>. Эти две части должны соответствовать друг другу, иначе они не будут работать. Этого не происходило в 1974-ом, поскольку тогда у них была некоторая независимость из-за статической линковки.</text:p>
+   <text:p text:style-name="P76"/>
+   <text:p text:style-name="P20"><text:span text:style-name="T66"><text:tab/>3. </text:span>Дешёвые жёсткие диски преодолели барьер в 100 мегабайт где-то в 1990-ом и примерно в то же время появились программы для изменения размера разделов (partition magic 3.0 вышла в 1997-ом).</text:p>
+   <text:p text:style-name="P20"><text:soft-page-break/>Разумеется, поскольку разделение есть, некоторые люди придумали правила, которые его оправдывают. Типа, корневой раздел нужен для всяких общих штучек ОС, а в <text:span text:style-name="T2">/usr</text:span> надо класть свои локальные файлы. Или в / помещают то, что распространяет AT&amp;T, а в /usr — то, что твой дистрибутив, <text:span text:style-name="T2">IBM AIX</text:span>, или <text:span text:style-name="T2">Dec Ultrix</text:span>, или <text:span text:style-name="T2">SGI Irix</text:span> добавили, а в <text:span text:style-name="T2">/usr/loca</text:span>l лежат файлы, специфичные для твоей системы. А потом кто-то решил, что <text:span text:style-name="T2">/usr/local</text:span> — это не подходящее место, чтобы туда устанавливать новый софт, так что давайте ещё добавим /<text:span text:style-name="T2">opt</text:span>! Не удивлюсь, если появится ещё и <text:span text:style-name="T2">/opt/loca</text:span>l… </text:p>
+   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P20">Разумеется, за 30 лет из-за такого разделения появлялись и исчезали всякие интересные специфичные для отдельных дистрибутивов правила. Например, «<text:span text:style-name="T2">/tmp</text:span> очищается при перезагрузке, а <text:span text:style-name="T2">/usr/tmp</text:span> — нет». (И в <text:span text:style-name="T2">Ubuntu</text:span> /<text:span text:style-name="T2">usr/tmp</text:span> нет в принципе, а в <text:span text:style-name="T2">Gentoo /usr/tmp</text:span> — это символическая ссылка на /var/tmp, на который теперь распространяется то правило, и он не очищается при перезагрузке. Да, это всё было ещё до <text:span text:style-name="T2">tmpfs</text:span>. А ещё бывает, что корневая ФС доступна только на чтение, и тогда в /usr тоже не надо ничего писать, а надо писать в <text:span text:style-name="T2">/va</text:span>r. Или в / в основном нельзя писать, не считая того, что в /etc, которую иногда пытались перенести в <text:span text:style-name="T2">/var</text:span>...)<text:line-break/><text:line-break/>Бюрократы вроде <text:span text:style-name="T2">Linux Foundation</text:span> (которые поглотили <text:span text:style-name="T2">Free Standards Group</text:span> во время расширения годы назад) с радостью документируют и усложняют эти правила, даже не пытаясь понять, почему они появились. Они не догадываются, что Кен и Дэннис просто перенесли часть ОС в их домашнюю директорию, из-за того, что диск <text:span text:style-name="T2">RK05</text:span> на <text:span text:style-name="T2">PDP-11</text:span> был слишком мал.<text:line-break/><text:line-break/>Я практически уверен, что в <text:span text:style-name="T2">busybox</text:span> просто помещает файлы так же, как это исторически сложилось. Нет никакой реальной причины делать так до сих пор. Лично я просто делаю /bin, <text:span text:style-name="T2">/sbin</text:span> и <text:span text:style-name="T2">/lib</text:span> ссылками на аналогичные директории в <text:span text:style-name="T2">/usr</text:span>. Ведь люди, которые работают со встраиваемым софтом, стараются разбираться и упрощать…</text:p>
+   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P47">Некоторые <text:span text:style-name="T68">snippets </text:span>для github</text:p>
+   <text:p text:style-name="P23"><text:span text:style-name="T10">Скачать репозиторий</text:span><text:span text:style-name="T69"> из облака (с </text:span><text:span text:style-name="T6">www.github.com</text:span><text:span text:style-name="T69">):</text:span></text:p>
+   <text:p text:style-name="P22"/>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="T69">$ git clone git://github.com/USER_NAME/REPO_NAME</text:span></text:p>
+   <text:p text:style-name="P31"/>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="T7">Сделать алиас на другое имя</text:span> накоторо репозитория. <text:span text:style-name="T69">Что-бы работали пуш и пулл нужно что-бы алиас ссылался на </text:span><text:span text:style-name="T6">https:</text:span></text:p>
+   <text:p text:style-name="P11"/>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="T69">$ cd REPO_NAME</text:span></text:p>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="T69">$ git remote add ALIAS_NAME https://github.com/USER_NAME/REPO_NAME</text:span></text:p>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="P16"><text:span text:style-name="T8">Фиксация изменений</text:span><text:span text:style-name="T68"> (или д</text:span>обавление коммита<text:span text:style-name="T68">)</text:span>:</text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="T67">$ git commit -am «COMMIT_NAME»</text:span></text:p>
+   <text:p text:style-name="P29"><text:tab/><text:span text:style-name="T67">$ git push REPO_NAME master</text:span></text:p>
+   <text:p text:style-name="P29"/>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="T8">Отмена последнего коммита</text:span>, <text:span text:style-name="T68">например</text:span> когда вы делаете коммит слишком рано, забыв добавить какие-то файлы, или напутали с комментарием к коммиту. Если вам хотелось бы сделать этот коммит ещё раз, вы можете выполнить commit с опцией <text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">--amend</text:span></text:span>:</text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Code"><text:soft-page-break/><text:span text:style-name="Source_20_Text"><text:tab/>$ git commit --amend</text:span></text:p>
+   <text:p text:style-name="Text_20_body"/>
+   <text:p text:style-name="P82">Для примера, если после совершения коммита вы осознали, что забыли проиндексировать изменения в файле, которые хотели добавить в этот коммит, вы можете сделать что-то подобное:</text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/>$ git commit -m &apos;initial commit&apos;</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/>$ git add forgotten_file</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/>$ git commit —amend</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P82">Все три команды вместе дают один коммит — второй коммит заменяет результат первого.</text:p>
+   <text:p text:style-name="P20"><text:span text:style-name="T7">Обновление </text:span><text:span text:style-name="T9">локального репозитория</text:span><text:span text:style-name="T67">:</text:span></text:p>
+   <text:p text:style-name="P20"><text:tab/></text:p>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="T67">$ cd REPO_NAME</text:span></text:p>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="T67">$ git pull</text:span></text:p>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="T7">Для того чтобы начать отслеживать</text:span> (добавить под версионный контроль) новый файл, используется команда <text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">git add</text:span></text:span>. Чтобы начать отслеживание файла <text:span text:style-name="T42">FILE_NAME</text:span>, вы можете выполнить следующее:</text:p>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="Code"><text:tab/><text:span text:style-name="Source_20_Text">$ git add </text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T68">FILE_NAME</text:span></text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">Основной инструмент, используемый для определения, </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T46">какие файлы в каком состоянии находятся</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> — это команда </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">git</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">status</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">. Если вы выполните эту команду сразу после клонирования, вы увидите что-то вроде этого:</text:span></text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/>$ git status</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/># On branch master</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/>nothing to commit, working directory clean</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">Это означает, что у вас чистый рабочий каталог, другими словами — в нём нет отслеживаемых изменённых файлов. </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">Git</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> также не обнаружил неотслеживаемых файлов, в противном случае они бы были перечислены здесь. И наконец, команда сообщает вам на какой ветке (</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">branch</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">) вы сейчас находитесь. Пока что это всегда ветка </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">master</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> — это ветка по умолчанию; в этой главе это не важно. В следующей главе будет подробно рассказано про ветки и ссылки.</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T46">Для того чтобы удалить файл</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> из </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">Git&apos;а</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">, вам необходимо удалить его из отслеживаемых файлов (точнее, удалить его из вашего индекса) а затем выполнить коммит. Это позволяет сделать команда </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">git rm</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">, которая также удаляет файл из вашего рабочего каталога, так что вы в следующий раз не увидите его как “неотслеживаемый”.</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"><text:tab/>$ git </text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T68">rm FILE_NAME</text:span></text:span></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T47"/></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T47">У</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">далить файл </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T47">FILE_NAME </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">из индекса, оставив его при этом в рабочем каталоге:</text:span></text:span></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"><text:tab/>$ git rm --cached </text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T68">FILE_NAME</text:span></text:span></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P30"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P87"><text:soft-page-break/><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79">Испарвление ошибки с добавлением нового коммита в удалённый репозиторий из неактуального локального репозитория.</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"><text:tab/></text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79">При попытке сделать новый коммит в удалённый репозиторий из локального и выполнении </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T80">$ git push</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79"> выпадает ошибка. Истправляется так:</text:span></text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T77">$ </text:span></text:span><text:span text:style-name="Source_20_Text">git fetch --all</text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T77">$ </text:span></text:span><text:span text:style-name="Source_20_Text">git reset --hard origin/&lt;branch_name&gt; </text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T77">(например master)</text:span></text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="P85"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T80">$ git fetch</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79"> — скачивает последнее из удалённого репозитория не совершая попыток смержить или заменить что либо.</text:span></text:span></text:p>
+   <text:p text:style-name="P85"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79"/></text:span></text:p>
+   <text:p text:style-name="P85"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T80">$ git reset</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79"> — сбрасывает ветку master к тому, что только что было подобрано (fetch). Опция --h</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T80">ard</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79"> заменяет все файлы в рабочем дереве каталогов на файлы, имеющиеся в </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T80">origin/master</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79">.</text:span></text:span></text:p>
+   <text:p text:style-name="P85"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T79"/></text:span></text:p>
+   <text:p text:style-name="P49"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T48">Символические ссылки</text:span></text:span></text:p>
+   <text:p text:style-name="P17"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T52">(</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T51">https://codebeer.ru/simvolicheskie-ssylki-v-linux/</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T52">)</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="Strong_20_Emphasis"><text:span text:style-name="T39">Жесткая ссылка</text:span></text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> – это запись, которая указывает на дескриптор inode. Жесткие ссылки можно создавать только для файлов и только в пределах одной файловой системы. Перемещение или изменении имени исходного файла, не оказывает влияния на работоспособность жесткой ссылки.</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="Strong_20_Emphasis"><text:span text:style-name="T39">Символическая ссылка</text:span></text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39"> — запись, которая указывает на имя файла или директории. Символические ссылки можно создавать для каталогов и объектов, которые расположены в разных файловых системах. Если переименовать или переместить файл в другую директорию, символическая ссылка потеряет работоспособность.</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Subsection"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">Создание жесткой ссылки в Linux</text:span></text:span></text:p>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T45">Чтобы создать жесткую ссылку в </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">Linux</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T45">,используется команда </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">ln</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T45">:</text:span></text:span></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"/></text:p>
+   <text:p text:style-name="Code"><text:span text:style-name="Source_20_Text"><text:tab/># Синтаксис команды</text:span></text:p>
+   <text:p text:style-name="Code"><text:tab/>ln -s &lt;цель&gt; &lt;ссылка&gt;</text:p>
+   <text:p text:style-name="Code"><text:tab/># Создать жесткую ссылку в Linux</text:p>
+   <text:p text:style-name="Code"><text:tab/>ln /home/file /link</text:p>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="P21">Если попытаться создать жесткую ссылку для каталога и файла за пределами одной файловой системы, то вы получите ошибку.</text:p>
+   <text:p text:style-name="P21"/>
+   <text:p text:style-name="Subsection">Создание символической ссылки в Linux</text:p>
+   <text:p text:style-name="Text_20_body">Чтобы создать символическую ссылку в <text:span text:style-name="T40">Linux</text:span>, вместе с командой <text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">ln</text:span></text:span>, необходимо использовать параметр <text:span text:style-name="Source_20_Text"><text:span text:style-name="T40">-s</text:span></text:span>:</text:p>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="Code"><text:tab/># Синтаксис команды</text:p>
+   <text:p text:style-name="Code"><text:tab/>ln -s &lt;цель&gt; &lt;ссылка&gt;</text:p>
+   <text:p text:style-name="Code"><text:tab/># Создать символическую ссылку в Linux</text:p>
+   <text:p text:style-name="Code"><text:tab/>ln -s /home/file /link</text:p>
+   <text:p text:style-name="Code"><text:tab/>ln -s /home/dir /home/link</text:p>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="Text_20_body"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T39">При создании символических ссылок, имена файлов могут быть как абсолютными, так и относительными.</text:span></text:span></text:p>
+   <text:p text:style-name="P21"><text:soft-page-break/></text:p>
+   <text:p text:style-name="P86">Некоторые команды</text:p>
+   <text:p text:style-name="P84">Выключить компьютер:</text:p>
+   <text:p text:style-name="P88"><text:tab/><text:span text:style-name="T69">$ </text:span><text:span text:style-name="T75">sudo</text:span><text:span text:style-name="T69"> shundown -h now</text:span></text:p>
+   <text:p text:style-name="P88"/>
+   <text:p text:style-name="P85">Лист всех файлов в каталоге (включая скрытые) <text:span text:style-name="T76">с размерами файлов </text:span>в человекочитаемом формате:</text:p>
+   <text:p text:style-name="P88"><text:tab/><text:span text:style-name="T69">$ </text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T7">ls</text:span></text:span><text:span text:style-name="Source_20_Text"> -a -l *</text:span></text:p>
+   <text:p text:style-name="P88"/>
+   <text:p text:style-name="Code"/>
+   <text:p text:style-name="P16"><text:tab/></text:p>
+   <text:p text:style-name="P28"/>
+   <text:p text:style-name="P28"/>
+  </office:text>
+ </office:body>
+</office:document>

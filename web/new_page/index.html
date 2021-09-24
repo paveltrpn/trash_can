@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Note Book</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/top_bottom.js" defer></script>
+        <link rel="stylesheet" href="css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="js/prism.js"></script>
+
+        <div class="container">
+            
+            <div id="top" class="menu"></div> <!-- Сюда вставляется код заголовка -->
+    
+            <div class="A4">
+            
+            <div class="record">
+            <!-- 22.11.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">22.11.2020</span>
+            </p>
+
+            <p class="plain">
+                <b>Вот что выдал мастер установки VMWare tools for linux:</b><br>
+                <br>
+                To enable advanced X features (e.g., guest resolution fit, drag and drop, and 
+                file and text copy/paste), you will need to do one (or more) of the following: <br>
+                1. Manually start //usr/bin/vmware-user<br>
+                2. Log out and log back into your desktop session<br>
+                3. Restart your X session.<br>
+            </p>
+            </div>
+
+            <div class="record">
+            <!-- 04.10.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">04.10.2020</span>
+            </p>
+
+            <p class="plain">
+                <b>Четыре упражнения для рисунка.</b><br>
+                <a href="https://www.youtube.com/watch?v=KyO0dZuMAqw">https://www.youtube.com/watch?v=KyO0dZuMAqw</a>
+            </p>
+
+            <div style="text-align: center;">
+                <img src="assets/draw_lessions.png" style="width: 68%;"></img>
+            </div>
+            </div>
+
+            <div class="record">
+            <!-- 06.09.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">06.09.2020</span>
+            </p>
+
+            <p class="plain">
+                <b>Node.js конфигурация</b><br>
+                Вы можете запустить <b>npm list -g</b> чтобы увидеть, где установлены глобальные библиотеки. 
+            </P>
+
+            <p class="plain">
+                <b>Смена директории глобальной установки пакетов node.js</b> 
+            </P>
+
+            <p class="plain">
+                В Windows, глобальная директория установки - это директория конкретного user's profile:
+            </p>
+
+            <ul class="plain">
+                <li>%USERPROFILE%\AppData\Roaming\npm</li>
+                <li>%USERPROFILE%\AppData\Roaming\npm-cache</li>
+            </ul>
+
+            <p class="plain">
+                <b>WARNING:</b> If you're doing timed events or other automation as a different user, make sure you run npm install as that user. 
+                Some modules/utilities should be installed globally.<br>
+                <b>INSTALLER BUGS:</b> You may have to create these directories or add the ...\npm directory to your users path yourself.
+            </p>
+
+            <p class="plain">
+                To change <b>the "global" location for all users</b> to a more appropriate shared global location %ALLUSERSPROFILE%\(npm|npm-cache) (do this as an administrator):
+            </p>
+           
+            <ul class="plain">
+                Create an [NODE_INSTALL_PATH]\etc\ directory
+                this is needed before you try npm config --global ... actions
+                Create the global (admin) location(s) for npm modules:
+                <li>C:\ProgramData\npm-cache - npm modules will go here</li>
+                <li>C:\ProgramData\npm - binary scripts for globally installed modules will go here</li>
+                <li>C:\ProgramData\npm\node_modules - globally installed modules will go here</li>
+                Set the permissions appropriately:
+                <li>administrators: modify</li>
+                <li>authenticated users: read/execute</li>
+                <li>Set global configuration settings (Administrator Command Prompt)</li>
+                <li>npm config --global set prefix "C:\ProgramData\npm"</li>
+                <li>npm config --global set cache "C:\ProgramData\npm-cache"</li>
+                <li>Add C:\ProgramData\npm to your System's Path environment variable</li>
+            </ul>
+
+            <p class="plain">
+                If you want to change <b>your user's "global" location</b> to %LOCALAPPDATA%\(npm|npm-cache) path instead:
+            </p>
+
+            <ul class="plain">
+                The necessary directories:
+                <li>C:\Users\YOURNAME\AppData\Local\npm-cache - npm modules will go here</li>
+                <li>C:\Users\YOURNAME\AppData\Local\npm - binary scripts for installed modules will go here</li>
+                <li>C:\Users\YOURNAME\AppData\Local\npm\node_modules - globally installed modules will go here</li>
+                Configure npm:
+                <li>npm config set prefix "C:\Users\YOURNAME\&shy;AppData\&shy;Local\npm"</li>
+                <li>npm config set cache "C:\Users\YOURNAME\&shy;AppData\&shy;Local\npm-cache"</li>
+                Add the new npm path to your environment's PATH.
+                <li>setx PATH "%PATH%;C:\Users\YOURNAME\&shy;AppData\&shy;Local\npm"</li>
+            </ul>
+
+            <pre>
+    <code class="language-shell">CD %DEVTOOLS%:
+    mkdir nodejs_global
+    mkdir npm-cache
+    mkdir npm
+    mkdir npm\node_modules
+    npm config set prefix "E:\Devtools\nodejs_global\npm"
+    npm config set cache "E:\Devtools\nodejs_global\npm-cache"
+    setx PATH "%PATH%;E:\Devtools\nodejs_global\npm"</code></pre>
+
+            <p class="plain">
+                <b>Установка для Node.js средств сборки - Python и Visual Studio Build tools</b>
+            </p>
+
+            <pre>
+    <code class="language-shell">npm install --global --production windows-build-tools</code></pre>
+            </div>
+                
+            <div class="record">
+            <!-- 05.09.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">05.09.2020</span> Шпаргалка по хоткеям в VSCode
+            </p>
+
+            <div style="text-align: center;">
+                <img src="assets/vscode_hotkeys.png" style="width: 68%;"></img>
+            </div>
+            </div>
+
+            <div class="record">
+            <!-- 03.09.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">03.09.2020</span> Как сделать перенос тегов в коде VS?
+            </p>
+
+            <p class="plain">Встроенный emmet сделает свое дело:</p>
+            <ol class="plain">
+                <li>Выберите текст (необязательно)</li>
+                <li>Откройте командную палитру (обычно <kbd>Ctrl</kbd>+ <kbd>Shift</kbd>+ <kbd>P</kbd>)</li>
+                <li>Выполнить <code>Emmet: Wrap with Abbreviation</code></li>
+                <li>Введите тег <code>div</code>(или аббревиатуру <code>.wrapper&gt;p</code>)</li>
+                <li>Ударить <kbd>Enter</kbd></li>
+            </ol>
+
+            <p class="plain">Команду можно назначить связыванию клавиш.</p>
+            <p class="plain"><a rel="nofollow noreferrer" target="_blank" href="https://i.stack.imgur.com/UQgrQ.gif"><img src="https://i.stack.imgur.com/UQgrQ.gif" alt="введите описание изображения здесь"></a></p>
+            <p class="plain">Эта вещь даже поддерживает передачу аргументов:</p>
+
+            <pre class="line-numbers">
+    <code class="language-javascript">{
+        "key": "ctrl+shift+9",
+        "command": "editor.emmet.action.wrapWithAbbreviation",
+        "when": "editorHasSelection",
+        "args": {
+            "abbreviation": "span"
+        }
+    },</code></pre>
+
+            <p class="plain">Используйте это так:</p>
+
+            <ul class="plain">
+                <li><code>span.myCssClass</code></li>
+                <li><code>span#myCssId</code></li>
+                <li><code>b</code></li>
+                <li><code>b.myCssClass</code></li>
+            </ul>
+            </div>
+
+            <div class="record">
+                <!-- 28.08.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">28.08.2020</span> Установка и использование CMake под Windows.
+            </p>
+
+            <p class="plain">
+                На примере сборки libtga (<i>https://github.com/madebr/libtga</i>) можно показать процесс установки и настройки cmake.
+                Скачиваем, собственно, сам репозиторий:
+            </p>
+
+            <pre class="line-numbers">
+                <code class="language-bash">E:\
+                cd Devtools
+                git clone git://github.com/madebr/libtga</code></pre>
+
+            <p class="plain">
+                Скачиваем cmake - https://cmake.org/install/>. Устанавоиваем как обычно. CMake может использовать множество компиляторов 
+                для сборки проекта ($ cmake -G "cfg_name"), по умолчанию cmake использут для сборки nmake и, соответсвенно, создаёт 
+                Makefile для него. Мы будем использовать MinGW-W64, имя конфига - "MinGW Makefiles" (cmake -G "MinGW Makefiles"). 
+                Скачиваем MinGW-W64 - http://mingw-w64.org/&shy;doku.php/download, там выбираем "MingW-W64-builds" (хоть в таблице и напасано 
+                версия gcc - 7.0.0, в дистрибутиве будет версия 8.1.0). Устанавливаем обычно с такими параметрами:
+            </p>
+
+            <ul class="plain">
+                <li>Version - 8.1.0;</li> 
+                <li>Architecture - X86_64;</li>
+                <li>Threads - Posix;</li>
+                <li>Exception - Dwarf;</li>
+                <li>Build version - 0</li>
+            </ul>
+
+            <p class="plain">
+                После установки прописываем все необходимые переменные среды (если их ещё нет), в поиске Windows "Система" - "Дополнительные 
+                параметры системы" - "Параметры среды":
+            </p>
+            
+            <ul class="plain">
+                <li>Добавляем в переменную %path% путь к папке bin компилятора (например "E:\&shy;Devtools\&shy;mingw-w64\&shy;mingw64\&shy;bin")</li> 
+                <li>Путь к cmake - "E:\Devtools\cmake-3.18.2-win64-x64\bin" </li>
+                <li>Переменную для cmake - %CC% = "E:\Devtools\mingw-w64\mingw64\bin\gcc" </li> 
+                <li>Переменную для cmake - %CXX% = "E:\Devtools\mingw-w64\mingw64\bin\g++" </li>
+            </ul>
+            
+            <p class="plain">
+                Добавляем для текущего пользователя (хотя можно продублировать и для администратора).
+                Далее в консоли. Создеём папку build (название не имеет значения) в папке со скаченым репозиторием libtga, конфигурируем и собираем:
+            </p> 
+
+            <pre class="line-numbers">
+    <code class="language-bash">E:/
+    cd Devtools/libtga
+    mkdir build
+    cd build
+    cmake -G "MinGW Makefiles" ../
+    mingw32-make</code></pre>
+
+            <p class="plain">
+                В сети рекоемндуют использовать TDM-GCC, там версия gcc старше (на 01.09.20 там gcc 9.2.0), но с ним не получилось собрать ни одного проекта.
+                С ключом -std=c++-17 код компилируется и собирается, но при запуске программа не выдаёт никаких сообщений и завершается.<br>
+                <br>
+                tgalib использует функцию bzero() для заполнения нулями аллоцированой области памяти, но она DEPRICATED и вместо неё надо использовать memset(), 
+                либо проект, использующий либу не будет линковаться. Написал небольшой патч: в "libtga/include/tga.h" дописываем:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">#define bzero(b,len) (memset((b), '\0', (len)), (void) 0)  
+    #define bcopy(b1,b2,len) (memmove((b2), (b1), (len)), (void) 0)</code></pre>   
+
+            </div>
+
+            <div class="record">
+            <!-- 01.01.2020 -->
+            <p class="subsection" style="margin-left: 0.5em;">
+                <span class="date">01.01.2020</span> Как обновить Node.js до последней версии?
+            </p>
+
+            <p class="small">
+                (https://devacademy.ru/recipe/kak-obnovit-node-js-do-poslednei-versii)
+            </p>
+
+            <p class="plain">
+                Установим Node.js и npm:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo apt-get install nodejs
+    sudo apt-get install npm</code></pre>
+
+            <p class="plain">
+                1. Нужно очистить NPM кеш:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo npm cache clean -f</code></pre>
+ 
+            <p class="plain">
+                2. Установить интерактивный менеджер n
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo npm install -g n</code></pre>
+
+            <p class="plain">
+                Эта библиотека позволяет управлять версиями node.js<br>
+                <br>
+                3. Теперь можно установить последнюю версию node.js:  
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">Последняя стабильная версия
+    sudo n stable
+    Последняя релиз
+    sudo n latest</code></pre>
+
+
+            <p class="plain">
+                Установим TypeScript, и обновим до последней версии:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo npm install -g typescript
+    npm update -g typescript</code></pre>
+
+            </div>
+
+            </div>
+    
+            <!-- свойства в style смещают этот блок div вниз страницы -->
+            <div div id="bottom" class="menu">   
+            </div>
+            
+        </div>
+    </body>
+</html>

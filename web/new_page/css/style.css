@@ -1,0 +1,120 @@
+
+body {
+    font-family: 'Roboto', 'Droid Sans', 'Ubuntu Sans', sans-serif; /* Семейство шрифтов */
+    font-size: 14pt; /* Размер основного шрифта в пунктах  */
+    background: white; 
+    color: #333; /* Цвет основного текста */
+
+    margin: 0px; 
+    
+    line-height: 1.8em; /* Высота строки */
+    letter-spacing: 0.07em; /* Зазор между буквами */
+
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin: 0 0% 0 0%;
+}
+
+.A4 {  
+    max-width: 1080px;
+    margin: 0 auto;
+    background: white;
+    flex-grow: 1;
+}
+
+.record {
+    background: rgb(233, 233, 233);
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.record > a {
+    font-family: monospace;
+    font-size: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.record > a:hover {
+    color: red
+}
+
+/* Основной текст */
+.plain {
+    text-align: justify; /* Выравнивание по ширине */
+    margin-left: 60px; /* Отступ слева в пикселах */
+    margin-right: 60px; /* Отступ справа в пикселах */
+    margin-top: 0px; 
+    margin-bottom: 0px;
+    word-break: break-word;
+}
+
+/* Заголовок темы или раздела */
+.section {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center; 
+    margin-left: 60px;
+    margin-right: 60px;
+    word-break: break-all;
+}
+
+/* Заголовок подраздела */
+.subsection {
+    word-break: break-word;
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: justify; 
+    margin-left: 60px; 
+    margin-right: 60px; 
+}
+
+.date {
+    font-size: 14pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 2px solid black;
+}
+/* 
+    Уменьшеный текст. Для комментариев, ссылок (не активных)
+    на исходные материалы и т.д. 
+*/
+.small {
+    font-size: 10pt;
+    text-align: center;
+    margin-left: 60px;  
+    margin-right: 60px; 
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    background-color:#333;
+}
+
+@media print {
+    body, page {
+        margin: 0;
+        box-shadow: 0;
+        font-size: 14pt;
+    }
+    /* Исключем из печати верхнее и нижнее меню */
+    .menu, .menu *
+    {
+        display: none !important;
+    }
+}

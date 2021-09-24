@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Некоторые комманды Linux</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->  
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                Некоторые комманды Linux
+            </p>
+
+            <p class="plane">
+                Выключить компьютер:
+            </p>
+
+            <pre>
+                <code class="language-shell">$ sudo shundown -h now</code></pre>
+
+            <p class="plane">
+                Лист всех файлов в каталоге (включая скрытые) с размерами файлов в 
+                человекочитаемом формате:
+            </p>
+
+            <pre>
+                <code class="language-shell">$ ls -a -l *</code></pre>
+
+            <p class="plane">
+                Поиск пакета в репозиториях:
+            </p>
+
+            <pre>
+                <code class="language-shell">$ sudo apt-cache search glut</code></pre>
+
+            <p class="plane">
+                Проверка версии пакета в репозиториях. Можно сделать с помощью apt-cache или apt-get.
+            </p>
+
+            <pre>
+                <code class="language-shell">$ sudo apt-cache show "name" | grep -i version 
+                или
+                $ sudo apt-cache policy "name"
+                с помощью ключа -s - симуляция установки
+                $ sudo apt-get -s install mc
+                </code></pre>            
+
+            <br>
+        </div>
+    </body>
+</html>

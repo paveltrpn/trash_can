@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+ <semantics>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mi>d</mi>
+      <mn>2</mn>
+     </msup>
+     <mi>U</mi>
+    </mrow>
+    <msup>
+     <mi mathvariant="italic">dt</mi>
+     <mn>2</mn>
+    </msup>
+   </mfrac>
+   <mo stretchy="false">=</mo>
+   <mrow>
+    <mfrac>
+     <mrow>
+      <msup>
+       <mi>d</mi>
+       <mn>2</mn>
+      </msup>
+      <mi>U</mi>
+     </mrow>
+     <msup>
+      <mi mathvariant="italic">dx</mi>
+      <mn>2</mn>
+     </msup>
+    </mfrac>
+    <mo stretchy="false">+</mo>
+    <mfrac>
+     <mrow>
+      <msup>
+       <mi>d</mi>
+       <mn>2</mn>
+      </msup>
+      <mi>U</mi>
+     </mrow>
+     <msup>
+      <mi mathvariant="italic">dy</mi>
+      <mn>2</mn>
+     </msup>
+    </mfrac>
+   </mrow>
+  </mrow>
+  <annotation encoding="StarMath 5.0">{ d^2 U } over { dt^2 } = { d^2 U } over { dx^2 } + { d^2 U } over { dy^2 }</annotation>
+ </semantics>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+ <semantics>
+  <mrow>
+   <mrow>
+    <mi>U</mi>
+    <mrow>
+     <mo fence="true" stretchy="false">(</mo>
+     <mrow>
+      <mrow>
+       <mi>x</mi>
+       <mi>,</mi>
+       <mi>y</mi>
+      </mrow>
+     </mrow>
+     <mo fence="true" stretchy="false">)</mo>
+    </mrow>
+    <mi>≈</mi>
+   </mrow>
+   <mrow>
+    <mi>U</mi>
+    <mrow>
+     <mo fence="true" stretchy="false">[</mo>
+     <mrow>
+      <mi>i</mi>
+     </mrow>
+     <mo fence="true" stretchy="false">]</mo>
+    </mrow>
+    <mrow>
+     <mo fence="true" stretchy="false">[</mo>
+     <mrow>
+      <mi>j</mi>
+     </mrow>
+     <mo fence="true" stretchy="false">]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <annotation encoding="StarMath 5.0">{ U(x,y) %Ux2248 }{ U[i][j] }</annotation>
+ </semantics>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+ <semantics>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mi>d</mi>
+      <mn>2</mn>
+     </msup>
+     <mi>U</mi>
+    </mrow>
+    <msup>
+     <mi mathvariant="italic">dy</mi>
+     <mn>2</mn>
+    </msup>
+   </mfrac>
+   <mi>≈</mi>
+   <mrow>
+    <mi>U</mi>
+    <mrow>
+     <mo fence="true" stretchy="false">[</mo>
+     <mrow>
+      <mi>i</mi>
+     </mrow>
+     <mo fence="true" stretchy="false">]</mo>
+    </mrow>
+    <mrow>
+     <mrow>
+      <mo fence="true" stretchy="false">[</mo>
+      <mrow>
+       <mrow>
+        <mi>j</mi>
+        <mo stretchy="false">+</mo>
+        <mn>1</mn>
+       </mrow>
+      </mrow>
+      <mo fence="true" stretchy="false">]</mo>
+     </mrow>
+     <mo stretchy="false">−</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo stretchy="false">∗</mo>
+      <mi>U</mi>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mo fence="true" stretchy="false">[</mo>
+     <mrow>
+      <mi>i</mi>
+     </mrow>
+     <mo fence="true" stretchy="false">]</mo>
+    </mrow>
+    <mrow>
+     <mrow>
+      <mo fence="true" stretchy="false">[</mo>
+      <mrow>
+       <mi>j</mi>
+      </mrow>
+      <mo fence="true" stretchy="false">]</mo>
+     </mrow>
+     <mo stretchy="false">+</mo>
+     <mi>U</mi>
+    </mrow>
+    <mrow>
+     <mo fence="true" stretchy="false">[</mo>
+     <mrow>
+      <mi>i</mi>
+     </mrow>
+     <mo fence="true" stretchy="false">]</mo>
+    </mrow>
+    <mrow>
+     <mo fence="true" stretchy="false">[</mo>
+     <mrow>
+      <mrow>
+       <mi>j</mi>
+       <mo stretchy="false">−</mo>
+       <mn>1</mn>
+      </mrow>
+     </mrow>
+     <mo fence="true" stretchy="false">]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <annotation encoding="StarMath 5.0">{ d^2 U } over { dy^2 } %Ux2248 { U[ i ][ j+1 ] - 2* U[ i ][ j ]+ U[ i ][ j-1 ] }</annotation>
+ </semantics>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+ <semantics>
+  <mfrac>
+   <mrow>
+    <msup>
+     <mi>d</mi>
+     <mn>2</mn>
+    </msup>
+    <mi>U</mi>
+   </mrow>
+   <msup>
+    <mi mathvariant="italic">dy</mi>
+    <mn>2</mn>
+   </msup>
+  </mfrac>
+  <annotation encoding="StarMath 5.0">{ d^2 U } over { dy^2 }</annotation>
+ </semantics>
+</math>

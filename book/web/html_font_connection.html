@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Подключение шрифтов в HTML</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                ПОДКЛЮЧЕНИЕ ШРИФТОВ В HTML
+            </p>
+
+            <p class="subsection">
+                Подключение шрифта локально в CSS
+            </p>
+
+            <p class="plane">
+                
+            </p>
+            
+            <pre>
+                <code class="language-css">@font-face{
+                    font-family: 'MyWebFont';
+                    src: url('../fonts/WebFont.eot');
+                    src: url('../fonts/WebFont.eot?iefix') format('eot'),
+                    url('../fonts/WebFont.woff') format('woff'),
+                    url('../fonts/WebFont.ttf') format('truetype'),
+                    url('../fonts/WebFont.svg#webfont') format('svg');
+                    font-weight: normal;
+                    font-style: normal;
+                    }</code></pre>
+
+            <p class="plane">
+                или, может быть, лучше так (как советует Mozilla):    
+            </p>
+
+            <pre>
+                <code class="language-css">@font-face{
+                    font-family: MyHelvetica;
+                    src: local("Helvetica Neue Bold"),
+                         local("HelveticaNeue-Bold"),
+                         url(MgOpenModernaBold.ttf);
+                    font-weight: bold;
+                    }</code></pre>
+
+            <p class="subsection">
+                Подключение шрифта через Gogle Fonts
+            </p>
+            
+            <p class="plane">
+                    Первый этап установки google fonts: заходим на веб-страницу google.com/fonts и выбираем 
+                    понравившийся шрифт. Для более детального подбора можно воспользоваться вспомогательными 
+                    фильтрами и инструментами.
+            </p>
+
+            <p class="plane">
+                Вставляем сгенерированный кусок кода, например:
+             </p>
+
+            <pre>
+                <code class="language-html">&lt;head&gt; 
+                    &lt;link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,cyrillic' 
+                    rel='stylesheet' type='text/css'&gt;)
+                &lt;/head&gt;</code></pre>
+        
+            <p class="plane">
+                или в CSS:
+             </p>
+
+             <pre>
+                <code class="language-css">@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,cyrillic)</code></pre>
+            <br>
+        </div>
+    </body>
+</html>

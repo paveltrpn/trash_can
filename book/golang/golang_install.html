@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Настройка Golang в Linux</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../js/prism-1.17.1.js"></script>
+
+        <div class="A4">
+            <br>
+            <p class="section">
+                НАСТРОЙКА GOLANG В LINUX
+            </p>
+
+            <p class="small">
+                (http://blog.sedicomm.com/2018/01/21/kak-ustanovit-golang-yazyk-programmirovaniya-go-v-linux/)
+            </p>
+
+            <p class="subsection">
+                Загрузка дистрибутива Golang
+            </p>
+
+            <p class="plane">
+                Скачиваем дистрибутив, например отсюда — <i>https://golang.org/dl/</i>, или так
+            </p>
+
+            <pre>
+                <code class="language-shell">$ wget -c https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz</code></pre>
+ 
+            <p class="plane">
+                Распаковываем в /usr/local, формируя дерево каталога Golang в /usr/local/go:
+            </p>
+
+            <pre>
+                <code class="language-shell">$ tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz</code></pre>
+            
+            <p class="subsection">
+                Настройка среды GoLang в Linux
+            </p>
+
+            <p class="plane">
+                Сначала настройте рабочее пространство Go, создав каталог ~/go_projects, который является корнем вашего 
+                рабочего пространства. Рабочее пространство состоит из трех каталогов, а именно:
+            </p>
+
+            <pre class="plane">
+                bin, который будет содержать исполняемые двоичные файлы Go; 
+                src, который сохранит ваши исходные файлы; 
+                pkg, который будет хранить объекты пакета.</pre>
+
+            <p class="plane">
+                Теперь создайте указанное выше дерево каталогов следующим образом:
+            </p>
+
+            <pre>
+                <code class="language-shell">$ mkdir -p ~/go_projects/{bin,src,pkg}
+                $ cd ~/go_projects
+                $ ls</code></pre>
+
+            <p class="plane">
+                Вот и пришло время запустить Go, как и остальные Linux-программы, его каталог установки должен быть 
+                сохранен как одно из значений переменной среды PATH.
+            </p>
+
+            <p class="plane">
+                Теперь добавьте /usr/local/go/bin в переменную среды PATH, вставив строку приведенную ниже в 
+                файл /etc/profile для общесистемной установки или $HOME/.profile или $HOME./Bash_profile для 
+                пользовательской установки, используя ваш любимый редактор, откройте соответствующий файл профиля 
+                пользователя в соответствии с вашим дистрибутивом и добавьте строку приведенную ниже, сохраните файл и выйдите из него:
+            </p>
+
+            <pre>
+                <code class="language-shell">export PATH=$PATH:/usr/local/go/bin</code></pre>
+
+            <p class="plane">
+                Затем установите значения переменных среды GOPATH и GOBIN в файле профиля пользователя 
+                (~/.profile или ~/bash_profile), чтобы указать на ваш каталог рабочей области.
+            </p>
+
+            <pre>
+                <code class="language-shell">export GOPATH="$HOME/go_projects"
+                export GOBIN="$GOPATH/bin"</code></pre>
+
+            <p class="plane">
+                <b>Примечание.</b> Если вы установили GoLang в пользовательский каталог, отличный от значения по умолчанию (/usr/local/), 
+                вы должны указать этот каталог как значение переменной GOROOT. Например, если вы установили GoLang в домашний каталог, 
+                добавьте строки приведенные ниже в файл $HOME/.profile или $HOME/.bash_profile.
+            </p>
+
+            <pre>
+                <code class="language-shell">export GOROOT=$HOME/go
+                export PATH=$PATH:$GOROOT/bin</code></pre>
+
+            <p class="plane">
+                Последним шагом в этом разделе является внесение изменений в профиль пользователя в текущем сеансе bash следующим образом:
+            </p>
+
+            <pre>
+                <code class="language-shell">$ source ~/.bash_profile
+                или
+                $ source ~/.profile</code></pre>
+
+            <p class="subsection">
+                Выключаем go-lint в vs code
+            </p>
+
+            <p class="plane">
+                После установки расширений golang в vs code среди прочего начинает работать go-lint, ругаясь на все 
+                стиливые недочёты кода. Исправляется редактирование settings.json. Выключаем так: 
+            </p>
+
+            <pre class="code">
+        File &rArr; Preferences &rArr; Settings;
+        Выбираем где угодно - Edit in settings.json;
+        Добавляем - "go.lintFlags": ["--disable=all"]</pre>
+
+            <br>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,203 @@
+
+/*  
+    Шрифты по умолчанию.
+    Расположены локально в css/fonts/
+    Основное семейство шрифтов для всей страницы - Google Roboto.
+    Если не подгружаются локально, тогда используем те, что
+    установлены в системе, если их нет, то перебераем Ubuntu, Droid или
+    любой из доступных.
+*/
+
+/*  
+    Без засечек - 'Roboto'
+*/
+@font-face {
+    font-family: 'Local-Sans';
+    src: url('fonts/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  
+    С засечками - 'Roboto Slab' 
+*/
+@font-face {
+    font-family: 'Local-Serif';
+    src: url('fonts/RobotoSlab-Regular.ttf'), format('truetype'),
+         url('fonts/RobotoSlab-Regular.woff'), format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  
+    C засечеками тонкий - 'Roboto Slab Light'
+*/
+@font-face {
+    font-family: 'Local-Serif-Light';
+    src: url('fonts/RobotoSlab-Light.ttf') format('truetype'),
+         url('fonts/RobotoSlab-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  
+    Моноширинный - 'Roboto Mono'
+*/
+@font-face {
+    font-family: 'Local-Mono';
+    src: url('fonts/RobotoMono-Regular.ttf') format('truetype'),
+         url('fonts/RobotoMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Local-Serif', 'Roboto Slab', 'Droid Serif', 'Ubuntu Serif', serif; /* Семейство шрифтов */
+    font-size: 14pt; /* Размер основного шрифта в пунктах  */
+    image-rendering: crisp-edges;
+    /*background-color: #f0f0f0; /* Цвет фона веб-страницы */
+    background: rgb(204,204,204); 
+    color: #333; /* Цвет основного текста */ 
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+}
+
+blockquote {
+    font-style: italic;
+    text-align: justify;
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+/* Заголовок темы или раздела */
+p[class="section"] {
+    font-family: 'Roboto Bold', 'Droid Serif', 'Ubuntu Serif', serif;
+    line-height: 1.0;
+    letter-spacing: .1rem;
+    font-size: 26pt;
+    font-weight: bold;
+    text-align: center; 
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+/* Заголовок подраздела */
+p[class="subsection"] {
+    font-family: 'Roboto Bold', 'Droid Serif', 'Ubuntu Serif', serif;
+    line-height: 1.0;
+    letter-spacing: .1rem;
+    word-break: break-word;
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: justify; 
+    margin-left: 60px; 
+    margin-right: 60px; 
+}
+
+/* Основной текст (вообще должно быть "plain")) */
+p[class="plane"] {
+    /* text-indent: 1.5em; */
+    letter-spacing: .02rem;
+    text-align: justify; /* Выравнивание по ширине */
+    margin-left: 60px; /* Отступ слева в пикселах */
+    margin-right: 60px; /* Отступ справа в пикселах */
+}
+
+/* 
+    Уменьшеный текст. Для комментариев, ссылок (не активных)
+    на исходные материалы и т.д. 
+*/
+p[class="small"] {
+    line-height: 1.0;
+    /*font-style: italic;*/
+    font-size: 10pt;
+    text-align: center;
+    margin-left: 60px;  
+    margin-right: 60px; 
+}
+
+p[class="link"] {
+    font-size: 14pt;
+    line-height: 1.1;
+    letter-spacing: .1rem;
+    text-align: left; 
+    margin-left: 60px; 
+    margin-right: 60px; 
+}
+
+a {
+    text-decoration: none; /* Убирает подчеркивание для ссылок */
+    color: rgb(0, 16, 160);
+} 
+
+a:hover { 
+    text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+    color: red; /* Ссылка красного цвета */
+} 
+
+pre[class=plane] {
+    font-family: 'Local-Serif', 'Roboto Slab', 'Droid Serif', 'Ubuntu Serif', serif;
+    text-align: left;
+    font-size: 12pt;
+    letter-spacing: .02rem;
+    line-height: 1.2;
+    margin-left: 60px; 
+    margin-right: 60px;
+    
+}
+
+pre[class=code] {
+    font-family: 'Local-Mono', 'Roboto Mono', 'Droid Mono', 'Ubuntu Mono', Consolas, monospace;
+    font-size: 12pt;
+    text-align: left;
+    line-height: 1.2;
+    margin-left: 60px; 
+    margin-right: 60px; 
+}
+
+span[class="cmnt"] {
+    color: #979797;
+    font-style: italic;
+    font-family: 'Local-Mono', 'Roboto Mono', 'Droid Mono', 'Ubuntu Mono', Consolas, monospace;
+}
+
+span[class="kwd"] {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #000000;
+    font-family: 'Local-Mono', 'Roboto Mono', 'Droid Mono', 'Ubuntu Mono', Consolas, monospace;
+}
+
+div {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 2.5cm rgba(0,0,0,0.8);
+}
+
+div[class="A4"] {  
+    width: 1200px;
+    /*
+    если раскомментировать, то размер страницы будет
+    точно с А4 и нужно будет начинать новую странице кадый раз 
+
+    width: 21cm;
+    height: 29.7cm; 
+    */
+}
+
+div[class="A4"][layout="portrait"] {
+    width: 29.7cm;
+    height: 21cm;  
+}
+
+@media print {
+    body, page {
+        margin: 0;
+        box-shadow: 0;
+    }
+}
