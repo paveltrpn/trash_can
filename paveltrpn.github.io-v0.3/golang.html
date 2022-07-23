@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Golang setup</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+        <script src="./js/top_bottom.js" defer></script>
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="./js/prism.js"></script>
+
+        <div class="container">
+
+        <div id="top_article" class="menu"></div> <!-- Сюда вставляется код заголовка -->
+
+        <div class="A4">
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="subsection">
+                Golang setup.
+            </p>
+
+            <p class="plain">
+                <b>Загрузка дистрибутива Golang.</b>
+            </p>
+
+            <p class="plain">
+                Скачиваем дистрибутив, например отсюда — <i>https://golang.org/dl/</i>, или так
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ wget -c https://storage.googleapis.com/golang/go1.17.5.linux-amd64.tar.gz</code></pre>
+ 
+            <p class="plain">
+                Распаковываем в /home/{USER}/go, потом переименуем в /home/{USER}/go-{VERSION}:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ tar -xzf go$VERSION.$OS-$ARCH.tar.gz
+    $ mv /home/{USER}/go /home/{USER}/go-{VERSION}</code></pre>
+            
+            <p class="plain">
+                Теперь добавляем /home/{USER}/go-{VERSION}/bin в переменную среды PATH, вставив строку приведенную ниже в 
+                файл /etc/profile для общесистемной установки или $HOME/.profile и $HOME/.bashrc (или $HOME./bash_profile) для 
+                пользовательской установки, используя ваш любимый редактор, откройте соответствующий файл профиля 
+                пользователя в соответствии с вашим дистрибутивом и добавьте строку приведенную ниже, сохраните файл и выйдите из него:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">export PATH=$PATH:/home/{USER}/go-{VERSION}/bin</code></pre>
+
+            <p class="plain">
+                Чтобы go запускался сразу, без перезапуска терминала, можно внести изменения в профиль пользователя 
+                в текущем сеансе bash следующим образом:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ source ~/.bash_profile
+    или
+    $ source ~/.profile
+    или
+    $ source ~/.bashrc</code></pre>
+
+            <p class="plain">
+                <b>VSCode под Linux</b> может выдавать ошибку о том, что не нашел бинарники golang - <i>failed 
+                to find the go binary in either goroot() or path</i>, чтобы исправить можно захарткодить GOROOT в 
+                settings.json 
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-json">...
+        "go.goroot": "/home/paveltrpn/go-1.17.5",
+    ...</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+            
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="plain">
+                <b>Настройка среды GoLang в Linux</b> (для версий golang до 1.13, т.е. без поддержки модулей).
+            </p>
+
+            <p class="plain">
+                Сначала настройте рабочее пространство Go, создав каталог ~/go_projects, который является корнем вашего 
+                рабочего пространства. Рабочее пространство состоит из трех каталогов, а именно:
+            </p>
+
+            <p class="plain">
+                <i>
+                &emsp;&emsp; bin, который будет содержать исполняемые двоичные файлы Go;<br> 
+                &emsp;&emsp; src, который сохранит ваши исходные файлы;<br> 
+                &emsp;&emsp; pkg, который будет хранить объекты пакета.<br>
+                </i> 
+            </pre>
+
+            <p class="plain">
+                Теперь создайте указанное выше дерево каталогов следующим образом:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ mkdir -p ~/go_projects/{bin,src,pkg}
+    $ cd ~/go_projects
+    $ ls</code></pre>
+
+            <p class="plain">
+                Затем установите значения переменных среды GOPATH и GOBIN в файле профиля пользователя 
+                (~/.profile или ~/bash_profile), чтобы указать на ваш каталог рабочей области.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">export GOPATH="$HOME/go_projects"
+    export GOBIN="$GOPATH/bin"</code></pre>
+
+            <p class="plain">
+                <b>Примечание.</b> Если вы установили GoLang в пользовательский каталог, отличный от значения по умолчанию (/usr/local/), 
+                вы должны указать этот каталог как значение переменной GOROOT. Например, если вы установили GoLang в домашний каталог, 
+                добавьте строки приведенные ниже в файл $HOME/.profile или $HOME/.bash_profile.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">export GOROOT=$HOME/go
+    export PATH=$PATH:$GOROOT/bin</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="plain">
+                <b>Выключаем go-lint в vs code.</b>
+            </p>
+
+            <p class="plain">
+                После установки расширений golang в vs code среди прочего начинает работать go-lint, ругаясь на все 
+                стиливые недочёты кода. Исправляется редактирование settings.json. Выключаем так: 
+            </p>
+
+            <p class="plain">
+            <i>
+            &emsp;&emsp;File &rArr; Preferences &rArr; Settings;<br>
+            &emsp;&emsp;Выбираем где угодно - Edit in settings.json;<br>
+            &emsp;&emsp;Добавляем - "go.lintFlags": ["--disable=all"]<br>
+            </i>
+            </p>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="plain">
+                <b>Ручная установка инструментов golang.</b>
+            </p>
+
+            <p class="plain">
+                Если через vscode не удаётся установить весь набор инструментов для golang (такое случается в Ubuntu, трейс 
+                выдаёт permission denied), их там штук десять, можно сделать это через терминал:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">go install -v github.com/ramya-rao-a/go-outline@latest
+    go install -v github.com/uudashr/gopkgs/v2/cmd/gopkgs@latest
+    go install -v github.com/cweill/gotests/gotests@latest
+    go install -v github.com/fatih/gomodifytags@latest
+    go install -v github.com/josharian/impl@latest
+    go install -v github.com/haya14busa/goplay/cmd/goplay@latest
+    go install -v github.com/go-delve/delve/cmd/dlv@latest
+    go get -x -d github.com/go-delve/delve/cmd/dlv@master
+    go install -v honnef.co/go/tools/cmd/staticcheck@latest
+    go install golang.org/x/tools/cmd/goimports@latest
+    go install -v golang.org/x/tools/gopls@latest</code></pre>
+
+            <p class="plain">
+                После этого нужно собрать аддон для дебагера golang - glv-dap, как это делает автоматом vs code,
+                но из консоли не получилось, трейс выдал отсутствие каких-то зависимостей.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-javascript">sudo go build -o /usr/paveltrpn/go/bin/dlv-dap github.com/go-delve/delve/cmd/dlv</code></pre>
+
+            <p class="plain">
+                Потом прописываем путь к ним в settings.json:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-javascript">"go.toolsEnvVars": {
+        "GOBIN": "/usr/paveltrpn/go/bin",
+    }</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="plain">
+                <b>Выключаем golang language server (gopls)</b>, помогает при "бесконечном" сохранении файла
+                в vs code. В settings.json нужно добавить:
+            </p>
+
+        <pre class="line-numbers">
+    <code class="language-json">"go.useLanguageServer": false</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+                
+            <p class="plain">
+                <b>Отключаем старые модули golang</b>, чтобы локальный импорт работал:
+            </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash">go env -w GO111MODULE=off
+    set GOPATH=~\code</code></pre>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+        <p class="plain">
+            <b>Зависимости для сборки golang glfw</b>:
+        </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash">sudo apt install libx11-dev  
+    sudo apt install libxcursor-dev  
+    sudo apt-get install libxrandr-dev
+    sudo apt-get install libxinerama-dev
+    sudo apt-get install libxi-dev
+    sudo apt-get install libglx-dev
+    sudo apt-get install libgl-dev
+    sudo apt-get install libxxf86vm-dev
+    sudo apt-get install pkg-config</code></pre>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+        <p class="plain">
+            <b>Настройка нового проекта.</b> В среде Ubuntu 21.10, Golang 1.17.5, VSCode.
+        </p>
+
+        <p class="plain">
+            Дерево каталога организуем согласно https://github.com/golang-standards/project-layout - 
+            ./prj-name/cmd; ./prj-name/internal; ./prj-name/pkg и т.д.
+            В ./prj-name запускаем:
+        </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash">go mod init prj-name</code></pre>
+
+        <p class="plain">
+            Если в родительской директории есть ещё код, то gopls выпадет с ошибкой некорректной настройки
+            workspace. Для исправления ситуации нужно настроить gopls для работы с т.н. "Multiple modules".
+            Пока что фича эксперементальная, немного описано тут - https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/workspace.md.
+            Для начала работы дописываем в settings.json:            
+        </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash">"gopls": {
+        "build.experimentalWorkspaceModule": true
+    }</code></pre>
+    
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        </div>
+        
+        <div class="menu" id="bottom"></div>
+        
+        </div>
+        
+    </body>
+</html>

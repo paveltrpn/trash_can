@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Python setup.</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+        <script src="./js/top_bottom.js" defer></script>
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="./js/prism.js"></script>
+
+        <div class="container">
+
+        <div id="top_article" class="menu"></div> <!-- Сюда вставляется код заголовка -->
+
+        <div class="A4">
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="subsection">
+                Python setup.
+            </p>
+            
+            <p class="plain">
+                <b>Установка python 3.9</b> в Linux Mint 20.0 (после установки запускаться будет как :~$python3.9).
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo apt-get update
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt install python3.9
+    sudo apt install python3.9-dev
+    sudo apt install python3.9-distutils</code></pre>
+
+            <p class="plain">
+                По умолчанию в Linux Mint 20.2 не установлен pip, поэтому нужно сделать:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo apt install python3-pip</code></pre>
+
+            <p class="plain">
+                Зависимости для конкретной версии python через pip устанавливаются так:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">python3.9 -m pip install numpy</code></pre>
+            
+            <p class="plain">
+                <b>Установка python 3.10</b> в Linux Manjaro 21.2.0.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">$ git clone https://aur.archlinux.org/python310.git
+    $ cd python310
+    $ makepkg -si</code></pre>
+
+            <p class="plain">
+                Pip-а по умолчанию тоже нету, поэтому закачиваем 
+                <a href=https://pip.pypa.io/en/stable/installation/#get-pip-py>https://pip.pypa.io/en/stable/installation/#get-pip-py</a>
+                и потом:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">$ python3.10 get-pip.py</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============= -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="plain">
+                <b>Исправляем работу (или неработу) PyImgui в Linux Mint 20.2.</b>
+                <br><br>
+                Имеется стек - VirtualBox 6.1 -> Linux Mint 20.2 -> Python 3.9 + PyOpenGL + GLFW, на котором с аппартным ускорением работает OpenGL не выше 2.1.
+                При этом хочется использовать PyImgui (pip-ом устанавливается в версии 1.65) но завести всё это не получается т.к. PyOpenGL выпадает с
+                ошибками GL_INVALID_OPERATION при вызовах glUniform*, glAttribLocation* и т.д. видимо из-за попытки PyImgui использовать программируемый пайплайн рендера 
+                OpenGL 3.3+. 
+                <br><br>
+                В файле ~/.local/lib/python3.9/site-packages/imgui/integrations/glfw.py имеется следующее:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-python">...
+    from .opengl import ProgrammablePipelineRenderer
+
+    class GlfwRenderer(ProgrammablePipelineRenderer):
+        def __init__(self, window, attach_callbacks=True):
+    ...</code></pre>
+
+            <p class="plain">
+                Хотя класс GlfwRenderer унаследован от ProgrammablePipelineRenderer, в файле ~/.local/lib/python3.9/site-packages/imgui/integrations/opengl.py 
+                так же определён класс FixedPipelineRenderer и если внести небольшие изменения, то всё заведётся на старом профайле OpenGL 2.1:
+            </p>
+    
+            <pre class="line-numbers">
+    <code class="language-python">...
+    from .opengl import ProgrammablePipelineRenderer
+    from .opengl import FixedPipelineRenderer
+
+    class GlfwRenderer(FixedPipelineRenderer):
+        def __init__(self, window, attach_callbacks=True):
+    ...</code></pre>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Модуль для автокомплита из bpy для Blender.</b>
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">python3.9 -m pip install fake-bpy-module-2.93</code></pre>
+                
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Зависимости для OpenGL проектов Python.</b>
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">python3.10 -m pip install numpy
+    python3.10 -m pip install PyOpenGL
+    python3.10 -m pip install PyOpenGL-accelerate
+    python3.10 -m pip install imgui
+    python3.10 -m pip install glfw</code></pre>
+
+        <p class="plain">
+            В Ubuntu 21.10 с Wayland обнаружился баг (видимо), который не даёт поднять glfw контекст.
+        </p>
+
+                
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Инициализация venv и работа с requirements.txt.</b>
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash"># Установим, собственно venv
+    sudo apt install python3.10-venv
+    # Инициализация виртуального окружения в папке ./venv
+    python3 -m venv ./venv
+    # Активируем окружение
+    source venv/bin/activate
+    # Деактиворуем окружение
+    deactivate
+    # Установка пакетов согласно requirements.txt
+    pip install -r requirements.txt
+    # Создание requirements.txt
+    pip freeze > requirements.txt
+                
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        </div>
+        
+        <div class="menu" id="bottom"></div>
+        
+        </div>
+        
+    </body>
+</html>

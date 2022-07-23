@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Administration tips</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+        <script src="./js/top_bottom.js" defer></script>
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="./js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]]},
+	            "HTML-CSS": {availableFonts:["TeX"]}
+            });
+        </script>
+        <!-- ============================== -->
+
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="./js/prism.js"></script>
+
+        <div class="container">
+
+        <div id="top_article" class="menu"></div> <!-- Сюда вставляется код заголовка -->
+
+        <div class="A4">
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Установка ядра 5.8 под Linux Mint 20</b>
+            </p>
+
+            <p class="plain">
+                Ядро по умолчанию в Mint 20 - 5.4. Ядро 5.8 понадобилось, чтобы в VMWare Player 16 заработал OpenGL 4.1.   
+                Установка ядра 5.8 без сборки из *.deb пакетов очень проста. Скачиваем:
+            </p>
+
+            <p class="plain" style="text-align: left;">
+                &emsp;&emsp; - https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.8/amd64/linux-headers-5.8.0-050800-generic_5.8.0-050800.202008022230_amd64.deb<br>
+                &emsp;&emsp; - https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.8/amd64/linux-image-unsigned-5.8.0-050800-generic_5.8.0-050800.202008022230_amd64.deb<br>
+                &emsp;&emsp; - https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.8/amd64/linux-modules-5.8.0-050800-generic_5.8.0-050800.202008022230_amd64.deb  
+            </p>
+
+            <p class="plain">
+                Нужно убедиться что в папке нет других *.deb пакетов. Далее просто запускаем:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">sudo dpkg -i *.deb</code></pre>
+
+            <p class="plain">
+                После перезагрузки ваполним:
+            </p>
+                
+            <pre class="line-numbers">
+    <code class="language-bash">uname -a</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Cборка Mesa3d 20.2</b>
+            </p>
+
+            <p class="plain">
+                Скачиваем и паспаковываем дистрибутив с сайта Mesa 3d:
+            </p>
+
+            <p class="plain" style="text-align: left;">
+                &emsp;&emsp; - https://docs.mesa3d.org/download.html
+            </p>
+
+            <p class="plain">
+                Вообще, сборка описана там же на сайте. Собираем по инструкции https://docs.mesa3d.org/install.html. Если в кратце, то:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">meson builddir/
+    ninja -C builddir/
+    sudo ninja -C builddir/ install</code></pre>
+                
+            <p class="plain">
+                Там будет много зависимостей от X11, устанавливаем все, конфигурирум и собираем через Meson и Ninja. После сборки Ninja закинет  
+                собраные бинарники в - `/usr/local/lib/x86_64-linux-gnu`, перемещаем всё это добро в `/usr/lib/x86_64-linux-gnu`.
+            </p>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Git tips</b>
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash"># Установить асевдоним удалённого репозитория
+    git remote set-url {remote-name} {remote-url}</code></pre>
+                
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Command line tips</b>
+            </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash"># locate the binary, source, and manual page files for a command
+    whereis {command}
+    
+    # locate a command
+    which {command}</code></pre>
+                
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+        
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="plain">
+                <b>Работа с пакетами в Ubuntu</b>
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash"># Вывести список установленных пакетов (и отфильтровать по имени)
+    sudo apt list --installed | grep {package-name}
+    # или
+    dpkg-query -l {package-name}
+
+    # Вывести список пакетов к которым доступны обновления (И посчитать сколько их)
+    apt list --upgradable | wc -l
+
+    # добавить репозиторий
+    sudo add-apt-repository ppa:{repo-name}/ppa
+
+    # удалить репозиторий
+    sudo add-apt-repository --remove ppa:{repo-name}/ppa
+    
+    # и потом не забыть сделать
+    sudo apt update
+
+    # установить из *.deb пакета (на примере vs code)
+    apt-get install -f ./code_1.39.2-1571154070_amd64.deb
+
+    # Обновить один конкртный пакет
+    sudo apt-get install --only-upgrade {package-name}</code></pre>
+
+        <p class="plain">
+                <b>Принудительно включаем X.Org</b> вместо Wayland в Ubuntu
+        </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash">sudo xed /etc/gdm3/custom.conf
+    # и там раскомментируем строку
+    # WaylandEnable=false</code></pre>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="plain">
+                <b>Собираем xed под Ubuntu 21.10</b>
+            </p>
+
+            <p class="plain">
+                Скачиваем:
+            </p>
+
+        <pre class="line-numbers">
+    <code class="language-bash">git clone https://github.com/linuxmint/xed</code></pre>
+                
+            <p class="plain">
+                Устанавливаем зависимости:
+            </p>
+            
+            <pre class="line-numbers">
+    <code class="language-bash">sudo apt-get install meson
+    sudo apt-get install libxml2*dev
+    sudo apt-get install libglib2*dev
+    sudo apt-get install build-essential libgtk-3-dev
+    sudo apt-get install gir1.2-gtksource
+    sudo apt-get install libgtksourceview-4-dev
+    sudo apt-get install libpeas*dev
+    sudo apt-get install libxapp*dev
+    sudo apt-get install libgspell-1*dev
+    sudo apt-get install intltool
+    sudo apt-get install itstool</code></pre>
+
+            <p class="plain">
+                Компилируем, собираем и устанавливаем:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-bash">ninja -v -C build
+    sudo ninja install -v -C build
+    // Это нужно чтобы избежать рантайм ошибки
+    sudo /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/</code></pre>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            <p class="plain">
+                <b>Сборка и установка gcc из исходников под Ubuntu</b>
+            </p>
+
+            <p class="plain">
+                Это - коротка статья о компиляции GCC 10.1 из исходных кодов под Ubuntu 20.04 x64. По умолчанию
+                Ubuntu 20.04 имеет GCC версии 9.3, которя не плоха, однако версия 10 имеет законченную поддержку
+                стандартов C++11, C++14, C++17 и частичную поддержку стандарта C++20. GCC 10 поддерживает C11 и C++14
+                по умолчанию, больше нет необходимости использовать ключи -std=c11 или -std=c++14.<br>
+                <br>
+                Для начала, давайте убедимся, что у нас установлены все обновления:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">sudo apt update
+    sudo apt upgrade</code></pre>
+
+            <p class="plain">
+                Теперь, установим тулчейн GCC и несколко дополнительных утилит вместе с ним:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">sudo apt install build-essential wget m4 flex bison</code></pre>
+
+            <p class="plain">
+                Далее, загрузим исходный код GCC 10 и пререквизиты (prerequisites) с сайта http://gcc.gnu.org/mirrors.html:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">cd ~
+    wget https://ftpmirror.gnu.org/gcc/gcc-10.1.0/gcc-10.1.0.tar.xz
+    tar xf gcc-10.1.0.tar.xz
+    cd gcc-10.1.0
+    contrib/download_prerequisites</code></pre>
+
+            <p class="plain">
+                Теперь мы можем сконфигурировать и собрать исходный код. Чтобы сохранить систему чистой, будем
+                использовать папку /usr/local/gcc-10.1.0 для установки и добавим суффикс -10.1 к компиляторам
+                GCC из данного пакета. Обычно, мы не хотим смешивать установленный по умолчанию GCC с новой 
+                версией, потому что другие пакеты могут зависеть от него. 
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">cd ~
+    mkdir build && cd build
+    ../gcc-10.1.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu 
+    --prefix=/usr/local/gcc-10.1.0 --enable-checking=release --enable-languages=c,c++,fortran 
+    --disable-multilib --program-suffix=-10.1</code></pre>
+
+            <p class="plain">
+                Теперь можно выполнять сборку GCC, лучше обычно дважды задать количство ядер процессора
+                на компьютере, что бы ускорить сборку. У меня четыре ядра, так что я буду использовать 8
+                параллельных потоков для сборки GCC.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">make -j 8</code></pre>
+
+            <p class="plain">
+                В зависимости от производительности компьютера, сборка может занять от 30 минут до
+                нескольких часов.
+            </p>
+
+            <p class="plain">
+                Когда предидущий ээтап будет закончен можну выполнить установку GCC:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">sudo make install-strip</code></pre>
+
+            <p class="plain">
+                Если вы хотите установить компиляторы перманентно в системную директорию, добавьте
+                эти строки в конец файла .bashrc.
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">export export PATH=/usr/local/gcc-10.1.0/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/gcc-10.1.0/lib64:$LD_LIBRARY_PATH</code></pre>
+
+            <p class="plain">
+                Вставьте в конец файла .bashrc строчки, упомянутые выше, сохраните файл и закройте редактор.
+                Теперь, нужно скащать Bash перезагрузить .bashrc (это произойдёт автоматически, после перезагрузки компьютера):
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">.bashrc</code></pre>
+    
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+                
+        <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            
+            <p class="subsection">
+                Настройка Manjaro (на примере 21.2.0)
+            </p>
+
+            <p class="plain">
+                По умолчанию vmware linux tools установлены, можно проверить:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">sudo pacman -Q | grep open-vm-tools</code></pre>
+
+            <p class="plain">
+                <b>Устанавливаем</b> основные зависимости (пакетный менеджер тут pacman):
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell">$ sudo pacman -Syu git # если ещё не установлен
+    $ sudo pacman -Syu xed mc conky cmake
+    $ sudo pacman -Syu binutils make gcc pkg-config fakeroot</code></pre>
+
+            <p class="plain">
+                памятка по pacman:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-shell"># Синхронизовать локальную базу данных репозиториев и обновить все пакеты
+    $ sudo pacman -Syu {name}
+
+    # Установить новый пакет или обновить старый, 
+    # в manjaro "установка" равно "синхронизация"
+    $ sudo pacman -S {name}
+
+    # Удалить пакет не трогая зависимости
+    $ sudo pacman -R {name}
+
+    # Удалить пакет и его зависимости
+    $ sudo pacman -Rs {name}
+
+    # Поиск пакета в базе данных по регулярному выражению или ключевому слову
+    $ sudo pacman -Ss {search_pattern}
+
+    # Вывести список установленных пакетов и их версии
+    $ sudo pacman -Q 
+
+    # Вывести список явно установленных пакетов и их версии
+    $ sudo pacman -Qe 
+    
+    # Определить, какому из пакетов принадлежит данный файл
+    $ sudo pacman -Qo
+
+    # Вывести список пакетов с доступными обновлениями
+    $ sudo pacman -Qu
+
+    # Очистить кеш пакетов для высвобождения дискового пространства
+    $ sudo pacman -Scc 
+
+    # Обновить кэш pacman. Проверит есть ли доступные обновления
+    $ sudo pacman -Syy</code></pre>
+
+            <p class="plain">
+                Для <b>устанавки</b> VSCode или любого другого пакета, который собирается из
+                репозитория AUR (исходников) нужно что бы в системы были установлены зависимости для сборки - 
+                <i>binutils, make, gcc, pkg-config, fakeroot</i>, далее пакет выкачевается и собирается (на 
+                примере VSCode):
+            </p>
+
+        <pre class="line-numbers">
+    <code class="language-shell">$ git clone https://aur.archlinux.org/visual-studio-code-bin.git
+    $ cd visual-studio-code-bin/
+    # Далее собираем, но по умолчанию makepkg использует
+    # один поток, можно подправить конфиг для исправления
+    $ xed /etc/makepkg.conf 
+    # Строка MAKEFLAGS="-j8"
+    $ makepkg -si
+    # Тут -s - Install missing dependencies using pacman
+    #     -i - Install or upgrade the package after a successful build using pacman</code></pre>
+
+            <p class="plain">
+                <b>Добавляем автозапуск</b> через gnome-tweaks:
+            </p>
+
+        <pre class="line-numbers">
+    <code class="language-shell">$ gnome-tweaks</code></pre>
+    
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+            
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+                
+                <p class="plain">
+                    <b>Как изменить shell?</b>
+                </p>
+    
+        <pre class="line-numbers">
+    <code class="language-bash">$ echo $SHELL # используемая оболочка
+    $ cat /etc/shells # доступные оболочки   
+    $ chsh -s {path} # например /bin/bash </code></pre> 
+
+        <p class="plain">
+            PS1 - переменная в bashrc, которая отвечает за формат строки преглашения в шеле.
+            <br>
+            <b>\u и \h</b> - имя пользователя и хоста соответственно. Их можно сократить заменив на такие конструкции -
+            ${USER:a:b}@${HOSTNAME:c:d}, где a, b, c, d - стартовый сомвол и количество символов в оставшейся
+            строке. <b>-w</b> - полный путь в приглашении (именно строчная w).
+        </p>
+
+        <pre class="line-numbers">  
+    <code class="language-bash"># алиас на ls для вывода всех файлов в список в алфавитном порядке
+    alias ls='ls --color=auto -l -A -X'</code></pre>
+
+        </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+        </div>
+        
+        <div class="menu" id="bottom"></div>
+        
+        </div>
+        
+    </body>
+</html>

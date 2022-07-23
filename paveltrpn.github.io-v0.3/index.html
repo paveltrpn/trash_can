@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Note Book</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/top_bottom.js" defer></script>
+        <link rel="stylesheet" href="css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+
+         <!-- Подключение локального MathJax -->
+         <script type="text/javascript" id="MathJax-script" async
+         src="js/MathJax3.0.0/es5/tex-svg.js">
+             MathJax.Hub.Config({
+                 extensions: ["tex2jax.js","TeX/noErrors.js"],
+                 jax: ["input/TeX","output/HTML-CSS"],
+                 tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]] },
+                 "HTML-CSS": {availableFonts:["TeX"]},
+             });
+         </script>
+         <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="js/prism.js"></script>
+
+        <div class="container">
+            <div id="top" class="menu"></div> <!-- Сюда вставляется код заголовка -->
+
+            <div class="A4">
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            <p class="subsection">
+                Marching cubes
+            </p>
+
+            <p class="plain">
+                Реализация алгоритма marching cubes (так-же реализован marching tetrahedra) на примере metaballs.
+                Оригинальный код принадлежит <a href="http://paulbourke.net/geometry/polygonise/">Paul Bourke</a>.
+            </p>
+
+            <div style="text-align: center;">
+                <img src="assets/018_metaballs.gif" style="width:45%; box-shadow: 0 0 20px rgba(0,0,0,1.0);">
+            </div>
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            <p class="subsection">
+                Водная поверхность
+            </p>
+
+            <p class="plain">
+                За основу взято старое демо с <a href="https://gamedev.ru/code/articles/?id=4205">www.gamedev.ru</a>, добавлено управление размерами поля, 
+                плотностью точек и некоторыми параметрами "жидкисти".
+                В качестве GUI используется <a href=https://github.com/ocornut/imgui>imgui</a>.
+            </p>
+
+            <div style="text-align: center;">
+                <img src="assets/017_water.gif" style="width:45%; box-shadow: 0 0 20px rgba(0,0,0,1.0);">
+            </div>
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            <p class="subsection">
+            <a href="articles/bullet_phisics_beginning/bullet_phisics_beginning.html">
+                Начало работы с Bullet Physics Engine.
+            </a>
+            </p>
+
+            <p class="plain">
+                Введение в работу с Bullet Physics. Скачиваем, собираем под Windows с помощью CMake и MinGW-64, собираем тестовую сцену
+                и катаем кубики.
+            </p>
+
+            <div style="text-align: center;">
+                <img src="articles/bullet_phisics_beginning/bp_test.gif" style="width:45%; box-shadow: 0 0 20px rgba(0,0,0,1.0);">
+            </div>
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            <p class="subsection">
+            <a href="articles/log_x_pursuit_to_inf/log_x_pursuit_to_inf.html">
+                Характер \(ln(x) \to \infty\) при \(x \to \infty\).
+            </a>
+            </p>
+
+            <p class="plain">
+                Утверждение - O(lnx) &lt; O(x) при \(x \to \infty\) для любого полинома и логарифма.<br>
+                Г. Г. Харди "Курс чистой математики".
+            </p>
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+            <p class="subsection">
+                C++20 Abbreviated Function Templates.
+            </p>
+
+            <p class="plain"> 
+                In C++17 you might write a function to give animals head scratches as a function template, so it can be called with any type of animal:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">template &lt;class Animal&gt;
+    void give_head_scratches (Animal const& the_animal);</code></pre>
+
+
+            <p class="plain"> 
+                In C++20 you can simplify this using auto:
+            </p>
+        
+            <pre class="line-numbers">
+    <code class="language-cpp">void give_head_scratches (auto const& the_animal);</code></pre>
+
+            <p class="plain"> 
+                This version is less verbose, requires coming up with fewer names, and is more consistent with C++14 lambdas.
+            </p>
+
+            <p class="subsection">
+                C++20 Constrained Auto.
+            </p>
+
+            <p class="plain"> 
+                C++20 gives us Concepts to help solve the problem of any type we can give in template. If we have some animal concept which defines 
+                what interface a type representing an animal should have then we can use it like so:
+            </p>
+        
+            <pre class="line-numbers">
+    <code class="language-cpp">template &lt;animal Animal&gt;
+    void give_head_scratches (Animal const& the_animal);</code></pre>
+
+            <p class="plain"> 
+                This is quite verbose and repetitive. Ideally we’d be able to use the concept name directly in the function parameter list like this:
+            </p>
+        
+            <pre class="line-numbers">
+    <code class="language-cpp">void give_head_scratches (animal auto const& the_animal);</code></pre>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+
+            <p class="subsection">
+                Ротационная прошивка.
+            </p>
+
+            <p class="plain">
+                Принцип работы ротационной прошивки заключается в обработке заранее подготовленной поверхности по траектории 
+                движения инструмента вдоль обрабатываемой поверхности, при этом заготовка и инструмент получают синхронное 
+                вращение, с контактом резца в заготовке практически стремящемся к "одной точке" (при этом сам резец инструмента 
+                в прошивке конструктивно установлен под небольшим углом).
+            <br><br>
+                В статье МГТУ им. Н.Э. Баумана  "Aнализ точности гранных отверстий, получаемых методом качающегося прошивания" от 04.04.11 г. 
+                (авторы: Зубков Н. Н., Ломакин А. В.; УДК 621.9.04) более детально описан принцип работы прошивных головок и приведен анализ точности 
+                получаемых многогранных отверстий
+            </p>
+            <br>
+            <p class="plain">
+                <b>Видео процесса:</b><br>
+                <a href="https://youtu.be/J2OAISkHHbI">https://youtu.be/J2OAISkHHbI</a>
+            </p>
+            <p class="plain">
+                <b>Инструмент:</b><br>
+                <a href="https://osnastka.pro/broaching_head">https://osnastka.pro/broaching_head</a>
+            </p>
+            <div style="text-align: center;">
+                <img src="assets/broacing_head.png" style="width: 40%; box-shadow: 0 0 20px rgba(0,0,0,1.0);"></img>
+            </div>
+
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+
+            <div class="record"> <!-- ============= НАЧАЛО ЗАПИСИ ============= -->
+                <div>
+                    <p class="subsection">
+                    <a href="articles/fizicheskoye_modelirovanie_vody/fizicheskoye_modelirovanie_vody.html">
+                        Физическое моделирование воды.
+                    </a>
+                    </p>
+
+                    <p class="plain">
+                        Моделирование реалистичного поведения воды при случайном точечном возмущении.
+                    </p>
+                </div>
+
+                <br>
+
+                <div style="text-align: center;">
+                    <img src="articles/fizicheskoye_modelirovanie_vody/phys_water.jpg" style="width:40%; box-shadow: 0 0 20px rgba(0,0,0,1.0);">
+                </div>
+            </div> <!-- ============= КОНЕЦ ЗАПИСИ ============== -->
+        
+        </div> <!-- конец А4 -->
+
+        <!-- свойства в style смещают этот блок div вниз страницы -->
+        <div div id="bottom" class="menu"></div>
+        
+        </div>
+
+    </body>
+</html>

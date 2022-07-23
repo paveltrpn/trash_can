@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Начало работы с Bullet Physics Engine</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="../../css/prism.css"/> <!-- Тема подсветки кода для Prism -->
+        <script src="../../js/top_bottom.js" defer></script>
+
+        <!-- Подключение локального MathJax -->
+        <script type="text/javascript" id="MathJax-script" async
+        src="../../js/MathJax3.0.0/es5/tex-svg.js">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js","TeX/noErrors.js"],
+	            jax: ["input/TeX","output/HTML-CSS"],
+	            tex2jax: {inlineMath: [['$','$'],["\\(","\\)"]] },
+	            "HTML-CSS": {availableFonts:["TeX"]},
+            });
+        </script>
+        <!-- ============================== -->
+    </head>
+    <body>
+        <!-- Подключение скрипта Prism -->
+        <script src="../../js/prism.js"></script>
+
+        <div class="container">
+
+        <div id="top_article" class="menu"></div> <!-- Сюда вставляется код заголовка -->
+
+        <div class="A4">
+
+            <div class="record">
+
+            <p class="section">
+                Начало работы с Bullet Physics Engine
+            </p>
+
+                       
+            <p class="plain">
+                Bullet Physics - обширная библиотека для симуляции физических эффектов в реальном времени, предназначенная для игр, специальных эффектов, машинного обучения и т.д.
+                Включает в себя различные инструменты для симуляции физики твёрдых тел, связанных и не связанных ограничителями, симуляции ткани, упругих, мягких объектов,
+                библиотеку методов линейной алгебры и средства для распаралеливания расчётов.
+                <br><br>
+                В этой заметке будет описано как скачать и собрать Bullet Physics Engine из исходиков и показана небольшая программа, демонстрирующая
+                работу этой замечательнйо библиотеки. 
+            </p>
+
+            
+            <p class="subsection">
+                Получение дистрибутива библиотеки
+            </p>
+
+            <p class="plain">
+                Скачиваем исходные коды с github.com:
+            </p>
+
+            <pre>
+    <code class="language-bash">git clone https://github.com/bulletphysics/bullet3</code></pre>
+            
+            <p class="subsection">
+                Сборка
+            </p>
+
+            <p class="plain">
+                Собираем с помощью CMake, традиционным способом:
+            </p>
+
+            <pre>
+    <code class="language-bash">cd &lt;bullet_dir&gt;
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=&lt;path&gt; .. -G "MinGW Makefiles"
+    make -j&lt;over 9000 cores&gt;
+    make install</code></pre>
+
+            <p class="plain">
+                Единственное "но" в моём случае и с моим окружением (Windows 10, MinGW-W64, Cmake 3.18.2, GCC 11.1.0) <i>cmake</i> выдал следующее -  
+            </p>
+
+            <pre>
+    <code class="language-bash">CMake Error at Extras/BulletRoboticsGUI/CMakeLists.txt:188 (INSTALL):
+    INSTALL FILES given no DESTINATION!
+      
+      
+    CMake Error at Extras/BulletRobotics/CMakeLists.txt:309 (INSTALL):
+    INSTALL FILES given no DESTINATION!
+      
+      
+    -- Configuring incomplete, errors occurred!
+    See also "E:/github.com/bullet3/build/CMakeFiles/CMakeOutput.log".</code></pre>
+
+             <p class="plain">
+                Ситуацию удалось исправить редактированием соответствующих фаилов <i>CMakeLists.txt</i> в строках 188 и 309 соответственно, 
+                было:
+            </p>
+
+            <pre>
+    <code class="language-cmake">...
+        DESTINATION
+        ${PKGCONFIG_INSTALL_PREFIX}
+    ...</code></pre>
+
+            <p class="plain">
+                Стало:
+            </p>
+
+            <pre>
+    <code class="language-cmake">...
+        DESTINATION include
+        ${PKGCONFIG_INSTALL_PREFIX}
+    ...</code></pre>
+
+            <p class="plain">
+                <i>make install</i> в моём случае делает непонятные вещи, и поэтому вручную помещяем фаилы <i>*.a</i> из папки <i>build/lib</i> и 
+                заголовочные файлы в выбраную для установки папку.
+                <br><br>
+                В общем случае, если <i>/build/examples/ExampleBrowser/App_ExampleBrowser.exe</i> создан, запускается и показывает такие вещи, то 
+                сборку можно считать законченой.
+            </p>
+
+            <div style="text-align: center;"><img src="bp_test_exemple_browser.gif" style="width:50%;"></div>
+
+            <p class="subsection">
+                Демо для теста свежесобранного bullet engine
+            </p>
+
+            <p class="plain">
+                Тестировать всё это добро будем с помощью демки. Собственно демо будет основано на 
+                встроенных примерах из дистрибутива <i>bullet</i>, но для лучшего усвоения материала перепишем всё самостоятельно. Само демо можно найти тут - 
+                <a href="https://github.com/paveltrpn/demos">https://github.com/paveltrpn/demos</a> в папке 014_*. 
+                <br><br>
+                Использовать будем C++ (конечно-же), OpenGL и всё необходимое для него (GLM, GLFW, GLEW), а так же самописные вспомогательные классы (не будем на них 
+                останавливаться подробно) для организации простой геометрии, загрузки текстур с диска (обёртка над libjpeg, libtga) и др.
+                <br><br>
+                Базовая структура приложения выглядит так:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">...
+    void main(int argc, char *argv[]) {
+        //Инициализация приложения, создание окна, загрузка ресурсов, в том числе
+        //инициализация bullet engine
+        appSetup();
+    
+        //Очевидно, главный цикл
+        appLoop();
+
+        //Освобождаем ресурсы
+        appDefer();
+
+        return 0;
+    }
+    ...</code></pre>
+
+            <p class="plain">
+                В глабальном скоупе объявляем всё необходимое для <i>bullet engine</i> и напишем функцию для
+                инициализации всего этого:
+            </p>
+
+            <pre class="line-numbers">
+    <code class="language-cpp">...
+    btDefaultCollisionConfiguration* 		collisionConfiguration;
+    btCollisionDispatcher* 					dispatcher;
+    btBroadphaseInterface* 					overlappingPairCache;
+    btSequentialImpulseConstraintSolver* 	solver;
+    btDiscreteDynamicsWorld* 				dynamicsWorld;
+    CDebugDraw*								debugDraw;
+    
+    ...
+
+    void initBulletPhysicsWorld() {
+        collisionConfiguration = new btDefaultCollisionConfiguration();
+    
+        dispatcher = new btCollisionDispatcher(collisionConfiguration);
+    
+        overlappingPairCache = new btDbvtBroadphase();
+    
+        solver = new btSequentialImpulseConstraintSolver;
+    
+        debugDraw = new CDebugDraw;
+    
+        dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
+    
+        debugDraw->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
+        dynamicsWorld->setDebugDrawer(debugDraw);
+        
+        dynamicsWorld->setGravity(btVector3(0, -10, 0));
+    }
+    ...</code></pre>
+
+            <p class="plain">
+                Разберём подробнее что тут к чему (опираясь на официальную документацию <i>bullet engine</i>).<br><br>
+                &emsp;&emsp;<b><i>btDefaultCollisionConfiguration</i></b> - класс служит для настройки стекового аллокатора памяти, pool аллокатора <i>bullet engine</i>.<br>
+                &emsp;&emsp;<b><i>btCollisionDispatcher</i></b> - класс предоставляет алгоритмы для управления Convex-Convex и Convex-Concave тел, участвующих во 
+                взаимодействии.<br>
+                &emsp;&emsp;<b><i>btBroadphaseInterface</i></b> - класс предоставляет интерфейс для определения перекрывающихся AABB-пар объектов. 
+                Некоторые имплементации этого интерфейса включают в себя <i>btAxisSweep3</i>, <i>bt32BitAxisSweep3</i> и <i>btDbvtBroadphase</i>. 
+                Действительную обработку перекрытий и столкновений AABB-пар, а так-же хранение, добавление и удаление таких пар берёт на себя класс <i>btOverlappingPairCache</i><br>
+                &emsp;&emsp;<b><i>btSequentialImpulseConstraintSolver</i></b> - это быстрая имплементация (с использованием SIMD) метода Гаусса — Зейделя (классический итерационный метод решения СЛАУ).<br>
+                &emsp;&emsp;<b><i>btDiscreteDynamicsWorld</i></b> - обеспечивает дискретное моделирование твердотельных объектов, этот класс заменяет устаревшие <i>CcdPhysicsEnvironment/CcdPhysicsController</i>.<br>
+                &emsp;&emsp;<b><i>CDebugDraw</i></b> - класс, унаследованный от <i>btIDebugDraw</i> и предоставляющий средства для отладочного вывода
+                (рендера) тел, зарегестрированных в <i>btDiscreteDynamicsWorld</i>.<br>
+            </p>
+
+            </div> <!--class record-->
+
+        </div> <!--class A4-->
+
+        <div class="menu" id="bottom"></div>
+        
+        </div>
+        
+    </body>
+</html>
