@@ -169,8 +169,8 @@
     go get -x -d github.com/go-delve/delve/cmd/dlv@master
     go install -v honnef.co/go/tools/cmd/staticcheck@latest
     go install golang.org/x/tools/cmd/goimports@latest
-    go install -v golang.org/x/tools/gopls@latest</code></pre>
-
+    go install -v golang.org/x/tools/gopls@latest
+    go install github.com/mgechev/revive@latest
             <p class="plain">
                 После этого нужно собрать аддон для дебагера golang - glv-dap, как это делает автоматом vs code,
                 но из консоли не получилось, трейс выдал отсутствие каких-то зависимостей.
