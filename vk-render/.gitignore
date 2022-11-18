@@ -1,0 +1,4 @@
+*.o
+extern/*
+src/*/main
+cmd/*/_obj
