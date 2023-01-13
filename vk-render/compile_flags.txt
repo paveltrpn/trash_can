@@ -1,5 +1,0 @@
--I
-extern/glfw/include/
--I
-extern/fmt/include/
---std=c++20
