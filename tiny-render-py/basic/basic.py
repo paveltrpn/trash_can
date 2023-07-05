@@ -13,8 +13,8 @@ def debugCallback(*args):
     return 0
 
 class vkAppState_c:
-    #instExtNamesList: list[str]
-    #instLayersNamesList: list[str]
+    instExtNamesList: list[str]
+    instLayersNamesList: list[str]
 
     def __init__(self, enableLayers: bool = True) -> None:
         self._enableLayers = enableLayers
@@ -79,6 +79,15 @@ class vkAppState_c:
             flags=vk.VK_DEBUG_REPORT_ERROR_BIT_EXT | vk.VK_DEBUG_REPORT_WARNING_BIT_EXT,
             pfnCallback=debugCallback)
         callback = vkCreateDebugReportCallbackEXT(self.instance, debug_create, None)
+        
+    def enumaratePhysicalDevices(self) -> None:
+        devHandlers = vk.vkEnumeratePhysicalDevices(self.instance)
+        
+        devices = []
+        for d in devHandlers:
+            devices.append(vk.vkGetPhysicalDeviceProperties(d))
+
+        self.devNames = [d.deviceName for d in devices]
 
 
 def main() -> None:
@@ -89,12 +98,20 @@ def main() -> None:
     vkState = vkAppState_c()
     
     vkState.getInstanceExtensionsList()
-    print(vkState.instExtNamesList)
+    print("instance extansions list")
+    for ext in vkState.instExtNamesList:
+        print(ext)
 
     vkState.getInstanceLayersList()
-    print(vkState.instLayersNamesList)
+    print("instance layers list")
+    for lr in vkState.instLayersNamesList:
+        print(lr)
 
     vkState.createInstance()
+    
+    vkState.enumaratePhysicalDevices()
+    for pr in vkState.devNames:
+        print(pr)
 
     run = True
     while run:
