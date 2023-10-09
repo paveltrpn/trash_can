@@ -1,0 +1,302 @@
+
+/*  
+    Шрифты по умолчанию.
+    Расположены локально в css/fonts/
+    Основное семейство шрифтов для всей страницы - Google Roboto.
+    Если не подгружаются локально, тогда используем те, что
+    установлены в системе, если их нет, то перебераем Ubuntu, Droid или
+    любой из доступных.
+*/
+
+/*  
+    Без засечек - 'Roboto'
+*/
+@font-face {
+    font-family: 'Local-Sans';
+    src: url('fonts/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  
+    С засечками - 'Roboto Slab' 
+*/
+@font-face {
+    font-family: 'Local-Serif';
+    src: url('fonts/RobotoSlab-Regular.ttf'), format('truetype'),
+         url('fonts/RobotoSlab-Regular.woff'), format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  
+    C засечеками тонкий - 'Roboto Slab Light'
+*/
+@font-face {
+    font-family: 'Local-Serif-Light';
+    src: url('fonts/RobotoSlab-Light.ttf') format('truetype'),
+         url('fonts/RobotoSlab-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  
+    Моноширинный - 'Roboto Mono'
+*/
+@font-face {
+    font-family: 'Local-Mono';
+    src: url('fonts/RobotoMono-Regular.ttf') format('truetype'),
+         url('fonts/RobotoMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Local-Serif', 'Roboto Slab', 'Droid Serif', 'Ubuntu Serif', serif; /* Семейство шрифтов */
+    font-size: 12pt; /* Размер основного шрифта в пунктах  */
+    background: rgb(204,204,204); 
+    color: #333; /* Цвет основного текста */ 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1.3;
+}
+
+/* Заголовок темы или раздела */
+p[class="section"] {
+    /* font-family: 'Roboto Bold', 'Droid Serif', 'Ubuntu Serif', serif; */
+    line-height: 1.0;
+    letter-spacing: .1em;
+    font-size: 26pt;
+    font-weight: bold;
+    text-align: center; 
+    margin-left: 60px;
+    margin-right: 60px;
+    word-break: break-all;
+}
+
+/* Заголовок подраздела */
+p[class="subsection"] {
+    font-family: 'Roboto Bold', 'Droid Serif', 'Ubuntu Serif', serif;
+    line-height: 1.0;
+    letter-spacing: .08em;
+    word-break: break-word;
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: justify; 
+    margin-left: 60px; 
+    margin-right: 60px; 
+}
+
+/* Основной текст (вообще должно быть "plain")) */
+p[class="plane"] {
+    /* text-indent: 1.5em; */
+    letter-spacing: .02em;
+    text-align: justify; /* Выравнивание по ширине */
+    margin-left: 60px; /* Отступ слева в пикселах */
+    margin-right: 60px; /* Отступ справа в пикселах */
+}
+
+/* 
+    Уменьшеный текст. Для комментариев, ссылок (не активных)
+    на исходные материалы и т.д. 
+*/
+p[class="small"] {
+    line-height: 1.0;
+    /*font-style: italic;*/
+    font-size: 10pt;
+    text-align: center;
+    margin-left: 60px;  
+    margin-right: 60px; 
+}
+
+a {
+    text-decoration: none; /* Убирает подчеркивание для ссылок */
+    color: rgb(0, 0, 0);
+    font-size: 14pt;
+} 
+
+pre[class=plane] {
+    font-family: 'Local-Serif', 'Roboto Slab', 'Droid Serif', 'Ubuntu Serif', serif;
+    text-align: left;
+    font-size: 12pt;
+    letter-spacing: .02em;
+    line-height: 1.2;
+    margin-left: 60px; 
+    margin-right: 60px;
+}
+
+div[class="A4"] {  
+    width: 1200px;
+    background: white;
+    display: block;
+    margin: 0 auto; /* отступы слева и справа */
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    box-shadow: 0 0 2.5cm rgba(0,0,0,0.8);
+    position: relative;
+    min-height: 94vh; /* Устанавливает минимальную высоту основного div в 94% от высоты окна браузера*/
+    /*
+    если раскомментировать, то размер страницы будет
+    точно с А4 и нужно будет начинать новую странице кадый раз 
+
+    width: 21cm;
+    height: 29.7cm; 
+    */
+}
+
+div[class="A4"][layout="portrait"] {
+    width: 29.7cm;
+    height: 21cm;  
+}
+
+@media print {
+    body, page {
+        margin: 0;
+        box-shadow: 0;
+    }
+}
+
+/* --------------------------------------------------------------------*/
+/* ---------------------СЕКЦИЯ СТИЛЯ ВЕРХНЕГО И НИЖНЕГО МЕНЮ-----------*/
+/* --------------------------------------------------------------------*/
+
+/* 
+    .class_name - равносильно element[class="class_name"] {...} 
+    .class_name > tag_name {...} - устанавливает свойства {...} для первого
+    вложенного тега tag_name
+    .class_name tag_name {...} - устанавливает свойства {...} для всех
+    вложенных тегов tag_name 
+*/
+    
+.menu {
+    background-color:#333; 
+    text-align: center;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.menu ul {
+    list-style-type: none; /* Убрали точки в пунктах списков */
+    list-style-position: inside; /* Точки, обозначающие элемент списка будут внутри */
+}
+
+.menu > ul {
+    margin-left: 100px;
+    padding-left: 0em;
+    height: 1.5em;
+}
+
+.menu > ul > li {
+    float: left;
+    position: relative;
+}
+
+.menu > ul > li > a {
+    color: #ffffff;
+    padding: 1em 2em;
+    text-align: center;
+}
+
+.menu li a:hover { 
+    color: #D5B45B;
+    text-decoration: none; /* Убрали подчёркивание при наведении на ссылку*/
+}
+
+.submenu {
+    background: #333;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 5;
+    width: auto;
+    opacity: 0;
+    transform: scaleY(0); /* По умолчанию все теги с submenu сжаты по Y до 0.0*/
+    transform-origin: 0 0;
+    transition: .2s ease-in-out; /* Время раскрытия списка в долях секунды */
+    padding-left: 0;
+}
+
+.submenu > li > a {
+    color: white;
+    text-align: left;
+    padding: 0px 0em;
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+.submenu > li {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    text-align: left;
+    border-bottom: 2px solid rgba(255,255,255,1); 
+}
+
+/*
+.submenu li:last-child a {
+    border-bottom: none;  Убирает подчёркивание у последнего элемента 
+}
+*/
+
+/* При наведении курсора на элемент, все теги с submenu становятся
+   непрозрачными и масштабируются до 1:1
+*/
+.menu li:hover .submenu {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* --------------------------------------------------------------------*/
+/* ------------СЕКЦИЯ СТИЛЯ НУМЕРОВАННОГО СПИСКА С ПОВОРОТОМ НОМЕРА----*/
+/* --------------------------------------------------------------------*/
+
+.rounded {
+    counter-reset: li; 
+    list-style: none; 
+    /* font: 14px "Trebuchet MS", "Lucida Sans";
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);*/
+}
+
+.rounded a {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .4em 0;
+    background: rgb(218, 218, 218);
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: .3s ease-out;
+    margin-right: 50px;
+}
+
+.rounded a:hover:before {
+    transform: rotate(360deg);
+}
+
+
+.rounded a:hover {
+    background: #e9e9e9;
+}
+
+/* положение цифр в кружке и самих кружков */
+.rounded a:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #bdbdbd;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid white;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}

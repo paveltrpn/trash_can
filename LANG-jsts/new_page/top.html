@@ -1,0 +1,47 @@
+<style>
+    .top_grid {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 32px;
+    }
+
+    .top_grid > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+    }
+
+    .top_grid > div > a {
+        font-family: monospace;
+        text-decoration: none;
+    }
+
+    a:hover { 
+        text-decoration: underline; /* Ссылка подчеркнутая и надчеркнутая */
+        color: red; /* Цвет ссылки */
+    }
+
+</style>
+
+<div class="top_grid">
+    <div>
+        <a href="https://habr.com/ru/post/425837/">
+            LOG
+        </a>
+    </div>
+
+    <div>
+        <a href="https://habr.com/ru/post/425837/">
+            LINKS
+        </a>
+    </div>
+
+    <div>
+        <a href="https://habr.com/ru/post/425837/">
+            ARTICLES
+        </a>
+    </div>
+
+</div>

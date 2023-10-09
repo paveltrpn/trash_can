@@ -1,0 +1,12 @@
+{
+  "name": "infix_to_postfix",
+  "version": "0.0.1",
+  "description": "",
+  "main": "infix_to_postfix.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}

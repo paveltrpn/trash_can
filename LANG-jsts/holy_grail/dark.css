@@ -1,0 +1,31 @@
+.dark {
+    --bg: #222831;
+    --bg2: #181C22;
+    --bg3: #1A1D24;
+    --bg4: black;
+    --footer-bg: rgba(0, 0, 0, .3);
+    --code: #F59BAC;
+    --code-text: #FAD7A0;
+    --code-text: #FEE6C0;
+    --code-comment: #81899B;
+    --text-color: #F9FFEE;
+    --pale-text: #dfa612;
+    --info-box-text: antiquewhite;
+    --gs0: rgba(239, 187, 53, 0.6);
+    --gs1: rgba(239, 187, 53, 0.6);
+    --green1: #EFBB35;
+    --green2: #E84279;
+    --green3: #dfa612;
+    --top1: #302E24;
+    --top2: #28313E;
+    --subtle-green1: rgba(236, 198, 48, .1);
+    --subtle-green2: #1A1D24;
+    --subtle-yellow3: rgba(236, 198, 48, .1);
+    --fb: #fff;
+    --reddit: #fff;
+    --h-news: #fff;
+    --twitter: #fff;
+    --cat-head: #1A1D24;
+    --front-text-color: antiquewhite;
+    --info-box-bg: #1A1D24
+   }
